@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - breakable
+  - enemy
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
@@ -40,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sign
+    uniqueID: 1579001835
+    locked: 0
+  - name: Player
+    uniqueID: 1812408761
     locked: 0
