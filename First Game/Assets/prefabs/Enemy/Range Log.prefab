@@ -30,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4562964670982093127}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.64, y: -9.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -124,11 +124,15 @@ MonoBehaviour:
   totalHealth: {fileID: 11400000, guid: 14d33d296022f4e8f8254f1375083a63, type: 2}
   speed: 3
   enemyName: Larry the Log
-  baseAttack: 0
+  baseAttack: 1
   currentState: 0
+  deadAnimation: {fileID: 4516516758391705782, guid: d9ea852ed464242a4b3f5d520e0986f9,
+    type: 3}
   target: {fileID: 0}
   chaseRadius: 5
   attackRadius: 0.7
+  myRigidBody: {fileID: 0}
+  myAnimator: {fileID: 0}
 --- !u!61 &4562964670982093121
 BoxCollider2D:
   m_ObjectHideFlags: 0

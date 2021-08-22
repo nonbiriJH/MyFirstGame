@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public string enemyName;
     public float baseAttack;
     public EnemyState currentState;
+    public GameObject deadAnimation;
 
     private void Awake()//run before start
     {
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             this.gameObject.SetActive(false);
+            Instantiate(deadAnimation, transform.position, Quaternion.identity);
         }
     }
 
