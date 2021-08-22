@@ -9,15 +9,9 @@ public class sign : Interactables
     public GameObject dialogBox;
     public Text dialogText;
     public string dialog;
-        
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.Space))
         {

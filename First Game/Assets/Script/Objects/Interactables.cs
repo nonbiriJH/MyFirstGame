@@ -10,13 +10,13 @@ public class Interactables : MonoBehaviour
     public SignalSender disableContentHint;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         
     }

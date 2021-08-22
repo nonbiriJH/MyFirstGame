@@ -15,14 +15,14 @@ public class Chest : Interactables
 
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         anim = gameObject.GetComponent<Animator>();
         open = false;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.Space))
         {
