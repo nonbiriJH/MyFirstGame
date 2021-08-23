@@ -8,6 +8,7 @@ public class Inventory : ScriptableObject
     public Item newItem;
     public List<Item> itemList = new List<Item>();
     public int numKey;
+    public int coinValue;//will be changed by power up
 
     public void AddItem()
     {
