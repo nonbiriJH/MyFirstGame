@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     //GetItem Para
     public SpriteRenderer itemSprite;//show item sprite when get item
     public Inventory inventory;//add new item to inventory; refer the new item pic
+
+    //Screen Kick Effect
+    public SignalSender screenKick;
     
     // Start is called before the first frame update
     void Start()
@@ -121,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (myRigidBody != null)
         {
+            Debug.Log("kick");
+            screenKick.SendSignal();
             yield return new WaitForSeconds(knockBackTime);
             myRigidBody.velocity = Vector2.zero;
             currentState = PlayerState.idle;
