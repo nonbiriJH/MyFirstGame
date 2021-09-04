@@ -46,7 +46,7 @@ public class Door : Interactables
 
     public override void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.Space))
+        if (playerInRange && Input.GetButtonDown("Attack"))
         {
             if (!isOpen)
             {

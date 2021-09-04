@@ -6997,6 +6997,38 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4942319045824938761, guid: bb6209e7e106a45318a6f3245d79be23,
         type: 3}
+      propertyPath: newCameraMax.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942319045824938761, guid: bb6209e7e106a45318a6f3245d79be23,
+        type: 3}
+      propertyPath: newCameraMax.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942319045824938761, guid: bb6209e7e106a45318a6f3245d79be23,
+        type: 3}
+      propertyPath: newCameraMin.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942319045824938761, guid: bb6209e7e106a45318a6f3245d79be23,
+        type: 3}
+      propertyPath: newCameraMin.y
+      value: -21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942319045824938761, guid: bb6209e7e106a45318a6f3245d79be23,
+        type: 3}
+      propertyPath: globalCameraMax
+      value: 
+      objectReference: {fileID: 11400000, guid: e31735572f9464d0c88476f485ecaa0e,
+        type: 2}
+    - target: {fileID: 4942319045824938761, guid: bb6209e7e106a45318a6f3245d79be23,
+        type: 3}
+      propertyPath: globalCameraMin
+      value: 
+      objectReference: {fileID: 11400000, guid: bc18508b6c48f431e9cc896896f2917e,
+        type: 2}
+    - target: {fileID: 4942319045824938761, guid: bb6209e7e106a45318a6f3245d79be23,
+        type: 3}
       propertyPath: sceneChangeWaitTime
       value: 0.33
       objectReference: {fileID: 0}

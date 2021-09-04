@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4562964670982093122}
   - component: {fileID: 4562964670982093120}
   - component: {fileID: 4562964670982093119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Range Log
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -125,9 +125,11 @@ MonoBehaviour:
   speed: 3
   enemyName: Larry the Log
   baseAttack: 1
-  currentState: 0
-  deadAnimation: {fileID: 4516516758391705782, guid: d9ea852ed464242a4b3f5d520e0986f9,
+  deadAnimation: {fileID: 3693403685717114414, guid: f571e8ceb6e3545a89bc8ecad397b2d8,
     type: 3}
+  lootTable: {fileID: 11400000, guid: d81b5151c83b043b7b93d1fd68f198e1, type: 2}
+  currentState: 0
+  homePosition: {x: 5, y: -10}
   target: {fileID: 0}
   chaseRadius: 5
   attackRadius: 0.7
@@ -146,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019821167, y: -0.4643724}
+  m_Offset: {x: -0.019821167, y: -0.14193869}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7371483, y: 0.63127375}
+  m_Size: {x: 0.7371483, y: 1.2761412}
   m_EdgeRadius: 0
 --- !u!50 &4562964670982093122
 Rigidbody2D:
@@ -193,7 +195,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019580841, y: -0.16238546}
+  m_Offset: {x: 0.005494356, y: -0.105737686}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -204,7 +206,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.90787697, y: 1.3822746}
+  m_Size: {x: 0.8914466, y: 1.454977}
   m_EdgeRadius: 0
 --- !u!114 &4562964670982093119
 MonoBehaviour:

@@ -19,6 +19,7 @@ public class log : Enemy
         currentState = EnemyState.idle;
     }
 
+
     // Update is called once per frame
     void Update()
     {

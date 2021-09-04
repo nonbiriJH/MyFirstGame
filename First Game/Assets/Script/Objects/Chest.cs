@@ -24,13 +24,13 @@ public class Chest : Interactables
     // Update is called once per frame
     public override void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.Space))
+        if (playerInRange && Input.GetButtonDown("Attack"))
         {
             if(!open && !dialogBox.activeInHierarchy)
             {
                 OpenChest();
             }
-            else
+            else if (open && dialogBox.activeInHierarchy)
             {
                 StopChestInteraction();
             }
@@ -72,6 +72,10 @@ public class Chest : Interactables
         {
             base.OnTriggerEnter2D(other);
         }
+        else
+        {
+            playerInRange = false;
+        }
     }
 
     public override void OnTriggerExit2D(Collider2D other)
@@ -79,6 +83,10 @@ public class Chest : Interactables
         if (!open)
         {
             base.OnTriggerExit2D(other);
+        }
+        else
+        {
+            playerInRange = false;
         }
         
     }

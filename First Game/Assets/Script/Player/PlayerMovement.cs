@@ -12,20 +12,25 @@ public enum PlayerState{
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerState currentState;
+
+    [Header("Player Attributes")]
     public float speed;
-    private Rigidbody2D myRigidBody;
-    private Vector3 change;
-    private Animator animator;
     public floatValue playerHealth;
+
+    [Header("Utilities")]
     public SignalSender healthSignal;
     public vectorValue initialPosition;
+    public GameObject arrow;
+    public PlayerState currentState;
+
     //GetItem Para
+    [Header("Item Parameters")]
     public SpriteRenderer itemSprite;//show item sprite when get item
     public Inventory inventory;//add new item to inventory; refer the new item pic
 
-    //Screen Kick Effect
-    public SignalSender screenKick;
+    private Rigidbody2D myRigidBody;
+    private Vector3 change;
+    private Animator animator;
     
     // Start is called before the first frame update
     void Start()
@@ -44,21 +49,28 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentState == PlayerState.interact)// when interact keep the state
+        // when interact keep the state
+        if (currentState == PlayerState.interact)
         {
             return;
         }
-        change = Vector3.zero;
-        change.x = Input.GetAxisRaw("Horizontal");
-        change.y = Input.GetAxisRaw("Vertical");
 
         if (Input.GetButtonDown("Attack") && currentState != PlayerState.attack)
         {
             StartCoroutine(attackCo());
 
         }
+        //Second Weapon
+        if (Input.GetButtonDown("Second Weapon") && currentState != PlayerState.attack)
+        {
+            StartCoroutine(SecondWeaponCo());
+
+        }
+        //Walk
         else if (currentState == PlayerState.walk || currentState == PlayerState.idle)
         {
+            //Get moving direction
+            change = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
             updateAnimationAndMove();
         }
     }
@@ -104,32 +116,27 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-
-    public void Knock(float knockBackTime, float damage)
+    //Second Weapon
+    private IEnumerator SecondWeaponCo()
     {
-        playerHealth.runtimeValue -= damage;
-        healthSignal.SendSignal();//send signal to reduce heart UI.
-        if (playerHealth.runtimeValue > 0)
-        {
-            StartCoroutine(KnockCo(knockBackTime));
-        }
-        else
-        {
-            this.gameObject.SetActive(false);
-        }
+        currentState = PlayerState.attack;
+        CreateArrow();
+        yield return null; //Delay for one frame
+        currentState = PlayerState.idle;//back to idle state
     }
 
-
-    private IEnumerator KnockCo(float knockBackTime)
+    private void CreateArrow()
     {
-        if (myRigidBody != null)
-        {
-            Debug.Log("kick");
-            screenKick.SendSignal();
-            yield return new WaitForSeconds(knockBackTime);
-            myRigidBody.velocity = Vector2.zero;
-            currentState = PlayerState.idle;
-        }
+        //instatiate Arrow and Cache the GameObject
+        GameObject newArrow = Instantiate(arrow, transform.position, Quaternion.identity);
+
+        //Refer Direction from Animator Parametor
+        float tempX = animator.GetFloat("MoveX");
+        float tempY = animator.GetFloat("MoveY");
+
+        //Set Up Arrow Directions
+        newArrow.GetComponent<Arrow>().Setup(new Vector2(tempX, tempY), Mathf.Atan2(tempY,tempX) * Mathf.Rad2Deg);
+        Destroy(newArrow, 2f);//destroy arrow after 2 second
     }
 
     //Interacting
@@ -157,5 +164,31 @@ public class PlayerMovement : MonoBehaviour
             itemSprite.sprite = null;
         }
     }
-        
+
+    //Being Knocked Back
+    public void Knock(float knockBackTime, float damage)
+    {
+        playerHealth.runtimeValue -= damage;
+        healthSignal.SendSignal();//send signal to reduce heart UI.
+        if (playerHealth.runtimeValue > 0)
+        {
+            StartCoroutine(KnockCo(knockBackTime));
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
+
+    private IEnumerator KnockCo(float knockBackTime)
+    {
+        if (myRigidBody != null)
+        {
+            yield return new WaitForSeconds(knockBackTime);
+            myRigidBody.velocity = Vector2.zero;
+            currentState = PlayerState.idle;
+        }
+    }
+
 }

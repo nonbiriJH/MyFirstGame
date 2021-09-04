@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 899447259}
   - component: {fileID: 899447261}
   - component: {fileID: 899447260}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: getItem
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121078237}
   - component: {fileID: 1121078238}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ContentHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 5914047928032711997}
   - component: {fileID: 5914047928032711994}
   - component: {fileID: 5914047928032711995}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leftHitBox
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -291,7 +291,8 @@ GameObject:
   - component: {fileID: 124865649}
   - component: {fileID: 124865650}
   - component: {fileID: 124865651}
-  m_Layer: 0
+  - component: {fileID: 1706770022}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -385,10 +386,10 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -430,11 +431,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b275208316a524b1bb55d6aa2a3af9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   speed: 50
   playerHealth: {fileID: 11400000, guid: 7954bb905f8de4e349ec15a2f6469c8c, type: 2}
   healthSignal: {fileID: 11400000, guid: 33e28ba28c97b4648aef8b63022201d7, type: 2}
   initialPosition: {fileID: 11400000, guid: caa08a44a02984e8098e02a37384b03f, type: 2}
+  arrow: {fileID: 5783666036663205419, guid: 5b7be7b2759544f9a8809072a0bcaac0, type: 3}
+  currentState: 0
   itemSprite: {fileID: 899447261}
   inventory: {fileID: 11400000, guid: 8bd16d402a9d4479eaeae766f853431c, type: 2}
 --- !u!95 &5914047928079543364
@@ -551,6 +553,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contentHint: {fileID: 1121078236}
+--- !u!114 &1706770022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914047928079543370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: a4b00b35a037e41c78f93ba9f31593cb, type: 2}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.1
+      m_DecayTime: 0.05
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+    m_PropagationSpeed: 343
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_IgnoreTag: 
+  m_UseImpactDirection: 0
+  m_ScaleImpactWithMass: 0
+  m_ScaleImpactWithSpeed: 0
 --- !u!1 &5914047928254663237
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +613,7 @@ GameObject:
   - component: {fileID: 5914047928254663234}
   - component: {fileID: 5914047928254663235}
   - component: {fileID: 5914047928254663232}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: righHitBox
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -639,7 +690,7 @@ GameObject:
   - component: {fileID: 5914047928848704558}
   - component: {fileID: 5914047928848704559}
   - component: {fileID: 5914047928848704556}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: downHitBox
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -716,7 +767,7 @@ GameObject:
   - component: {fileID: 5914047928977368407}
   - component: {fileID: 5914047928977368404}
   - component: {fileID: 5914047928977368405}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: upHitBox
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}

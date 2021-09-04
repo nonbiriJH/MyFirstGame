@@ -14,9 +14,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Player Projectile
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1812408761
+    locked: 0
+  - name: colider
+    uniqueID: 1265254073
     locked: 0

@@ -24,7 +24,7 @@ public class knockBack : MonoBehaviour
                 difference = difference.normalized * thrust;
                 hit.AddForce(difference, ForceMode2D.Impulse);
 
-                if (other.gameObject.CompareTag("enemy") && other.isTrigger) //avoid interact with non trigger collider
+                if (other.gameObject.CompareTag("enemy") && !other.isTrigger) //avoid interact with trigger collider
                 {
                     hit.GetComponent<Enemy>().currentState = EnemyState.stagger;
                     hit.GetComponent<Enemy>().Knock(hit, knockBackTime, damage);

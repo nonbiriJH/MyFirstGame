@@ -1,37 +1,29 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-public class RoomMove : MonoBehaviour
+public class Old_RoomMove : MonoBehaviour
 {
     public Vector2 cameraMove;
     public Vector3 playerMove;
-    private camaraMovement cam;
+    [Header("Global Camera Min Max")]
+    public vectorValue globalMaxPosition;
+    public vectorValue globalMinPosition;
+    [Header("Room Move Text")]
     public bool needText;
     public string placeName;
     public GameObject text;
     public Text placeText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        cam = Camera.main.GetComponent<camaraMovement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            cam.minPosition += cameraMove;
-            cam.maxPosition += cameraMove;
+            globalMinPosition.runtimeValue += cameraMove;
+            globalMaxPosition.runtimeValue += cameraMove;
             other.transform.position += playerMove;
             if (needText)
             {

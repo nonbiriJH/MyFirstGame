@@ -13,7 +13,7 @@ public class sign : Interactables
     // Update is called once per frame
     public override void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.Space))
+        if (playerInRange && Input.GetButtonDown("Attack"))
         {
             if (dialogBox.activeInHierarchy)
             {

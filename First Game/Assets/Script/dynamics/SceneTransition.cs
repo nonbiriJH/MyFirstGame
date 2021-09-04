@@ -6,12 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
+    [Header("Scene Variables")]
     public string sceneToLoad;
+    public float sceneChangeWaitTime;
+
+
+    [Header("Camera Local Variables")]
     public Vector2 newScenePosition;
+    public Vector2 newCameraMax;
+    public Vector2 newCameraMin;
+
+    [Header("Camera Global Variables")]
     public vectorValue globalPosition;
+    public vectorValue globalCameraMax;
+    public vectorValue globalCameraMin;
+
+    [Header("Animation")]
     public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
-    public float sceneChangeWaitTime;
+
+    public GameObject nextRoomVirtualCamera;
 
     private void Awake()
     {
@@ -28,6 +42,14 @@ public class SceneTransition : MonoBehaviour
         {
             StartCoroutine(SceneChangeCo());
             globalPosition.runtimeValue = newScenePosition;
+            //Register local camera minmax to global after transition
+            globalCameraMax.runtimeValue = newCameraMax;
+            globalCameraMin.runtimeValue = newCameraMin;
+            if (nextRoomVirtualCamera != null)
+            {
+                nextRoomVirtualCamera.SetActive(true);
+            }
+            
         }
     }
 
