@@ -2,162 +2,148 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState{
-    idle,
-    walk,
-    attack,
-    stagger,
-    interact
-}
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Movement
 {
 
     [Header("Player Attributes")]
-    public float speed;
-    public floatValue playerHealth;
+    public floatValue playerMagic;
+    public SkillLookup playerSkill;
+    public GenericAbility currentAbility;
 
     [Header("Utilities")]
-    public SignalSender healthSignal;
+    public SignalSender magicSignal;
     public vectorValue initialPosition;
-    public GameObject arrow;
-    public PlayerState currentState;
+    public StateMachine playerStateMachine;
 
     //GetItem Para
     [Header("Item Parameters")]
     public SpriteRenderer itemSprite;//show item sprite when get item
     public Inventory inventory;//add new item to inventory; refer the new item pic
 
-    private Rigidbody2D myRigidBody;
-    private Vector3 change;
+    private Vector2 currentDirection = Vector2.down;
+    private Vector2 inputDirection = Vector2.zero;
     private Animator animator;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        currentState = PlayerState.idle;
-        myRigidBody = GetComponent<Rigidbody2D>();
+        playerStateMachine.ChangeState(GenericState.idle);
         animator = GetComponent<Animator>();
         animator.SetFloat("MoveX", 0);
         animator.SetFloat("MoveY", -1);
-        transform.position = new Vector3(initialPosition.runtimeValue.x
-                                            , initialPosition.runtimeValue.y
-                                            , transform.position.z);
-        
+        transform.position = initialPosition.runtimeValue;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // when interact keep the state
-        if (currentState == PlayerState.interact)
+        if (!IsRestrictedState(playerStateMachine.currentState))
         {
-            return;
+            GetInput();
         }
+    }
 
-        if (Input.GetButtonDown("Attack") && currentState != PlayerState.attack)
+    //Define States that not alowed to get input
+    bool IsRestrictedState(GenericState currentState)
+    {   // when interact or stagger, wait until state change
+        if (playerStateMachine.currentState == GenericState.interact
+            || playerStateMachine.currentState == GenericState.stagger
+            || playerStateMachine.currentState == GenericState.attack
+            || playerStateMachine.currentState == GenericState.ability)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void GetInput()
+    {
+        if (Input.GetButtonDown("Attack"))
         {
             StartCoroutine(attackCo());
 
         }
-        //Second Weapon
-        if (Input.GetButtonDown("Second Weapon") && currentState != PlayerState.attack)
+        else if (Input.GetButtonDown("Ability"))
         {
-            StartCoroutine(SecondWeaponCo());
+            StartCoroutine(AbilityCo(currentAbility.duartion));
 
         }
+
         //Walk
-        else if (currentState == PlayerState.walk || currentState == PlayerState.idle)
+        else
         {
-            //Get moving direction
-            change = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
-            updateAnimationAndMove();
+            //Move Object
+            inputDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            MoveObject(inputDirection);
+            //Change State
+            playerStateMachine.currentState = GenericState.walk;
+            //Animation
+            updateAnimation();
         }
     }
 
-    //Moving
-    void updateAnimationAndMove()
+    //Moving Animation
+    void updateAnimation()
     {
-        if (change != Vector3.zero)
+        if (inputDirection != Vector2.zero)
         {
-            movePlayer();
-            animator.SetFloat("MoveX", change.x);
-            animator.SetFloat("MoveY", change.y);
+           
+            animator.SetFloat("MoveX", inputDirection.x);
+            animator.SetFloat("MoveY", inputDirection.y);
             animator.SetBool("Walking", true);
         }
         else
         {
             animator.SetBool("Walking", false);
-            currentState = PlayerState.idle;
+            playerStateMachine.currentState = GenericState.idle;
         }
+        //Update facing direction for ability
+        currentDirection.x = animator.GetFloat("MoveX");
+        currentDirection.y = animator.GetFloat("MoveY");
     }
 
-    void movePlayer()
-    {
-        change.Normalize();
-        myRigidBody.MovePosition(
-            transform.position + speed * Time.deltaTime * change
-            );
-        currentState = PlayerState.walk;
-    }
 
     //Attacking
     private IEnumerator attackCo()
     {
         animator.SetBool("Attack", true);
-        currentState = PlayerState.attack;
+        playerStateMachine.currentState = GenericState.attack;
         yield return null; //Delay for one frame
         animator.SetBool("Attack", false); //do not enter attack again;
-        myRigidBody.velocity = Vector2.zero; //some times fallback after attack
+        MoveObject(Vector2.zero); //some times fallback after attack
         yield return new WaitForSeconds(.12f);//delay for finishing animation
-        if (currentState != PlayerState.interact)
+        if (playerStateMachine.currentState != GenericState.interact)
         {
-            currentState = PlayerState.idle;//back to idle state
+            playerStateMachine.currentState = GenericState.idle;//back to idle state
         }
         
     }
-    //Second Weapon
-    private IEnumerator SecondWeaponCo()
-    {
-        currentState = PlayerState.attack;
-        CreateArrow();
-        yield return null; //Delay for one frame
-        currentState = PlayerState.idle;//back to idle state
-    }
 
-    private void CreateArrow()
-    {
-        //instatiate Arrow and Cache the GameObject
-        GameObject newArrow = Instantiate(arrow, transform.position, Quaternion.identity);
-
-        //Refer Direction from Animator Parametor
-        float tempX = animator.GetFloat("MoveX");
-        float tempY = animator.GetFloat("MoveY");
-
-        //Set Up Arrow Directions
-        newArrow.GetComponent<Arrow>().Setup(new Vector2(tempX, tempY), Mathf.Atan2(tempY,tempX) * Mathf.Rad2Deg);
-        Destroy(newArrow, 2f);//destroy arrow after 2 second
-    }
 
     //Interacting
     //This will be called on item signal
     public void GetItem()
     {
-        if(currentState != PlayerState.interact)
+        if(playerStateMachine.currentState != GenericState.interact)
         {
             //change state
-            currentState = PlayerState.interact;
+            playerStateMachine.currentState = GenericState.interact;
             //set animation
             animator.SetBool("GetItem", true);
             //get item pic
             itemSprite.sprite = inventory.newItem.itemSprite;//pass new item sprite to game scene
             //add to inventory
-            inventory.AddItem();
+            inventory.AddItem(inventory.newItem);
         }
         else
         {
             //change state
-            currentState = PlayerState.idle;
+            playerStateMachine.currentState = GenericState.idle;
             //set animation
             animator.SetBool("GetItem", false);
             //get item pic
@@ -165,30 +151,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Being Knocked Back
-    public void Knock(float knockBackTime, float damage)
+    public void Death()
     {
-        playerHealth.runtimeValue -= damage;
-        healthSignal.SendSignal();//send signal to reduce heart UI.
-        if (playerHealth.runtimeValue > 0)
-        {
-            StartCoroutine(KnockCo(knockBackTime));
-        }
-        else
-        {
-            this.gameObject.SetActive(false);
-        }
+        this.gameObject.SetActive(false);
     }
 
-
-    private IEnumerator KnockCo(float knockBackTime)
+    private IEnumerator AbilityCo(float abilityDuration)
     {
-        if (myRigidBody != null)
-        {
-            yield return new WaitForSeconds(knockBackTime);
-            myRigidBody.velocity = Vector2.zero;
-            currentState = PlayerState.idle;
-        }
+        playerStateMachine.currentState = GenericState.ability;
+        currentAbility.Ability(transform.position, currentDirection, animator, myRigidBody);
+        yield return new WaitForSeconds(abilityDuration);
+        playerStateMachine.currentState = GenericState.idle;
     }
 
 }

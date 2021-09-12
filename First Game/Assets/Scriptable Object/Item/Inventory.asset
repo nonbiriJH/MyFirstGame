@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   newItem: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
+  chosenItem: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
   itemList:
+  - {fileID: 11400000, guid: 21729218fa6dc403ead044c1604fb4c9, type: 2}
   - {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
-  numKey: 10
+  - {fileID: 11400000, guid: 5c835da2fa156416b8abccee89ab08ac, type: 2}
+  - {fileID: 11400000, guid: 5602771719a7a494f86ab3d79915bf3f, type: 2}
+  coinValue: 0

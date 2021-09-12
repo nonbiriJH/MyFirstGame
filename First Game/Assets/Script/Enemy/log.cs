@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class log : Enemy
 {
-    public Transform target;
+    [Header("Log Attributes")]
+    public float speed;
     public float chaseRadius;
     public float attackRadius;
+
+    [Header("Log Death")]
+    public GameObject deadAnimation;
+    public LootTable lootTable;
+
+    [Header("Utilities No Need Asign")]
+    public Transform target;
     public Rigidbody2D myRigidBody;
     public Animator myAnimator;
 
@@ -99,4 +107,33 @@ public class log : Enemy
         myAnimator.SetFloat("moveY", boolDirection.y);
     }
 
+    //Death Effects
+    public void Death()
+    {
+        DropLoot();
+        DeathEffect();
+        this.gameObject.SetActive(false);
+    }
+
+    public void DeathEffect()
+    {
+        if (deadAnimation != null)
+        {
+            GameObject effect = Instantiate(deadAnimation, transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
+        }
+
+    }
+
+    public void DropLoot()
+    {
+        if (lootTable != null)
+        {
+            PowerUp newLoot = lootTable.ChooseLoot();
+            if (newLoot != null)
+            {
+                Instantiate(newLoot, transform.position, Quaternion.identity);
+            }
+        }
+    }
 }

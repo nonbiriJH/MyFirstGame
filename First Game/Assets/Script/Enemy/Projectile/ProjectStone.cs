@@ -30,7 +30,6 @@ public class ProjectStone : MonoBehaviour
 
     public void Launch(Vector3 direction)
     {
-        Debug.Log("start");
         myRigidBody.velocity = direction * speed;//Once called make displacement every frame
     }
 

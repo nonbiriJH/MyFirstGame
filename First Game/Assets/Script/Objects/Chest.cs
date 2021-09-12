@@ -9,7 +9,7 @@ public class Chest : Interactables
     public GameObject dialogBox;
     public Text dialogText;
     public SignalSender GetItemSignal;
-    public bool open;
+    public BoolValue open;
     private Animator anim;
     public Inventory inventory;//pass chest item to inventory new item
 
@@ -18,7 +18,8 @@ public class Chest : Interactables
     public override void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        open = false;
+        //change animation; Mainly for senece change
+        anim.SetBool("open", open.runtimeValue);
     }
 
     // Update is called once per frame
@@ -26,11 +27,11 @@ public class Chest : Interactables
     {
         if (playerInRange && Input.GetButtonDown("Attack"))
         {
-            if(!open && !dialogBox.activeInHierarchy)
+            if(!open.runtimeValue && !dialogBox.activeInHierarchy)
             {
                 OpenChest();
             }
-            else if (open && dialogBox.activeInHierarchy)
+            else if (open.runtimeValue && dialogBox.activeInHierarchy)
             {
                 StopChestInteraction();
             }
@@ -43,7 +44,7 @@ public class Chest : Interactables
         dialogBox.SetActive(true);
         dialogText.text = content.itemDescription;
         //change bool
-        open = true;
+        open.runtimeValue = true;
         //change animation
         anim.SetBool("open", true);
         //pass chest item to inventory new item
@@ -68,7 +69,7 @@ public class Chest : Interactables
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (!open)
+        if (!open.runtimeValue)
         {
             base.OnTriggerEnter2D(other);
         }
@@ -80,7 +81,7 @@ public class Chest : Interactables
 
     public override void OnTriggerExit2D(Collider2D other)
     {
-        if (!open)
+        if (!open.runtimeValue)
         {
             base.OnTriggerExit2D(other);
         }

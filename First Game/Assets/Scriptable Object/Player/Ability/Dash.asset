@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b47a65e9e6824440a39bd7475e80a86, type: 3}
+  m_Name: Dash
+  m_EditorClassIdentifier: 
+  magicCost: 1
+  duartion: 0.3
+  magicUISignal: {fileID: 11400000, guid: 8f77bc10c61894c168b90d727db4e744, type: 2}
+  playerMagic: {fileID: 11400000, guid: 25a0bcc698adc4a198ff3f047ed45788, type: 2}
+  DashForce: 5

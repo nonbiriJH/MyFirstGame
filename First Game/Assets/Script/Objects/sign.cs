@@ -7,22 +7,17 @@ public class sign : Interactables
 {
 
     public GameObject dialogBox;
-    public Text dialogText;
-    public string dialog;
+    public string[] dialog;
 
     // Update is called once per frame
     public override void Update()
     {
         if (playerInRange && Input.GetButtonDown("Attack"))
         {
-            if (dialogBox.activeInHierarchy)
+            if (!dialogBox.activeInHierarchy)
             {
-                dialogBox.SetActive(false);
-            }
-            else
-            {
+                dialogBox.GetComponent<Dialog>().dialog = dialog;
                 dialogBox.SetActive(true);
-                dialogText.text = dialog;
             }
         }
     }

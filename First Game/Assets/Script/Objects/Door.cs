@@ -21,6 +21,8 @@ public class Door : Interactables
     public Sprite closeSprite;
     //Open Sprite
     public Sprite openSprite;
+    //Required key
+    public Item requiredKey;
 
     [Header("Utility Variable")]
     //inventory for get key to open
@@ -61,9 +63,10 @@ public class Door : Interactables
     {
         if (doorType == DoorType.KeyedDoor)
         {
-            if (playerInRange && inventory.numKey > 0)
+            if (playerInRange && inventory.itemList.Contains(requiredKey))
             {
-                inventory.numKey--;
+                //use key
+                requiredKey.useItem();
                 OpenDoor();
             }
         }

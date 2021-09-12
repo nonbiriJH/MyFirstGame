@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8766160300913260853}
   - component: {fileID: 8766160300913260852}
   - component: {fileID: 8766160300913260855}
-  - component: {fileID: 8766160300913260854}
   - component: {fileID: 8766160300913260851}
   - component: {fileID: 686526740091452946}
+  - component: {fileID: 6238902325399483105}
+  - component: {fileID: 6151424588335841583}
   m_Layer: 6
   m_Name: Project Stone
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1579001835
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 5849325189442884660, guid: 14ffe8ce3229242cdb18d3a9656d0951,
     type: 3}
@@ -125,21 +126,6 @@ MonoBehaviour:
   speed: 5
   destroyTime: 2
   myRigidBody: {fileID: 8766160300913260852}
---- !u!114 &8766160300913260854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8766160300913260841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62253d9f07f1e4e5f851626e5bf81a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 0.5
-  knockBackTime: 0.5
-  damage: 1
 --- !u!58 &8766160300913260851
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +158,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.251
+--- !u!114 &6238902325399483105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766160300913260841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cbd4954e30248b7a6f80bc2185c101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0.5
+  targetTag: Player
+  thrust: 0.5
+  knockBackTime: 0.5
+--- !u!114 &6151424588335841583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766160300913260841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490b0d6ad1aeb4b2488d7cfdf39a4b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

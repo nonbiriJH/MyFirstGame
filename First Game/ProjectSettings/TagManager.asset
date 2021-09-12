@@ -17,7 +17,7 @@ TagManager:
   - Enemy
   - Player
   - Player Projectile
-  - 
+  - Mini Map
   - 
   - 
   - 
@@ -44,12 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Minimap
+    uniqueID: 2961767571
+    locked: 0
+  - name: Map
+    uniqueID: 1265254073
+    locked: 0
   - name: Sign
     uniqueID: 1579001835
     locked: 0
   - name: Player
     uniqueID: 1812408761
-    locked: 0
-  - name: colider
-    uniqueID: 1265254073
     locked: 0

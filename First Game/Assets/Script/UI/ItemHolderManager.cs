@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class ItemHolderManager : MonoBehaviour
+{
+    public Inventory inventory;
+    public SignalSender itemChosenSignal;//Communicate to Inventory Manager
+
+    [Header("Private Variables")]
+    //Internal but need to assign from the inspector
+    [SerializeField] private Image itemImage;
+    [SerializeField] private TextMeshProUGUI itemNumber;
+    [SerializeField] private Item itemHeld;
+
+    //Pass Item information to Item Holder UI
+    public void SetupItemHolder(Item newItem)
+    {
+        if (newItem)
+        {
+            itemHeld = newItem;
+            itemImage.sprite = newItem.itemSprite;
+            itemNumber.text = "" + newItem.itemNumber;
+        }
+    }
+
+    //Pass UI information to inventory
+    public void OnClick()
+    {
+        inventory.chosenItem = itemHeld;
+        itemChosenSignal.SendSignal();
+    }
+
+}

@@ -13,19 +13,17 @@ public class SceneTransition : MonoBehaviour
 
     [Header("Camera Local Variables")]
     public Vector2 newScenePosition;
-    public Vector2 newCameraMax;
-    public Vector2 newCameraMin;
 
     [Header("Camera Global Variables")]
     public vectorValue globalPosition;
-    public vectorValue globalCameraMax;
-    public vectorValue globalCameraMin;
 
     [Header("Animation")]
     public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
 
+    [Header("Utility")]
     public GameObject nextRoomVirtualCamera;
+    public GlobalVariables globalVariables;//register next scene name
 
     private void Awake()
     {
@@ -42,9 +40,6 @@ public class SceneTransition : MonoBehaviour
         {
             StartCoroutine(SceneChangeCo());
             globalPosition.runtimeValue = newScenePosition;
-            //Register local camera minmax to global after transition
-            globalCameraMax.runtimeValue = newCameraMax;
-            globalCameraMin.runtimeValue = newCameraMin;
             if (nextRoomVirtualCamera != null)
             {
                 nextRoomVirtualCamera.SetActive(true);
@@ -62,6 +57,7 @@ public class SceneTransition : MonoBehaviour
         yield return new WaitForSeconds(sceneChangeWaitTime);
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
+        globalVariables.currentScene = sceneToLoad;
         while (!asyncOperation.isDone)
         {
             yield return null;
