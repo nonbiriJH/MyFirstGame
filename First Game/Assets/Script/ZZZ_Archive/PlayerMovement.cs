@@ -14,7 +14,7 @@ public class PlayerMovement : Movement
     [Header("Utilities")]
     public SignalSender magicSignal;
     public vectorValue initialPosition;
-    public StateMachine playerStateMachine;
+    public enumStateMachine playerStateMachine;
 
     //GetItem Para
     [Header("Item Parameters")]

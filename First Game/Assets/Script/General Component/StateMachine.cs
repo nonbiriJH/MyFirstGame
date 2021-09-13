@@ -1,25 +1,23 @@
 using UnityEngine;
 
-
-public enum GenericState
+public class StateMachine: MonoBehaviour
 {
-    idle,
-    walk,
-    attack,
-    stagger,
-    interact,
-    ability
-}
+    public State currentState { get; private set; }
 
-public class StateMachine : MonoBehaviour
-{
-    public GenericState currentState;
-
-    public void ChangeState(GenericState newState)
+    public void Initialize(State startingState)
     {
-        if (currentState != newState)
-        {
-            currentState = newState;
-        }
+        currentState = startingState;
+        startingState.BeginState();
     }
+
+    public void ChangeState(State newState)
+    {
+        currentState.ExitState();
+        currentState = newState;
+        Debug.Log(currentState);
+        newState.BeginState();
+        StartCoroutine(newState.BeginStateCo());
+    }
+
+
 }

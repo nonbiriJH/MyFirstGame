@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerKnockBack : GenericKnockBack
 {
     
-
     //Invulnerable Frame
     [Header("Invulnerable Frame")]
     public Color hitColor;
@@ -26,39 +25,27 @@ public class PlayerKnockBack : GenericKnockBack
     //Being Knocked Back
     public void Knock(float knockBackTime, float damage)
     {
-        if (this.GetComponentInParent<PlayerMovement>().playerStateMachine.currentState != GenericState.stagger)
+        Player playerReference = this.GetComponentInParent<Player>();
+        playerReference.staggerState.knockBackTime = knockBackTime;
+        playerReference.ChangeState(playerReference.staggerState);
+
+        PlayerHealth myHealth = this.gameObject.GetComponent<PlayerHealth>();
+
+        //Take Damage
+        if (myHealth)
         {
-            this.GetComponentInParent<PlayerMovement>().playerStateMachine.currentState = GenericState.stagger;
-            PlayerHealth myHealth = this.gameObject.GetComponent<PlayerHealth>();
-
-            //Take Damage
-            if (myHealth)
-            {
-                myHealth.TakeDamage(damage);
-            }
-
-            if (myHealth.Health.runtimeValue > 0)
-            {
-                StartCoroutine(KnockCo(knockBackTime));
-                //Turn Off Damage and Flash
-                StartCoroutine(InvulnerableFrameCo());
-            }
-            else
-            {
-                this.GetComponentInParent<PlayerMovement>().Death();
-            }
+            myHealth.TakeDamage(damage);
         }
 
-    }
-
-
-    private IEnumerator KnockCo(float knockBackTime)
-    {
-        if (myRigidBody != null)
+        if (myHealth.Health.runtimeValue > 0)
         {
-            yield return new WaitForSeconds(knockBackTime);
-            myRigidBody.velocity = Vector2.zero;
-            this.GetComponentInParent<PlayerMovement>().playerStateMachine.currentState = GenericState.idle;
+            //StartCoroutine(KnockCo(knockBackTime));
+            //Turn Off Damage and Flash
+            StartCoroutine(InvulnerableFrameCo());
+        }
+        else
+        {
+            this.GetComponentInParent<Player>().Death();
         }
     }
 

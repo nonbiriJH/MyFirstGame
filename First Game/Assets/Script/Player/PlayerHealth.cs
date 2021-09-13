@@ -12,6 +12,7 @@ public class PlayerHealth : GenericHealth
     {
         base.Start();
         Health.runtimeValue = runTimeHealth;
+        healthSignal.SendSignal();//send signal to reduce heart UI.
     }
 
     public override void TakeDamage(float damage)
