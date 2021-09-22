@@ -12,21 +12,28 @@ public class PlayerInteractState : State
 
     public override void BeginState()
     {
-        Debug.Log(interacted);
         base.UpdateLogics();
         if (!interacted)
         {
-            //set animation
-            player.animator.SetBool("GetItem", true);
-            player.AddItemToInventory();
-            interacted = true;
+            if (player.inventory.newItem != null)
+            {
+                //set animation
+                player.animator.SetBool("GetItem", true);
+                player.AddItemToInventory();
+            }
+            interacted = true; //next time enter interact state will exit.
         }
         else
         {
-            //set animation
-            player.animator.SetBool("GetItem", false);
-            //get item pic
-            player.itemSprite.sprite = null;
+            if (player.inventory.newItem != null)
+            {
+                //set animation
+                player.animator.SetBool("GetItem", false);
+                //get item pic
+                player.itemSprite.sprite = null;
+                player.inventory.newItem = null;
+            }
+            
             interacted = false;
             player.ChangeState(player.idleState);
         }

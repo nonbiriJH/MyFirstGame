@@ -13,9 +13,9 @@ public class EnemyKnockBack : GenericKnockBack
 
     public void Knock(float knockBackTime, float damage)
     {
-        if(this.gameObject.GetComponentInParent<Enemy>().currentState != EnemyState.stagger)
+        if(this.gameObject.GetComponentInParent<log>().currentState != EnemyState.stagger)
         {
-            this.gameObject.GetComponentInParent<Enemy>().currentState = EnemyState.stagger;
+            this.gameObject.GetComponentInParent<log>().currentState = EnemyState.stagger;
             EnemyHealth myHealth = this.gameObject.GetComponent<EnemyHealth>();
 
             if (myHealth)

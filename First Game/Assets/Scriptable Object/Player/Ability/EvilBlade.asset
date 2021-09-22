@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96aa3f882f5bf44feb56379db788c95f, type: 3}
+  m_Name: EvilBlade
+  m_EditorClassIdentifier: 
+  magicCost: 0
+  duartion: 1
+  magicUISignal: {fileID: 0}
+  playerMagic: {fileID: 0}
+  blade: {fileID: 501568767475497174, guid: fdf61b00aa1d6421199d67d8f1bca597, type: 3}

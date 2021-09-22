@@ -25,12 +25,20 @@ public class PlayerIdleState:State
     public override void UpdateLogics()
     {
         base.UpdateLogics();
+        Transform contentHintTrans = player.gameObject.transform.Find("ContentHint");
         if (inputDirection.magnitude != 0)
         {
             player.ChangeState(player.walkState);
         }
+        else if (Input.GetButtonDown("Attack") && contentHintTrans.gameObject.activeInHierarchy)
+        {
+            Debug.Log("test");
+            player.ChangeState(player.interactState);
+        }
         else if (Input.GetButtonDown("Attack"))
         {
+
+            Debug.Log(contentHintTrans.gameObject.activeInHierarchy);
             player.ChangeState(player.attackState);
         }
         else if (Input.GetButtonDown("Ability"))

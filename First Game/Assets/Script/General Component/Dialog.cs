@@ -11,6 +11,11 @@ public class Dialog : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textDisplay;
 
+    [Header("Signal")]
+    public SignalSender dialogFinishSignal;
+    public bool dialogFinish = true;
+    public int nInvoked = 0;//differentiate dialogBox Disable states.
+
     private bool finishedType = true;
     private int sentenceIndex;
 
@@ -19,6 +24,8 @@ public class Dialog : MonoBehaviour
     {
         finishedType = true;
         sentenceIndex = 0;
+        dialogFinish = false;//when dialogbox enabled dialog starts
+        nInvoked += 1;
 
         //type first line
         Type(sentenceIndex);
@@ -31,7 +38,6 @@ public class Dialog : MonoBehaviour
     {
         if(finishedType == true && Input.GetButtonDown("Attack"))
         {
-            Debug.Log(finishedType);
             if(sentenceIndex < dialog.Length)
             {
                 Type(sentenceIndex);
@@ -39,6 +45,8 @@ public class Dialog : MonoBehaviour
             }
             else
             {
+                dialogFinish = true;
+                //dialogFinishSignal.SendSignal();
                 this.gameObject.SetActive(false);
             }
         }

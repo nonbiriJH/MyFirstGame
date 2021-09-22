@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyOverTime : MonoBehaviour
@@ -14,7 +12,7 @@ public class DestroyOverTime : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         countDown -= Time.deltaTime;
         if (countDown <= 0)

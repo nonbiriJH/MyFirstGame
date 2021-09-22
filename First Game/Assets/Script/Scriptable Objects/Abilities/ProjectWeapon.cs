@@ -9,8 +9,7 @@ public class ProjectWeapon : GenericAbility
 
     public override void Ability(Vector2 myPosition
         , Vector2 myFacingDirection
-        , Animator animator = null
-        , Rigidbody2D myRigidbody = null)
+        , GameObject player = null)
     {
         //Check Magic
         if (playerMagic.runtimeValue >= magicCost)

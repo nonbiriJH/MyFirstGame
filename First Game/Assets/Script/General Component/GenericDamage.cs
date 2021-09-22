@@ -18,10 +18,14 @@ public class GenericDamage : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.isTrigger)
-        {       
+        {
             if (other.gameObject.CompareTag("enemy"))
             {
                 KnockEnemy(other);
+            }
+            else if (other.gameObject.CompareTag("enemyBoss"))
+            {
+                KnockEnemyBoss(other);
             }
             else if (other.gameObject.CompareTag("Player"))
             {
@@ -53,6 +57,11 @@ public class GenericDamage : MonoBehaviour
     public virtual void KnockEnemy(Collider2D other)
     {
         ApplyForce(other);
+        other.GetComponent<EnemyKnockBack>().Knock(knockBackTime, damage);
+    }
+
+    public virtual void KnockEnemyBoss(Collider2D other)
+    {
         other.GetComponent<EnemyKnockBack>().Knock(knockBackTime, damage);
     }
 

@@ -9,9 +9,14 @@ public class Item : ScriptableObject
     public Sprite itemSprite;
     public string itemName;
     public string itemDescription;
+    public string[] getDescription;
     public int itemNumber;
     public bool canUse;
     public UnityEvent useItemEvent;
+    public bool weapon;
+
+    public int price;
+    public int shopQuantity;
 
     //Apply item effects
     public void useItem()
@@ -26,6 +31,15 @@ public class Item : ScriptableObject
         if(itemNumber < 0)
         {
             itemNumber = 0;
+        }
+    }
+
+    public void BuyItem()
+    {
+        if(shopQuantity >= 1)
+        {
+            shopQuantity--;
+            itemNumber++;
         }
     }
 }

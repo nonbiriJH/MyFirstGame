@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerKnockBack : GenericKnockBack
 {
+    //Death UI
+    [Header("Death UI")]
+    [SerializeField]
+    private GameObject deathPanel;
+    [SerializeField]
+    private float fadeSeconds;
     
     //Invulnerable Frame
     [Header("Invulnerable Frame")]
@@ -15,37 +23,60 @@ public class PlayerKnockBack : GenericKnockBack
 
     private Collider2D triggerColider;
     private Rigidbody2D myRigidBody;
+    private bool isDead = false;
+
+    //Cinemachine Impulse Source
+    private CinemachineImpulseSource source;
 
     private void Start()
     {
         triggerColider = this.GetComponent<BoxCollider2D>();
         myRigidBody = this.GetComponentInParent<Rigidbody2D>();
+        source = this.gameObject.GetComponent<CinemachineImpulseSource>();
     }
 
     //Being Knocked Back
     public void Knock(float knockBackTime, float damage)
     {
-        Player playerReference = this.GetComponentInParent<Player>();
-        playerReference.staggerState.knockBackTime = knockBackTime;
-        playerReference.ChangeState(playerReference.staggerState);
-
-        PlayerHealth myHealth = this.gameObject.GetComponent<PlayerHealth>();
-
-        //Take Damage
-        if (myHealth)
+        if (!isDead)
         {
-            myHealth.TakeDamage(damage);
+            Player playerReference = this.GetComponentInParent<Player>();
+            playerReference.staggerState.knockBackTime = knockBackTime;
+            playerReference.ChangeState(playerReference.staggerState);
+
+            PlayerHealth myHealth = this.gameObject.GetComponent<PlayerHealth>();
+
+            //Take Damage
+            if (myHealth)
+            {
+                myHealth.TakeDamage(damage);
+            }
+
+            if (myHealth.Health.runtimeValue > 0)
+            {
+                //generate screen shake
+                source.GenerateImpulse();
+                //Turn Off Damage and Flash
+                StartCoroutine(InvulnerableFrameCo());
+            }
+            else
+            {
+                //this.GetComponentInParent<Player>().Death();
+                isDead = true;
+                StartCoroutine(DeathCo(fadeSeconds));
+            }
         }
+       
+    }
 
-        if (myHealth.Health.runtimeValue > 0)
+    private IEnumerator DeathCo(float fadeSeconds)
+    {
+        Instantiate(deathPanel, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(fadeSeconds);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("StartMenu");
+        while (!asyncOperation.isDone)
         {
-            //StartCoroutine(KnockCo(knockBackTime));
-            //Turn Off Damage and Flash
-            StartCoroutine(InvulnerableFrameCo());
-        }
-        else
-        {
-            this.GetComponentInParent<Player>().Death();
+            yield return null;
         }
     }
 

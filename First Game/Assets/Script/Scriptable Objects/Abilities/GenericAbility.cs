@@ -14,8 +14,14 @@ public class GenericAbility : ScriptableObject
 
     public virtual void Ability(Vector2 myPosition
         , Vector2 myFacingDirection
-        , Animator animator = null
-        , Rigidbody2D myRigidbody = null)
+        , GameObject player = null)
+    {
+
+    }
+
+    public virtual void AbilityOnAttackState(Vector2 myPosition
+    , Vector2 myFacingDirection
+    , GameObject player = null)
     {
 
     }

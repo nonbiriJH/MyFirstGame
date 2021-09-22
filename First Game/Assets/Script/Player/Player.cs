@@ -7,7 +7,7 @@ public class Player : StateMachine
 
     [Header("Player Attributes")]
     public floatValue playerMagic;
-    public GenericAbility currentAbility;
+    public CurrentAbility currentAbility;
     [SerializeField] private float speed;
 
     [Header("Utilities")]
@@ -20,6 +20,10 @@ public class Player : StateMachine
     [Header("Item Parameters")]
     public SpriteRenderer itemSprite;//show item sprite when get item
     public Inventory inventory;//add new item to inventory; refer the new item pic
+
+    //status para
+    [Header("Status Parameter")]
+    public bool evilMode = false;
 
     //states
     public PlayerIdleState idleState;
@@ -37,6 +41,8 @@ public class Player : StateMachine
         animator.SetFloat("MoveX", 0);
         animator.SetFloat("MoveY", -1);
         transform.position = initialPosition.runtimeValue;
+        currentAbility.currentAbility = null;
+        inventory.newItem = null;
 
         //Create State Classe Instances
         idleState = new PlayerIdleState(this);
@@ -86,5 +92,6 @@ public class Player : StateMachine
     public void Death()
     {
         this.gameObject.SetActive(false);
+
     }
 }
