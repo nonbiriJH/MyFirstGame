@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 9044909847645971322}
   - component: {fileID: 9044909847645971317}
   - component: {fileID: 9044909847645971316}
-  - component: {fileID: 407478246}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -176,35 +175,11 @@ MonoBehaviour:
   enableContentHint: {fileID: 11400000, guid: afeb39a8620624e0ea7e2c78619e98a5, type: 2}
   disableContentHint: {fileID: 11400000, guid: 6cbbd1db4254644e28a9e4e9679658d9, type: 2}
   interactSignal: {fileID: 11400000, guid: b35786ed691a54ee788db112d06c77d8, type: 2}
-  interacted: {fileID: 11400000, guid: 2a3fab4db34df41d5869149cc3dad5df, type: 2}
-  content: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
   dialogBox: {fileID: 0}
+  interactStep: 0
+  dialogBoxState: 0
+  content: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
   inventory: {fileID: 11400000, guid: 8bd16d402a9d4479eaeae766f853431c, type: 2}
---- !u!114 &407478246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9044909847645971319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3695e11feda24f988651544337d6fe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 8762efdacb20b4491a08878bb699684c, type: 2}
-  singleEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9044909847645971316}
-        m_TargetAssemblyTypeName: Interactables, Assembly-CSharp
-        m_MethodName: EndInteract
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
+    type: 2}

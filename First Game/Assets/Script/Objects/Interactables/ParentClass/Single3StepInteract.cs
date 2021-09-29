@@ -9,7 +9,7 @@ public class Single3StepInteract : SingleInteract
     public string[] failDialog;
     public bool success = false;// tracker of success/fail dialog
 
-    public override void Update()
+    void Update()
     {
         if (playerInRange && !interacted.runtimeValue)
         {
@@ -43,17 +43,6 @@ public class Single3StepInteract : SingleInteract
         }
         
     }
-
-    public virtual void StartDialog(string[] newDialog)
-    {
-        if (!dialogBox.activeInHierarchy
-            && dialogBox.GetComponent<Dialog>().nInvoked == dialogBoxState)
-        {
-            dialogBox.GetComponent<Dialog>().dialog = newDialog;
-            dialogBox.SetActive(true);
-        }
-    }
-
 
     public virtual void InteractApply()
     {

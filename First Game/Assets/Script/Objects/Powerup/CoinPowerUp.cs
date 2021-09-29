@@ -8,6 +8,12 @@ public class CoinPowerUp : PowerUp
     public int coinValue;
     public SignalSender coinSignal;
 
+    [Header("Checkpoint")]
+    [SerializeField]
+    private CheckPointR1 checkPointR1;
+    [SerializeField]
+    private SignalSender regPositionOnCheckPoint;
+
     [Header("Utility Variable")]
     public Inventory inventory;
 
@@ -15,6 +21,11 @@ public class CoinPowerUp : PowerUp
     {
         inventory.coinValue += coinValue;
         coinSignal.SendSignal();
+        if(inventory.coinValue > 10000)
+        {
+            checkPointR1.ReachMoney = true;
+            regPositionOnCheckPoint.SendSignal();
+        }
         base.ApplyPowerup();
     }
 }

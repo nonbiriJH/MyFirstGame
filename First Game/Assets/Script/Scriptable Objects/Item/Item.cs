@@ -14,6 +14,7 @@ public class Item : ScriptableObject
     public bool canUse;
     public UnityEvent useItemEvent;
     public bool weapon;
+    public Vector3 RBG;
 
     public int price;
     public int shopQuantity;

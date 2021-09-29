@@ -6,8 +6,5 @@ using UnityEngine;
 [System.Serializable]
 public class vectorValue : ScriptableObject
 {
-    public Vector2 initialValue;
-
     public Vector2 runtimeValue;
-
 }

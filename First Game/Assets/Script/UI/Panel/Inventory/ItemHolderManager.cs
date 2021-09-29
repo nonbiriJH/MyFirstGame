@@ -23,6 +23,10 @@ public class ItemHolderManager : MonoBehaviour
             itemHeld = newItem;
             itemImage.sprite = newItem.itemSprite;
             itemNumber.text = "" + newItem.itemNumber;
+            if (newItem.RBG != Vector3.zero)
+            {
+                itemImage.color = new Color(newItem.RBG.x, newItem.RBG.y, newItem.RBG.z);
+            }
         }
     }
 

@@ -13,6 +13,7 @@ public class PlayerAttackState : State
 
     public override IEnumerator BeginStateCo()
     {
+
         if (player.evilMode)
         {
             //get facing direction
@@ -28,8 +29,17 @@ public class PlayerAttackState : State
             yield return new WaitForSeconds(.12f);//delay for finishing animation
             player.animator.SetBool("Attack", false); //do not enter attack again;
         }
-        
-        player.ChangeState(player.idleState);
+
+        if (player.interacted)
+        {
+            //On interaction triggered by attack, back to interact state.
+            player.interacted = false;
+            player.ChangeState(player.interactState);
+        }
+        else
+        {
+            player.ChangeState(player.idleState);
+        }
         
     }
 }

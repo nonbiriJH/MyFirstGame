@@ -32,13 +32,10 @@ public class PlayerIdleState:State
         }
         else if (Input.GetButtonDown("Attack") && contentHintTrans.gameObject.activeInHierarchy)
         {
-            Debug.Log("test");
             player.ChangeState(player.interactState);
         }
         else if (Input.GetButtonDown("Attack"))
         {
-
-            Debug.Log(contentHintTrans.gameObject.activeInHierarchy);
             player.ChangeState(player.attackState);
         }
         else if (Input.GetButtonDown("Ability"))

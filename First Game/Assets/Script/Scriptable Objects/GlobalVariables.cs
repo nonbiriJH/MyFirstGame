@@ -7,5 +7,5 @@ using UnityEngine;
 public class GlobalVariables : ScriptableObject
 {
     public string currentScene;
-    public bool openningPlayed;
+    public BoolValue[] progressFlags;
 }

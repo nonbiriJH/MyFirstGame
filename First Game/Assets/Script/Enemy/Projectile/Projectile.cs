@@ -22,23 +22,26 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //measure time between frame and trigger prject bool
-        projectDelaySecond -= Time.deltaTime;
-        if (projectDelaySecond < 0)
+        if (!this.gameObject.GetComponent<Log>().canInteract)
         {
-            canProject = true;
-            projectDelaySecond = projectDelay;
-        }
-
-        if (canProject)
-        {
-            if(Vector3.Distance(target.position,transform.position) < range)
+            //measure time between frame and trigger prject bool
+            projectDelaySecond -= Time.deltaTime;
+            if (projectDelaySecond < 0)
             {
-                Vector3 direction = target.position - transform.position;
-                direction.Normalize();
-                GameObject projectStuff = Instantiate(project, transform.position, Quaternion.identity);
-                projectStuff.GetComponent<ProjectStone>().Launch(direction);
-                canProject = false;
+                canProject = true;
+                projectDelaySecond = projectDelay;
+            }
+
+            if (canProject)
+            {
+                if (Vector3.Distance(target.position, transform.position) < range)
+                {
+                    Vector3 direction = target.position - transform.position;
+                    direction.Normalize();
+                    GameObject projectStuff = Instantiate(project, transform.position, Quaternion.identity);
+                    projectStuff.GetComponent<ProjectStone>().Launch(direction);
+                    canProject = false;
+                }
             }
         }
     }

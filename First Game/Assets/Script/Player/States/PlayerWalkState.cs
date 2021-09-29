@@ -24,11 +24,16 @@ public class PlayerWalkState : State
     public override void UpdateLogics()
     {
         base.UpdateLogics();
-        
+
+        Transform contentHintTrans = player.gameObject.transform.Find("ContentHint");
         if (inputDirection.magnitude == 0)
         {
             //When no input. no change anim para, change state.
             player.ChangeState(player.idleState);
+        }
+        else if (Input.GetButtonDown("Attack") && contentHintTrans.gameObject.activeInHierarchy)
+        {
+            player.ChangeState(player.interactState);
         }
         //Transit to Attack
         else if (Input.GetButtonDown("Attack"))

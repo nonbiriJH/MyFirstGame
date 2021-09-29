@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Room : MonoBehaviour
 {
     [Header("Components Whose Game Object will be (De)Activated")]
-    public Enemy[] enemies;
+    public List<Log> enemies;
     public pot[] pots;
 
     [Header("Virtual Camera")]
     public GameObject virtualCamera;
+
 
     [Header("Room Move Text")]
     public bool needText;
@@ -23,7 +25,7 @@ public class Room : MonoBehaviour
         if(other.CompareTag("Player") && !other.isTrigger)
         {
             //Activate Game Objects
-            for (int i = 0; i < enemies.Length; i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
                 ChangeActivation(enemies[i], true);
             }
@@ -48,7 +50,7 @@ public class Room : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             //Deactivate game Objects
-            for (int i = 0; i < enemies.Length; i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
                 ChangeActivation(enemies[i], false);
             }
@@ -65,6 +67,34 @@ public class Room : MonoBehaviour
     public void ChangeActivation(Component component, bool isActive)
     {
         component.gameObject.SetActive(isActive);
+    }
+
+    public void updateRoomRegister()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].isDying)
+            {
+                enemies.RemoveAt(i);
+            }
+        }
+    }
+
+    public void TurnToEvil()
+    {
+        for(int i= 0; i < enemies.Count; i++)
+        {
+            enemies[i].BecomeEvil();
+        }
+    }
+
+    public void RemoveAllRoomEnemies()
+    {
+        while (enemies.Count > 0)
+        {
+            enemies[0].gameObject.SetActive(false);
+            enemies.RemoveAt(0);
+        }
     }
 
     private IEnumerator placeNameCo()

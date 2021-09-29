@@ -43,7 +43,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.059929848, y: -1.2852087}
   m_SpriteTilingProperty:
@@ -74,28 +74,31 @@ MonoBehaviour:
   enableContentHint: {fileID: 11400000, guid: afeb39a8620624e0ea7e2c78619e98a5, type: 2}
   disableContentHint: {fileID: 11400000, guid: 6cbbd1db4254644e28a9e4e9679658d9, type: 2}
   interactSignal: {fileID: 11400000, guid: b35786ed691a54ee788db112d06c77d8, type: 2}
-  interacted: {fileID: 11400000, guid: 94f0ca5276d6e46eea208611162bde10, type: 2}
-  startDialog:
-  - The door is locked.
-  - Shall I open it?
-  successDialog:
-  - '"Click"'
-  - Door opens!
-  failDialog:
-  - I don't have a key to this door.
-  - I wonder where I can find the key.
   dialogBox: {fileID: 0}
   interactStep: 0
-  success: 0
+  dialogBoxState: 0
+  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
+    type: 2}
   closeSprite: {fileID: -3867660293848198189, guid: 1d2ba1529974845909aebe12912a5d68,
     type: 3}
   openSprite: {fileID: -8819360367373086180, guid: 1d2ba1529974845909aebe12912a5d68,
     type: 3}
-  spriteRenderer: {fileID: 1781525921417148721}
-  physicCollide: {fileID: 1781525921417148720}
   requiredKey: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
   options: {fileID: 11400000, guid: 48ff0cfcf6e0f4789968e9a7d3e6a268, type: 2}
   optionPanel: {fileID: 0}
+  startDialog:
+  - The door is locked.
+  - There is a key hole on it
+  failDialog:
+  - Unfortunately, I don't have a key to this door.
+  - Where I can find the key...
+  successDialog:
+  - '"Click"'
+  - Door opens!
+  giveUpDialog:
+  - I'd rather not open it
+  physicCollide: {fileID: 1781525921417148720}
 --- !u!1 &1781525921417148727
 GameObject:
   m_ObjectHideFlags: 0

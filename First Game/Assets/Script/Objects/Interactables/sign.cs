@@ -5,7 +5,7 @@ public class sign : Interactables
     public string[] dialog;
 
     // Update is called once per frame
-    public override void Update()
+    void Update()
     {
         if (playerInRange && Input.GetButtonDown("Attack"))
         {

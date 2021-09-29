@@ -13,9 +13,9 @@ public class GenericDamage : MonoBehaviour
 
     [Header("KnockBack")]
     [SerializeField] private float thrust;
-    [SerializeField] private float knockBackTime;
+    public float knockBackTime;
 
-    public void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.isTrigger)
         {
@@ -34,6 +34,10 @@ public class GenericDamage : MonoBehaviour
             else if (other.gameObject.CompareTag("breakable"))
             {
                 KnockBreakable(other);
+            }
+            else if (other.gameObject.CompareTag("NPC"))
+            {
+                KnockNPC(other);
             }
             else if (other.GetComponent<GenericKnockBack>())
             {
@@ -69,6 +73,16 @@ public class GenericDamage : MonoBehaviour
     {
         ApplyForce(other);
         other.GetComponent<PlayerKnockBack>().Knock(knockBackTime, damage);
+    }
+
+    public virtual void KnockNPC(Collider2D other)
+    {
+        ApplyForce(other);
+        NPCKnockBack knockBack = other.GetComponent<NPCKnockBack>();
+        if(knockBack != null)
+        {
+            knockBack.Knock(knockBackTime, damage);
+        }
     }
 
     public virtual void KnockBreakable(Collider2D other)

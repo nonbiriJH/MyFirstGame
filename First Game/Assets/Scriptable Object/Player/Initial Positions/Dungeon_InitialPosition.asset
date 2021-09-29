@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc72733cae7794837a82fbf7a79dd9ad, type: 3}
   m_Name: Dungeon_InitialPosition
   m_EditorClassIdentifier: 
-  initialValue: {x: 14.5, y: 1}
-  runtimeValue: {x: 14.5, y: 1}
+  initialValue: {x: 40, y: 30}
+  runtimeValue: {x: 14, y: 2}

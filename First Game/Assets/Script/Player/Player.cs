@@ -15,9 +15,11 @@ public class Player : StateMachine
     public vectorValue initialPosition;
     public Rigidbody2D myRigidBody;
     public Animator animator;
+    public bool interacted = false;
 
     //GetItem Para
     [Header("Item Parameters")]
+    public GameObject getItem;
     public SpriteRenderer itemSprite;//show item sprite when get item
     public Inventory inventory;//add new item to inventory; refer the new item pic
 
@@ -34,6 +36,10 @@ public class Player : StateMachine
     public PlayerAbilityState abilityState;
 
 
+    public void RegPosition()
+    {
+        initialPosition.runtimeValue = transform.position;
+    }
 
     // Start is called before the first frame update
     void Start()

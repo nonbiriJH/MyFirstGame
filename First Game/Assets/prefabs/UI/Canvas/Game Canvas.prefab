@@ -5017,9 +5017,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog:
-  - sentence1
-  - sentence2
-  - sentence3
+  - I am worried about Imouto
+  - I need to find the cure for her.
   typeSpeed: 0.01
   textDisplay: {fileID: 9100029820766540527}
   dialogFinishSignal: {fileID: 11400000, guid: 8762efdacb20b4491a08878bb699684c, type: 2}

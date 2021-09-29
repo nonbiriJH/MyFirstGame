@@ -12,6 +12,7 @@ public class PlayerStaggerState : State
 
     public override IEnumerator BeginStateCo()
     {
+        player.MoveObject(Vector2.zero);
         yield return new WaitForSeconds(knockBackTime);
         player.ChangeState(player.idleState);
     }
