@@ -94,14 +94,14 @@ GameObject:
   - component: {fileID: 5995333318250478691}
   - component: {fileID: 5995333318250478690}
   - component: {fileID: 5995333318250478689}
-  - component: {fileID: 5995333318250478692}
   - component: {fileID: 5995333318250478694}
   - component: {fileID: 5995333318250478693}
   - component: {fileID: 5995333318250478703}
   - component: {fileID: 840613987}
+  - component: {fileID: 2142847435887889192}
   m_Layer: 6
   m_Name: Turret Log
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,42 +194,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5995333318250478692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5995333318250478688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e9b651d6c00460cb8c252bbf5145d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInRange: 0
-  enableContentHint: {fileID: 11400000, guid: afeb39a8620624e0ea7e2c78619e98a5, type: 2}
-  disableContentHint: {fileID: 11400000, guid: 6cbbd1db4254644e28a9e4e9679658d9, type: 2}
-  interactSignal: {fileID: 11400000, guid: b35786ed691a54ee788db112d06c77d8, type: 2}
-  dialogBox: {fileID: 0}
-  interactStep: 0
-  dialogBoxState: 0
-  speed: 0
-  chaseRadius: 8
-  idleSecondBeforeSleep: 0
-  triggerZone: {fileID: 8143919304933114943}
-  canInteract: 1
-  openDialog:
-  - ...
-  deadAnimation: {fileID: 3693403685717114414, guid: f571e8ceb6e3545a89bc8ecad397b2d8,
-    type: 3}
-  lootTable: {fileID: 11400000, guid: d81b5151c83b043b7b93d1fd68f198e1, type: 2}
-  DeathSignal: {fileID: 11400000, guid: 7669374c5693042eab49d60310534dce, type: 2}
-  isDying: 0
-  target: {fileID: 0}
-  myRigidBody: {fileID: 0}
-  animator: {fileID: 0}
-  attacking: 0
-  nextDialog: []
 --- !u!61 &5995333318250478694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -254,7 +218,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 1}
+  m_Size: {x: 0.7, y: 1.3}
   m_EdgeRadius: 0
 --- !u!50 &5995333318250478693
 Rigidbody2D:
@@ -317,8 +281,45 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2142847435887889192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995333318250478688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e9b651d6c00460cb8c252bbf5145d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInRange: 0
+  enableContentHint: {fileID: 11400000, guid: afeb39a8620624e0ea7e2c78619e98a5, type: 2}
+  disableContentHint: {fileID: 11400000, guid: 6cbbd1db4254644e28a9e4e9679658d9, type: 2}
+  interactSignal: {fileID: 11400000, guid: b35786ed691a54ee788db112d06c77d8, type: 2}
+  dialogBox: {fileID: 0}
+  interactStep: 0
+  dialogBoxState: 0
+  speed: 0
+  chaseRadius: 0
+  idleSecondBeforeSleep: 2
+  triggerZone: {fileID: 8143919304933114943}
+  canInteract: 1
+  openDialog:
+  - ...
+  deadAnimation: {fileID: 3693403685717114414, guid: f571e8ceb6e3545a89bc8ecad397b2d8,
+    type: 3}
+  lootTable: {fileID: 11400000, guid: d81b5151c83b043b7b93d1fd68f198e1, type: 2}
+  DeathSignal: {fileID: 11400000, guid: 48bacc54f2d53402e94fc61bf723c563, type: 2}
+  isDying: 0
+  target: {fileID: 0}
+  myRigidBody: {fileID: 0}
+  animator: {fileID: 0}
+  attacking: 0
+  nextDialog: []
+  isEvil: 0
 --- !u!1 &8143919304933114943
 GameObject:
   m_ObjectHideFlags: 0
