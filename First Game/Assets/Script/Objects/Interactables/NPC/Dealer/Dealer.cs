@@ -12,10 +12,17 @@ public class Dealer : Interactables
     public float damage;
     public float staySecond;
     public bool shopOnly = false;
+    [SerializeField]
+    private bool inDungeon;
 
     [Header("Route Variables")]
     public Vector2[] shopPath;
-    public Vector2 bossDiePosition;
+    [SerializeField]
+    private Vector2 dungeonFirstStart;
+    [SerializeField]
+    private Vector2 bossDiePosition;
+    [SerializeField]
+    private Vector2 preBossPosition;
 
     [Header("Base Dialog Variables")]
     //Dialogs
@@ -102,16 +109,52 @@ public class Dealer : Interactables
         ChangeState(new DealerAfterBoss(this));
     }
 
+    private void GenericStart()
+    {
+        myRigidBody = this.gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
+        target = GameObject.FindWithTag("Player").transform;
+        Initialize(new DealerIdleState(this));
+    }
+
+    public void PreBossStart()
+    {
+        shopOnly = true;
+        gameObject.transform.position = preBossPosition;
+        UpdateWalkAnimParameter(Vector2.down);
+        animator.SetBool("Walk", false);
+        myRigidBody.velocity = Vector2.zero;
+        Initialize(new DealerInteractState(this));
+    }
+
+    private void DungeonStart()
+    {
+        //hide when start in Dungeon.
+        transform.position = dungeonFirstStart;
+        shopOnly = true;
+        Initialize(new DealerInteractState(this));
+    }
+
     //Monobehaviours
     private void Start()
     {
-        myRigidBody = this.gameObject.GetComponent<Rigidbody2D>();
-        patrolTarget = shopPath[0];
-        animator = gameObject.GetComponent<Animator>();
-        target = GameObject.FindWithTag("Player").transform;
-        if (shopOnly) Initialize(new DealerInteractState(this));
-        else Initialize(new DealerIdleState(this));
-        Debug.Log(currentState);
+        GenericStart();
+        if (checkPointR1.bossDown)
+        {
+            BossDie();
+        }
+        else if (checkPointR1.redAppear)
+        {
+            PreBossStart();
+        }
+        else if (inDungeon)
+        {
+            DungeonStart();
+        }
+        else
+        {
+            patrolTarget = shopPath[0];
+        }
     }
 
     private void Update()

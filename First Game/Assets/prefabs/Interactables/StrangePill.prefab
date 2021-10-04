@@ -186,3 +186,6 @@ MonoBehaviour:
   - This is the pill?
   - It's looking contaminated...
   - But this is the onlything I can bet on...
+  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
+    type: 2}

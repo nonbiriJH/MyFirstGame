@@ -9,6 +9,12 @@ public class Pill : Interactables
     [SerializeField]
     private string[] preGetDialog;
 
+    [Header("Checkpoint")]
+    [SerializeField]
+    private CheckPointR1 checkPointR1;
+    [SerializeField]
+    private SignalSender regPositionOnCheckPoint;
+
     private void Start()
     {
         dialogBox = Resources.FindObjectsOfTypeAll<Dialog>()[0].gameObject;
@@ -33,6 +39,11 @@ public class Pill : Interactables
                 interactSignal.SendSignal();//end interact state
                 disableContentHint.SendSignal();//diable contenthint
                 inventory.newItem = pill;//add item to Inventory
+
+                //checkpoint
+                checkPointR1.getApple = true;
+                regPositionOnCheckPoint.SendSignal();
+
                 interactSignal.SendSignal();//in interact state again
                 interactStep += 1;//add step
                 dialogBoxState = dialogBox.GetComponent<Dialog>().nInvoked;//prepare launching next dialog;

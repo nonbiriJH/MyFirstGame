@@ -11,9 +11,22 @@ public class DR4_PreBattle : MonoBehaviour
     public bool played;
     public float journeyTime;
 
+    [Header("Checkpoint")]
+    [SerializeField]
+    private CheckPointR1 checkPointR1;
+
     private bool start;
     private float startTime;
 
+
+    private void Awake()
+    {
+        if (checkPointR1.bossDown)
+        {
+            gameObject.SetActive(false);
+        }
+        
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

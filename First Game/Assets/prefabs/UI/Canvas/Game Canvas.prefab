@@ -3698,10 +3698,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 11400000, guid: 2a3fab4db34df41d5869149cc3dad5df, type: 2}
+  - {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
   - {fileID: 11400000, guid: 7954bb905f8de4e349ec15a2f6469c8c, type: 2}
   - {fileID: 11400000, guid: 25a0bcc698adc4a198ff3f047ed45788, type: 2}
   - {fileID: 11400000, guid: dfef03bcc616847aca17c2d86f7b7e5c, type: 2}
+  - {fileID: 11400000, guid: 30bcb9c6bb81d48ff8e51a562c661447, type: 2}
+  - {fileID: 11400000, guid: c52c884ee3b45472ab667b2660c76298, type: 2}
   globalVariables: {fileID: 11400000, guid: dfef03bcc616847aca17c2d86f7b7e5c, type: 2}
 --- !u!1 &9041617121459831830
 GameObject:
@@ -4482,6 +4484,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: InventorySaver, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9041617121859819807
 GameObject:
   m_ObjectHideFlags: 0
@@ -4986,7 +5000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -3,7 +3,7 @@ using UnityEngine;
 public class TriggerPlayerDialog : MonoBehaviour
 {
     [SerializeField]
-    private BoolValue boolValue;
+    public bool triggered;
     [SerializeField]
     private string[] dialog;
     [SerializeField]
@@ -14,7 +14,7 @@ public class TriggerPlayerDialog : MonoBehaviour
     private int interactStep;
     private bool playerInRange;
 
-    private void Start()
+    public virtual void Start()
     {
         dialogBox = Resources.FindObjectsOfTypeAll<Dialog>()[0].gameObject;
         playerInRange = false;
@@ -30,7 +30,7 @@ public class TriggerPlayerDialog : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && !boolValue.runtimeValue)
+        if (playerInRange && !triggered)
         {
             OneTimeDialog(dialog);
         }
@@ -53,10 +53,14 @@ public class TriggerPlayerDialog : MonoBehaviour
         {
             //player quite interact state
             InteractEnd();
-            boolValue.runtimeValue = true;
-            Debug.Log(boolValue.runtimeValue);
+            triggered = true;
+            PreDestroy();
             Destroy(gameObject);
         }
+    }
+
+    public virtual void PreDestroy()
+    {
     }
 
     private void StartDialog(string[] newDialog)

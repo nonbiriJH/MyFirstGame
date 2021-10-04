@@ -19,11 +19,11 @@ MonoBehaviour:
   getKey: 1
   buyBlade: 1
   openGate: 1
-  gateLogEvil: 1
-  gateLogKill: 1
+  gateLogEvil: 0
+  gateLogKill: 0
   innerLogEvil: 0
   innerLogKill: 0
   redAppear: 0
   bossDown: 0
-  getApple: 0
+  getApple: 1
   endBad: 0

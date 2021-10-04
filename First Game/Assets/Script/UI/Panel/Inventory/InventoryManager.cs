@@ -15,10 +15,14 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] GameObject useButton;
 
+    private bool WeaponLastEnabled;
+
     public void OnEnable()
     {
         DeleteExistingItem();
         AddItemToInventoryUI();
+        if (WeaponLastEnabled) OnWeaponChange();
+        else OnConsumableChange();
     }
 
     
@@ -38,9 +42,6 @@ public class InventoryManager : MonoBehaviour
                     itemHolder.transform.localScale = new Vector3(1, 1, 1);
                     //Setup item holder UI
                     itemHolder.GetComponent<WeaponHolderManager>().SetupItemHolder(item);
-                    //Without clicking, No Description No Use Button
-                    description.text = "Equipt A Weapon";
-                    useButton.SetActive(false);
                 }
                 else
                 {
@@ -51,13 +52,10 @@ public class InventoryManager : MonoBehaviour
                     itemHolder.transform.localScale = new Vector3(1, 1, 1);
                     //Setup item holder UI
                     itemHolder.GetComponent<ItemHolderManager>().SetupItemHolder(item);
-                    //Without clicking, No Description No Use Button
-                    description.text = "Select An Item";
-                    useButton.SetActive(false);
                 }
-                
             }
         }
+        useButton.SetActive(false);
     }
 
     public void DeleteExistingItem()
@@ -111,7 +109,9 @@ public class InventoryManager : MonoBehaviour
         {
             content.SetActive(false);
             weaponContent.SetActive(true);
+            description.text = "Equipt A Weapon";
         }
+        WeaponLastEnabled = true;
     }
 
     public void OnConsumableChange()
@@ -120,6 +120,8 @@ public class InventoryManager : MonoBehaviour
         {
             weaponContent.SetActive(false);
             content.SetActive(true);
+            description.text = "Select An Item";
         }
+        WeaponLastEnabled = false;
     }
 }

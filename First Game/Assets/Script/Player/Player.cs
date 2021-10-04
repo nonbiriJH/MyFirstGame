@@ -42,7 +42,7 @@ public class Player : StateMachine
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         animator.SetFloat("MoveX", 0);
         animator.SetFloat("MoveY", -1);

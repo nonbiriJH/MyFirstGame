@@ -15,15 +15,26 @@ public class DR2_Preboss : MonoBehaviour
     [SerializeField]
     private SignalSender disableContentHint;
 
+    [Header("Checkpoint")]
+    [SerializeField]
+    private CheckPointR1 checkPointR1;
+    [SerializeField]
+    private SignalSender regPositionOnCheckPoint;
+
     private bool startPlay = false;
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player") && !played)
+        if (checkPointR1.redAppear)
         {
             dealer.gameObject.SetActive(true);
-            dealer.shopOnly = true;
+            gameObject.SetActive(false);
+
+        }
+        else if(other.gameObject.CompareTag("Player") && !played)
+        {
+            dealer.gameObject.SetActive(true);
             playableDirector.Play();
             player.interacted = false;
             player.ChangeState(new PlayerInteractState(player));
@@ -41,11 +52,16 @@ public class DR2_Preboss : MonoBehaviour
             player.animator.SetFloat("MoveY", tempPosition.y);
 
             if (playableDirector.state != PlayState.Playing)
-            {  player.interacted = false;
+            {
+                player.interacted = false;
                 player.ChangeState(player.idleState);
+                dealer.PreBossStart();
+
                 played = true;
                 startPlay = false;
                 disableContentHint.SendSignal();
+                checkPointR1.redAppear = true;
+                regPositionOnCheckPoint.SendSignal();
             }
         }
     }

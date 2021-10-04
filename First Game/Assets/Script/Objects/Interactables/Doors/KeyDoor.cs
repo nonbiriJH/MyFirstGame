@@ -31,6 +31,7 @@ public class KeyDoor : Interactables
     //control sprite for door open
     private SpriteRenderer spriteRenderer;
     private bool success = false;// tracker of success/fail dialog
+    private bool isKeyInteraction = false;
 
     private void Start()
     {
@@ -51,7 +52,7 @@ public class KeyDoor : Interactables
     {
         if (playerInRange && !checkPointR1.openGate)
         {
-            if (requiredKey.itemNumber >= 1) WithKeyInteraction();
+            if (isKeyInteraction) WithKeyInteraction();
             else NoKeyInteraction();
         }
     }
@@ -122,8 +123,6 @@ public class KeyDoor : Interactables
 
     public void ChooseAction(int index)
     {
-        //Resume Door Update
-        interactStep = 2;
         if (index == 0)
         {
             //use key
@@ -135,6 +134,8 @@ public class KeyDoor : Interactables
         {
             return;
         }
+        //Resume Door Update
+        interactStep = 2;
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
@@ -145,6 +146,10 @@ public class KeyDoor : Interactables
             base.OnTriggerEnter2D(other);
             //Add reset dialog state
             dialogBoxState = dialogBox.GetComponent<Dialog>().nInvoked;
+            if (requiredKey.itemNumber >= 1)
+            {
+                isKeyInteraction = true;
+            }
         }
         else
         {
