@@ -3605,8 +3605,7 @@ GameObject:
   - component: {fileID: 9041617121426934790}
   - component: {fileID: 9041617121426934784}
   - component: {fileID: 9041617121426934791}
-  - component: {fileID: 4915698818542308727}
-  - component: {fileID: 1084200304587404835}
+  - component: {fileID: 9060023205158869908}
   m_Layer: 5
   m_Name: Save Panel
   m_TagString: Untagged
@@ -3672,7 +3671,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4915698818542308727
+--- !u!114 &9060023205158869908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3681,30 +3680,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 9041617121426934789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e72427c55447845128e67cecee4fa643, type: 3}
+  m_Script: {fileID: 11500000, guid: be270835c81f94dd3818d331b18ee3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 8bd16d402a9d4479eaeae766f853431c, type: 2}
---- !u!114 &1084200304587404835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9041617121426934789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f169b00fdc0f47258071e23e943d600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
-  - {fileID: 11400000, guid: 7954bb905f8de4e349ec15a2f6469c8c, type: 2}
-  - {fileID: 11400000, guid: 25a0bcc698adc4a198ff3f047ed45788, type: 2}
-  - {fileID: 11400000, guid: dfef03bcc616847aca17c2d86f7b7e5c, type: 2}
-  - {fileID: 11400000, guid: 30bcb9c6bb81d48ff8e51a562c661447, type: 2}
-  - {fileID: 11400000, guid: c52c884ee3b45472ab667b2660c76298, type: 2}
+  playerHealth: {fileID: 11400000, guid: 7954bb905f8de4e349ec15a2f6469c8c, type: 2}
+  playerMagic: {fileID: 11400000, guid: 25a0bcc698adc4a198ff3f047ed45788, type: 2}
   globalVariables: {fileID: 11400000, guid: dfef03bcc616847aca17c2d86f7b7e5c, type: 2}
+  playerPosition: {fileID: 11400000, guid: c52c884ee3b45472ab667b2660c76298, type: 2}
+  inventory: {fileID: 11400000, guid: 8bd16d402a9d4479eaeae766f853431c, type: 2}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
+  checkPointR0: {fileID: 11400000, guid: 30bcb9c6bb81d48ff8e51a562c661447, type: 2}
+  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  evilBlade: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
+  elfBow: {fileID: 11400000, guid: 21729218fa6dc403ead044c1604fb4c9, type: 2}
+  key: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
+  pill: {fileID: 11400000, guid: 976880d1cfd6c43c1a2b70109b77f460, type: 2}
+  healthPosion: {fileID: 11400000, guid: 5c835da2fa156416b8abccee89ab08ac, type: 2}
+  magicPosion: {fileID: 11400000, guid: 5602771719a7a494f86ab3d79915bf3f, type: 2}
 --- !u!1 &9041617121459831830
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,37 +4452,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1084200304587404835}
-        m_TargetAssemblyTypeName: GameSaveManager, Assembly-CSharp
+      - m_Target: {fileID: 9060023205158869908}
+        m_TargetAssemblyTypeName: SaveLoadManager, Assembly-CSharp
         m_MethodName: SaveData
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4915698818542308727}
-        m_TargetAssemblyTypeName: InventorySaver, Assembly-CSharp
-        m_MethodName: SaveData
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventorySaver, Assembly-CSharp
-        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5031,8 +4999,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog:
-  - I am worried about Imouto
-  - I need to find the cure for her.
+  - Imouto...
+  - Revenge...
+  - The red dealer...
   typeSpeed: 0.01
   textDisplay: {fileID: 9100029820766540527}
   dialogFinishSignal: {fileID: 11400000, guid: 8762efdacb20b4491a08878bb699684c, type: 2}
@@ -5592,31 +5561,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9041617122661153331}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1084200304587404835}
-        m_TargetAssemblyTypeName: GameSaveManager, Assembly-CSharp
-        m_MethodName: SaveData
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 4915698818542308727}
-        m_TargetAssemblyTypeName: InventorySaver, Assembly-CSharp
-        m_MethodName: SaveData
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &9041617122746771263
 GameObject:
   m_ObjectHideFlags: 0

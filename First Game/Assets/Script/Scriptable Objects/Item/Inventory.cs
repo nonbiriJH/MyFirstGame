@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//There should only be one inventory preset all possible items a game object can get.
+//Register reference to items
 [System.Serializable]
 [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/Player Inventory")]
 public class Inventory : ScriptableObject

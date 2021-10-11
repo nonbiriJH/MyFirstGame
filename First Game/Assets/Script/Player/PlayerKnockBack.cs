@@ -11,8 +11,21 @@ public class PlayerKnockBack : GenericKnockBack
     [SerializeField]
     private GameObject deathPanel;
     [SerializeField]
+    private GameObject edPanel;
+    [SerializeField]
     private float fadeSeconds;
-    
+
+    [SerializeField]
+    private string Ed1Desc;
+    [SerializeField]
+    private string Ed1Title;
+    [SerializeField]
+    private string Ed1SubTitle;
+
+    [Header("check point")]
+    [SerializeField]
+    private CheckPointR1 checkPointR1;
+
     //Invulnerable Frame
     [Header("Invulnerable Frame")]
     public Color hitColor;
@@ -61,9 +74,20 @@ public class PlayerKnockBack : GenericKnockBack
             }
             else
             {
-                //this.GetComponentInParent<Player>().Death();
                 isDead = true;
-                StartCoroutine(DeathCo(fadeSeconds));
+                if (checkPointR1.preBattleDealer)
+                {
+                    GameObject EDPanel = Instantiate(edPanel, transform.position, Quaternion.identity);
+                    EDPanel.GetComponent<EndingPanel>().EndDesc = Ed1Desc;
+                    EDPanel.GetComponent<EndingPanel>().EndTitle = Ed1Title;
+                    EDPanel.GetComponent<EndingPanel>().EndSubTitle = Ed1SubTitle;
+                    checkPointR1.endBad = true;
+                }
+                else
+                {
+                    StartCoroutine(DeathCo(fadeSeconds));
+                }
+                GetComponentInParent<Player>().Death();
             }
         }
        

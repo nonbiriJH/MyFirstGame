@@ -290,29 +290,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5349800073601250787, guid: b572b8f38389c477980438494fe984cb,
-        type: 3}
-      propertyPath: objects.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5349800073601250787, guid: b572b8f38389c477980438494fe984cb,
-        type: 3}
-      propertyPath: objects.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e,
-        type: 2}
-    - target: {fileID: 5349800073601250787, guid: b572b8f38389c477980438494fe984cb,
-        type: 3}
-      propertyPath: objects.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 30bcb9c6bb81d48ff8e51a562c661447,
-        type: 2}
-    - target: {fileID: 5349800073601250787, guid: b572b8f38389c477980438494fe984cb,
-        type: 3}
-      propertyPath: objects.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: c52c884ee3b45472ab667b2660c76298,
-        type: 2}
     - target: {fileID: 5349800073601250789, guid: b572b8f38389c477980438494fe984cb,
         type: 3}
       propertyPath: m_Pivot.x

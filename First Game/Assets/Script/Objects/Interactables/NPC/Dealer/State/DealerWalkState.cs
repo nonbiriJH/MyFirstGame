@@ -53,9 +53,7 @@ public class DealerWalkState : DealerState
 
     public override void ExitState()
     {
-        base.ExitState();
-        dealer.animator.SetBool("Walk", false);
-        dealer.MoveObject(Vector2.zero);
+        dealer.StopObject();
     }
 
 }

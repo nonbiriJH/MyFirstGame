@@ -8,7 +8,7 @@ public class TriggerPlayerDialog : MonoBehaviour
     private string[] dialog;
     [SerializeField]
     private SignalSender interactSignal;
-
+    [SerializeField]
     private GameObject dialogBox;
     private int dialogBoxState;
     private int interactStep;
@@ -16,15 +16,20 @@ public class TriggerPlayerDialog : MonoBehaviour
 
     public virtual void Start()
     {
-        dialogBox = Resources.FindObjectsOfTypeAll<Dialog>()[0].gameObject;
         playerInRange = false;
+    }
+
+    public virtual bool ConditionMet()
+    {
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && ConditionMet())
         {
             playerInRange = true;
+            dialogBoxState = dialogBox.GetComponent<Dialog>().nInvoked;
         }
     }
 

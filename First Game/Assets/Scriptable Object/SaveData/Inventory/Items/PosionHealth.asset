@@ -17,7 +17,7 @@ MonoBehaviour:
   itemName: Heath Posion
   itemDescription: This is an animal hearts. I need to eat it to survive...
   getDescription: []
-  itemNumber: 0
+  itemNumber: 3
   canUse: 1
   useItemEvent:
     m_PersistentCalls:

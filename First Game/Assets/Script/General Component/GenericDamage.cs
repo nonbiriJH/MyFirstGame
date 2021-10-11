@@ -39,6 +39,10 @@ public class GenericDamage : MonoBehaviour
             {
                 KnockNPC(other);
             }
+            else if (other.gameObject.CompareTag("Dealer"))
+            {
+                KnockDealer(other);
+            }
             else if (other.GetComponent<GenericKnockBack>())
             {
                 KnockRest(other);
@@ -80,6 +84,16 @@ public class GenericDamage : MonoBehaviour
         ApplyForce(other);
         NPCKnockBack knockBack = other.GetComponent<NPCKnockBack>();
         if(knockBack != null)
+        {
+            knockBack.Knock(knockBackTime, damage);
+        }
+    }
+
+    public virtual void KnockDealer(Collider2D other)
+    {
+        ApplyForce(other);
+        DealerKnockBack knockBack = other.GetComponent<DealerKnockBack>();
+        if (knockBack != null)
         {
             knockBack.Knock(knockBackTime, damage);
         }

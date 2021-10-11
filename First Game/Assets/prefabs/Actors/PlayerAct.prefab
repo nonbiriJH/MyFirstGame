@@ -202,11 +202,11 @@ GameObject:
   - component: {fileID: 5914047928079543364}
   m_Layer: 7
   m_Name: PlayerAct
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5914047928079543366
 Transform:
   m_ObjectHideFlags: 0

@@ -15,6 +15,12 @@ public class OR1_Start : TriggerPlayerDialog
             Destroy(gameObject);
         }
     }
+
+    public override bool ConditionMet()
+    {
+        return checkPointNoneRoute.Open && !checkPointNoneRoute.OutHome;
+    }
+
     public override void PreDestroy()
     {
         base.PreDestroy();

@@ -9,6 +9,7 @@ TagManager:
   - PlayerAttack
   - enemyBoss
   - NPC
+  - Dealer
   layers:
   - Default
   - TransparentFX

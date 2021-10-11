@@ -17,7 +17,7 @@ MonoBehaviour:
   itemName: Death Blade
   itemDescription: An ominous blade.
   getDescription: []
-  itemNumber: 0
+  itemNumber: 1
   canUse: 0
   useItemEvent:
     m_PersistentCalls:

@@ -46,15 +46,9 @@ public class Imouto : Interactables
         animator.SetFloat("MoveX", direction.x);
         animator.SetFloat("MoveY", direction.y);
     }
-
-    public void SetHappy(bool isHappy)
+    public void SetAnimParaBool(string para, bool paraValue)
     {
-        animator.SetBool("Happy", isHappy);
-    }
-
-    public void SetPajama(bool isPajama)
-    {
-        animator.SetBool("Pajama", isPajama);
+        animator.SetBool(para, paraValue);
     }
 
     public string CurrentAnimName()
@@ -114,7 +108,7 @@ public class Imouto : Interactables
         {
             if (Input.GetButtonDown("Attack"))
             {
-                SetHappy(nextDialogHappy);
+                SetAnimParaBool("Happy", nextDialogHappy);
                 StartDialog(nextDialog);
             }
             AddStep();
@@ -124,7 +118,7 @@ public class Imouto : Interactables
         {
             //player quite interact state
             InteractEnd();
-            SetHappy(false);
+            SetAnimParaBool("Happy", false);
         }
     }
 

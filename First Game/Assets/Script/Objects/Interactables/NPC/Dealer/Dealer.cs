@@ -9,13 +9,19 @@ public class Dealer : Interactables
 
     [Header("Dealer Variables")]
     public float speed;
-    public float damage;
+    public float attackSpeed;
+    public float projectDelay;
+    public GameObject project;
     public float staySecond;
     public bool shopOnly = false;
     [SerializeField]
     private bool inDungeon;
+    public GameObject hitZone;
+    public float attackRadius;
+    public float chaseRadius;
 
     [Header("Route Variables")]
+    public Transform targetWhenAttack;
     public Vector2[] shopPath;
     [SerializeField]
     private Vector2 dungeonFirstStart;
@@ -23,6 +29,8 @@ public class Dealer : Interactables
     private Vector2 bossDiePosition;
     [SerializeField]
     private Vector2 preBossPosition;
+    [SerializeField]
+    private Vector2 preR1EndBattlePosition;
 
     [Header("Base Dialog Variables")]
     //Dialogs
@@ -58,6 +66,7 @@ public class Dealer : Interactables
     {
         currentState.ExitState();
         currentState = newState;
+        Debug.Log(currentState);
         newState.BeginState();
         StartCoroutine(newState.BeginStateCo());
     }
@@ -65,12 +74,33 @@ public class Dealer : Interactables
     public void MoveObject(Vector2 direction)
     {
         direction.Normalize();
-        myRigidBody.velocity = direction * speed;
+        if (currentState is DealerAttackState || currentState is DealerStaggerState)
+        {
+            myRigidBody.velocity = direction * attackSpeed;
+        }
+        else
+        {
+            myRigidBody.velocity = direction * speed;
+        }
+        animator.SetBool("Walk", true);
+        UpdateWalkAnimParameter(direction);
+    }
+    public void StopObject()
+    {
+        myRigidBody.velocity = Vector2.zero;
+        animator.SetBool("Walk", false);
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        base.OnTriggerEnter2D(other);
+        if(currentState is DealerAttackState || currentState is DealerStaggerState)
+        {
+            //when attack no interact
+        }
+        else
+        {
+            base.OnTriggerEnter2D(other);
+        }
     }
 
     public void UpdateWalkAnimParameter(Vector2 direction)
@@ -98,6 +128,16 @@ public class Dealer : Interactables
     {
         internalStartDialog = newStart;
         internalEndDialog = newEnd;
+    }
+
+    //Project Arrow
+    public void LaunchArrow(Vector2 direction)
+    {
+        //Instantiate Weapon
+        float spriteDegreeToLeft = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        GameObject newWeapon = Instantiate(project, transform.position, Quaternion.Euler(0, 0, spriteDegreeToLeft));
+        //Move Weapon
+        newWeapon.GetComponent<Movement>().MoveObject(direction);
     }
 
     //triggers
@@ -135,11 +175,37 @@ public class Dealer : Interactables
         Initialize(new DealerInteractState(this));
     }
 
+    public void R1EndStart()
+    {
+        //change to attack state
+        //triggerred by cutscene script
+        ChangeState(new DealerAttackState(this));
+        transform.position = preR1EndBattlePosition;
+    }
+
     //Monobehaviours
-    private void Start()
+    private void Awake()
     {
         GenericStart();
-        if (checkPointR1.bossDown)
+        if(!inDungeon && checkPointR1.redAppear && !checkPointR1.preBattleDealer)
+        {
+            //after redAppear remove red from overworld until prebattle
+            this.gameObject.SetActive(false);
+        }
+        else if(inDungeon && checkPointR1.preBattleDealer)
+        {
+            //after R1preBattle remove red from dungeon
+            this.gameObject.SetActive(false);
+        }
+    }
+    private void Start()
+    {
+        //when prebattleR1 do nothing.
+        if (checkPointR1.preBattleDealer)
+        {
+            R1EndStart();
+        }
+        else if (checkPointR1.bossDown)
         {
             BossDie();
         }

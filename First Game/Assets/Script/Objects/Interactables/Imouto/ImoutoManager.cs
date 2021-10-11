@@ -54,8 +54,12 @@ public class ImoutoManager : MonoBehaviour
             //imouto out bed
             imoutoBed.IsInbed(false);
             imouto.gameObject.SetActive(true);
-            imouto.SetPajama(!cp1.openGate);
-            if (!cp1.openGate)
+            imouto.SetAnimParaBool("Pajama", !cp1.openGate);
+            if (cp1.imoutoDie)
+            {
+                imouto.ChangeState(new ImoutoDeadState(imouto));
+            }
+            else if (!cp1.openGate)
             {
                 imouto.SetDialog(PreBreakfastDialog, true);
             }

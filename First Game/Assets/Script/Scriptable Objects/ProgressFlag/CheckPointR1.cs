@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[System.Serializable]
 [CreateAssetMenu(fileName = "R1CP", menuName = "ProgressCheckPoint/Route1")]
 public class CheckPointR1 : ScriptableObject
 {
@@ -18,6 +18,9 @@ public class CheckPointR1 : ScriptableObject
     public bool redAppear;
     public bool bossDown;
     public bool getApple;
+    public bool imoutoDie;
+    public bool revenge;
+    public bool preBattleDealer;
     public bool endBad;
 
 }

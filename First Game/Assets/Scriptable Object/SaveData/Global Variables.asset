@@ -13,6 +13,3 @@ MonoBehaviour:
   m_Name: Global Variables
   m_EditorClassIdentifier: 
   currentScene: SampleScene
-  progressFlags:
-  - {fileID: 11400000, guid: 081fa558a8f1541088bb4341f2d288af, type: 2}
-  - {fileID: 11400000, guid: c9272ce2b77124497882e34b0b1c5163, type: 2}

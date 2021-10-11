@@ -20,6 +20,9 @@ public class Room : MonoBehaviour
     public GameObject text;
     public Text placeText;
 
+    [Header("Utility No Need Asign")]
+    public bool playerInRange = false;
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player") && !other.isTrigger)
@@ -36,12 +39,12 @@ public class Room : MonoBehaviour
 
             //Switch On Next Room Virtual Camera
             virtualCamera.SetActive(true);
-
             //Place Text
             if (needText)
             {
                 StartCoroutine(placeNameCo());
             }
+            playerInRange = true;
         } 
     }
 
@@ -61,6 +64,7 @@ public class Room : MonoBehaviour
 
             //Switch Off Current Room Virtual Camera
             virtualCamera.SetActive(false);
+            playerInRange = false;
         }       
     }
 

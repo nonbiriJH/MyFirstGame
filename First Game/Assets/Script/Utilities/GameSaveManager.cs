@@ -60,12 +60,14 @@ public class GameSaveManager : MonoBehaviour
         int i = 0;
         while (File.Exists(Application.persistentDataPath + string.Format(fileRegEx, i)))
         {
+            Debug.Log(i);
             //Open File
             FileStream file = File.Open(Application.persistentDataPath + string.Format(fileRegEx, i), FileMode.Open);
             //Create Binary Formatter
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             //Deserialise File + Cast File to String + Overwrite to Object
-            JsonUtility.FromJsonOverwrite((string)binaryFormatter.Deserialize(file), objects[i]);
+            string data = (string)binaryFormatter.Deserialize(file);
+            JsonUtility.FromJsonOverwrite(data, objects[i]);
             file.Close();
             i++;
         }

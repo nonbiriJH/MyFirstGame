@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Player : StateMachine
 {
+    [Header("Checkpoints")]
+    public CheckPointR1 checkPointR1;
 
     [Header("Player Attributes")]
     public floatValue playerMagic;
     public CurrentAbility currentAbility;
     [SerializeField] private float speed;
+    public bool evilMode;
 
     [Header("Utilities")]
     public SignalSender magicSignal;
@@ -22,10 +25,6 @@ public class Player : StateMachine
     public GameObject getItem;
     public SpriteRenderer itemSprite;//show item sprite when get item
     public Inventory inventory;//add new item to inventory; refer the new item pic
-
-    //status para
-    [Header("Status Parameter")]
-    public bool evilMode = false;
 
     //states
     public PlayerIdleState idleState;
@@ -44,11 +43,16 @@ public class Player : StateMachine
     // Start is called before the first frame update
     void Awake()
     {
-        animator.SetFloat("MoveX", 0);
-        animator.SetFloat("MoveY", -1);
         transform.position = initialPosition.runtimeValue;
         currentAbility.currentAbility = null;
         inventory.newItem = null;
+
+        if (checkPointR1.revenge)
+        {
+            TurnRed();
+        }
+        animator.SetFloat("MoveX", 0);
+        animator.SetFloat("MoveY", -1);
 
         //Create State Classe Instances
         idleState = new PlayerIdleState(this);
@@ -99,5 +103,13 @@ public class Player : StateMachine
     {
         this.gameObject.SetActive(false);
 
+    }
+
+    public void TurnRed()
+    {
+        RuntimeAnimatorController ac = GetComponent<Animator>().runtimeAnimatorController;
+        animator.runtimeAnimatorController = null;
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
+        animator.runtimeAnimatorController = ac;
     }
 }

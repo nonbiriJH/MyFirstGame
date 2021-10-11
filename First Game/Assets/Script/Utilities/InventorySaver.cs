@@ -46,7 +46,10 @@ public class InventorySaver : MonoBehaviour
         //Create Binary Formatter
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         //Deserialise File + Cast File to String + Overwrite to Item
-        JsonUtility.FromJsonOverwrite((string)binaryFormatter.Deserialize(file), scriptable);
+        string data = (string)binaryFormatter.Deserialize(file);
+        Debug.Log(data);
+        Debug.Log(scriptable);
+        JsonUtility.FromJsonOverwrite(data, scriptable);
         file.Close();
     }
 
@@ -86,6 +89,8 @@ public class InventorySaver : MonoBehaviour
 
         //Load Inventory Scriptable Object
         LoadAScriptable(string.Format(fileRegEx, "inventory"), inventory);
+        //LoadAScriptable(string.Format("/{0}.base", "6"), inventory);
+        //LoadInve();
 
         //Load Item Scriptable Objects.
         int i = 0;
@@ -95,6 +100,17 @@ public class InventorySaver : MonoBehaviour
             i++;
 
         }
+    }
+
+    private void LoadInve()
+    {
+        //Open File
+        FileStream file = File.Open(Application.persistentDataPath + string.Format("/{0}.base", "6"), FileMode.Open);
+        //Create Binary Formatter
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        //Deserialise File + Cast File to String + Overwrite to Object
+        JsonUtility.FromJsonOverwrite((string)binaryFormatter.Deserialize(file), inventory);
+        file.Close();
     }
 
 
