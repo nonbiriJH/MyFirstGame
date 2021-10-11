@@ -25,6 +25,8 @@ public class Player : StateMachine
     public GameObject getItem;
     public SpriteRenderer itemSprite;//show item sprite when get item
     public Inventory inventory;//add new item to inventory; refer the new item pic
+    public ItemList itemMaster;
+    public ItemQuantityLookup itemQuantityLookup;
 
     //states
     public PlayerIdleState idleState;
@@ -45,7 +47,7 @@ public class Player : StateMachine
     {
         transform.position = initialPosition.runtimeValue;
         currentAbility.currentAbility = null;
-        inventory.newItem = null;
+        inventory.newItemName = null;
 
         if (checkPointR1.revenge)
         {
@@ -87,10 +89,35 @@ public class Player : StateMachine
     public void AddItemToInventory()
     {
         //get item pic
-        itemSprite.sprite = inventory.newItem.itemSprite;//pass new item sprite to game scene
+        itemSprite.sprite = itemMaster.GetItem(inventory.newItemName).itemSprite;//pass new item sprite to game scene
         //add to inventory
-        inventory.AddItem(inventory.newItem);
+        AddItem(inventory.newItemName);
     }
+
+    public void AddItem(string newItemName)
+    {
+        if (itemQuantityLookup.GetItemNumber(newItemName) == 0)
+        {
+            ReorderEmptyItem();
+        }
+        itemQuantityLookup.IncreaseAmount(newItemName);
+    }
+
+    //New Item does not apear before existing item.
+    //Trigger only when get new item not in inventory (number = 0)
+    public void ReorderEmptyItem()
+    {
+        for (int i = 0; i < inventory.itemList.Count; i++)
+        {
+            if (itemQuantityLookup.GetItemNumber(inventory.itemList[i]) <= 0)
+            {
+                string itemToReorder = inventory.itemList[i];
+                inventory.itemList.Remove(itemToReorder);
+                inventory.itemList.Add(itemToReorder);
+            }
+        }
+    }
+
 
     // for interact signal to work
     public void ChangeToInteractState()

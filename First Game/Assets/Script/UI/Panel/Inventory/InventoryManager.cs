@@ -14,6 +14,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject weaponContent;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] GameObject useButton;
+    [SerializeField] private ItemQuantityLookup itemQuantityLookup;
+    [SerializeField] private ItemList itemMaster;
 
     private bool WeaponLastEnabled;
 
@@ -30,8 +32,8 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i<inventory.itemList.Count; i++)
         {
-            Item item = inventory.itemList[i];
-            if (item.itemNumber > 0)
+            Item item = itemMaster.GetItem(inventory.itemList[i]);
+            if (itemQuantityLookup.GetItemNumber(item.itemName) > 0)
             {
                 if (item.weapon)
                 {
@@ -73,7 +75,7 @@ public class InventoryManager : MonoBehaviour
 
     public void OnItemHolderManagerClick()
     {
-        Item item = inventory.chosenItem;
+        Item item = itemMaster.GetItem(inventory.chosenItemName);
         if (item)
         {
             //Description
@@ -93,9 +95,9 @@ public class InventoryManager : MonoBehaviour
     public void OnClickUseItem()
     {
         //Apply item effects
-        inventory.chosenItem.useItem();
+        itemMaster.GetItem(inventory.chosenItemName).useItem();
         //If the chosen item is quantity 0, deselect item.
-        if(inventory.chosenItem.itemNumber == 0) inventory.chosenItem = null;
+        if(itemQuantityLookup.GetItemNumber(inventory.chosenItemName) == 0) inventory.chosenItemName = null;
         //Refresh Inventory UI
         DeleteExistingItem();
         AddItemToInventoryUI();

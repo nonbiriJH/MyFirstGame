@@ -220,6 +220,8 @@ MonoBehaviour:
   content: {fileID: 2680030495592604729}
   description: {fileID: 1363626434203229788}
   buyButton: {fileID: 3490684643846953103}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
+  itemMaster: {fileID: 11400000, guid: ed54e86f18bc040c38669999d9585178, type: 2}
 --- !u!1 &814580014759039261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3691,12 +3693,6 @@ MonoBehaviour:
   itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
   checkPointR0: {fileID: 11400000, guid: 30bcb9c6bb81d48ff8e51a562c661447, type: 2}
   checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
-  evilBlade: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
-  elfBow: {fileID: 11400000, guid: 21729218fa6dc403ead044c1604fb4c9, type: 2}
-  key: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
-  pill: {fileID: 11400000, guid: 976880d1cfd6c43c1a2b70109b77f460, type: 2}
-  healthPosion: {fileID: 11400000, guid: 5c835da2fa156416b8abccee89ab08ac, type: 2}
-  magicPosion: {fileID: 11400000, guid: 5602771719a7a494f86ab3d79915bf3f, type: 2}
 --- !u!1 &9041617121459831830
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,6 +5274,8 @@ MonoBehaviour:
   weaponContent: {fileID: 2660398720752598849}
   description: {fileID: 9041617122947761487}
   useButton: {fileID: 9041617122772813899}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
+  itemMaster: {fileID: 11400000, guid: ed54e86f18bc040c38669999d9585178, type: 2}
 --- !u!114 &5069177680463679657
 MonoBehaviour:
   m_ObjectHideFlags: 0

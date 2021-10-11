@@ -168,13 +168,15 @@ MonoBehaviour:
   triggerItem: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
   speed: 3
   attackSpeed: 0
-  damage: 0
+  projectDelay: 0
+  project: {fileID: 0}
   staySecond: 2
   shopOnly: 0
   inDungeon: 0
   hitZone: {fileID: 8669492858453780340}
   attackRadius: 5
   chaseRadius: 9
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
   targetWhenAttack: {fileID: 0}
   shopPath:
   - {x: 4, y: -5}
@@ -183,6 +185,7 @@ MonoBehaviour:
   dungeonFirstStart: {x: 0, y: 0}
   bossDiePosition: {x: 43, y: 100}
   preBossPosition: {x: 0, y: 0}
+  preR1EndBattlePosition: {x: 0, y: 0}
   startDialog:
   - Hey come and take a look.
   - There are good stuffs with good prices.

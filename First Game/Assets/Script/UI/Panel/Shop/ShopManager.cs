@@ -13,6 +13,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject content;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] GameObject buyButton;
+    [SerializeField] private ItemQuantityLookup itemQuantityLookup;
+    [SerializeField] private ItemList itemMaster;
 
     public void OnEnable()
     {
@@ -25,8 +27,8 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < shopInventory.itemList.Count; i++)
         {
-            Item item = shopInventory.itemList[i];
-            if (item.shopQuantity > 0)
+            Item item = itemMaster.GetItem(shopInventory.itemList[i]);
+            if (itemQuantityLookup.GetItemShopQuantity(item.itemName) > 0)
             {
                 //instantiate item holder and cache reference
                 GameObject itemHolder = Instantiate(itemHolderPrefab);
@@ -52,13 +54,13 @@ public class ShopManager : MonoBehaviour
 
     public void OnItemHolderManagerClick()
     {
-        Item item = shopInventory.chosenItem;
+        Item item = itemMaster.GetItem(shopInventory.chosenItemName);
         if (item)
         {
             //Description
             description.text = item.itemDescription;
             buyButton.SetActive(true);
-            if (playerInventory.coinValue < shopInventory.chosenItem.price)
+            if (playerInventory.coinValue < itemMaster.GetItem(shopInventory.chosenItemName).price)
             {
                 buyButton.GetComponent<Button>().interactable = false;
             }
@@ -71,15 +73,16 @@ public class ShopManager : MonoBehaviour
 
     public void OnClickBuyItem()
     {
-        if(playerInventory.coinValue >= shopInventory.chosenItem.price
-            && shopInventory.chosenItem.shopQuantity >= 1)
+        Item item = itemMaster.GetItem(shopInventory.chosenItemName);
+        if (playerInventory.coinValue >= item.price
+            && itemQuantityLookup.GetItemShopQuantity(shopInventory.chosenItemName) >= 1)
         {
-            playerInventory.coinValue -= shopInventory.chosenItem.price;
-            shopInventory.chosenItem.BuyItem();
+            playerInventory.coinValue -= item.price;
+            itemQuantityLookup.BuyItem(shopInventory.chosenItemName);
             coinSignal.SendSignal();
         }
         //If the chosen item is quantity 0, deselect item.
-        if (shopInventory.chosenItem.shopQuantity == 0) shopInventory.chosenItem = null;
+        if (itemQuantityLookup.GetItemShopQuantity(shopInventory.chosenItemName) == 0) shopInventory.chosenItemName = null;
         //Refresh Inventory UI
         DeleteExistingItem();
         AddItemToInventoryUI();

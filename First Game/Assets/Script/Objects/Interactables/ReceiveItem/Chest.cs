@@ -62,7 +62,7 @@ public class Chest : Interactables
                     //change animation
                     anim.SetBool("open", true);
                     //pass chest item to inventory new item
-                    inventory.newItem = content;
+                    inventory.newItemName = content.itemName;
                 }
 
                 AddStep();

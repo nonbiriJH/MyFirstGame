@@ -9,6 +9,7 @@ public class WeaponHolderManager : MonoBehaviour
     //Internal but need to assign from the inspector
     [SerializeField] private Image itemImage;
     [SerializeField] private Item itemHeld;
+    [SerializeField] private ItemList itemMaster;
 
     //Pass Item information to Item Holder UI
     public void SetupItemHolder(Item newItem)
@@ -27,8 +28,8 @@ public class WeaponHolderManager : MonoBehaviour
     //Pass UI information to inventory
     public void OnClick()
     {
-        inventory.chosenItem = itemHeld;
+        inventory.chosenItemName = itemHeld.itemName;
         //Apply item effects
-        inventory.chosenItem.useItem();
+        itemMaster.GetItem(inventory.chosenItemName).useItem();
     }
 }

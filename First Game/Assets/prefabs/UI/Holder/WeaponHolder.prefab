@@ -150,6 +150,7 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: 8bd16d402a9d4479eaeae766f853431c, type: 2}
   itemImage: {fileID: 6500808036144276748}
   itemHeld: {fileID: 0}
+  itemMaster: {fileID: 11400000, guid: ed54e86f18bc040c38669999d9585178, type: 2}
 --- !u!1 &6500808036144276750
 GameObject:
   m_ObjectHideFlags: 0

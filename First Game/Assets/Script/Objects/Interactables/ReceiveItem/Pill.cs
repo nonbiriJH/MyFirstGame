@@ -38,7 +38,7 @@ public class Pill : Interactables
             {
                 interactSignal.SendSignal();//end interact state
                 disableContentHint.SendSignal();//diable contenthint
-                inventory.newItem = pill;//add item to Inventory
+                inventory.newItemName = pill.itemName;//add item to Inventory
 
                 //checkpoint
                 checkPointR1.getApple = true;

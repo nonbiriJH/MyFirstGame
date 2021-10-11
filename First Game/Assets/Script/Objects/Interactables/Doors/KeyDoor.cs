@@ -18,6 +18,7 @@ public class KeyDoor : Interactables
     public Item requiredKey;
     public Options options;
     public GameObject optionPanel;
+    [SerializeField] private ItemQuantityLookup itemQuantityLookup;
 
     [Header("Dialog Variables")]
     public string[] startDialog;
@@ -126,7 +127,7 @@ public class KeyDoor : Interactables
         if (index == 0)
         {
             //use key
-            requiredKey.ReduceAmount();
+            itemQuantityLookup.ReduceAmount(requiredKey.itemName);
             success = true;
             disableContentHint.SendSignal();
         }
@@ -146,7 +147,7 @@ public class KeyDoor : Interactables
             base.OnTriggerEnter2D(other);
             //Add reset dialog state
             dialogBoxState = dialogBox.GetComponent<Dialog>().nInvoked;
-            if (requiredKey.itemNumber >= 1)
+            if (itemQuantityLookup.GetItemNumber(requiredKey.itemName) >= 1)
             {
                 isKeyInteraction = true;
             }

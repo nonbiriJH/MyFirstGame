@@ -11,14 +11,14 @@ public class Item : ScriptableObject
     public string itemName;
     public string itemDescription;
     public string[] getDescription;
-    public int itemNumber;
+    //public int itemNumber;
     public bool canUse;
     public UnityEvent useItemEvent;
     public bool weapon;
     public Vector3 RBG;
 
     public int price;
-    public int shopQuantity;
+    //public int shopQuantity;
 
     //Apply item effects
     public void useItem()
@@ -26,7 +26,7 @@ public class Item : ScriptableObject
         useItemEvent.Invoke();
     }
 
-    //Apply to Consumer Items
+    /*//Apply to Consumer Items
     public void ReduceAmount()
     {
         itemNumber--;
@@ -43,5 +43,5 @@ public class Item : ScriptableObject
             shopQuantity--;
             itemNumber++;
         }
-    }
+    }*/
 }

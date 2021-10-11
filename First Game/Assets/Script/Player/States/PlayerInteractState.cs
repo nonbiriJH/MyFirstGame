@@ -14,10 +14,10 @@ public class PlayerInteractState : State
         base.UpdateLogics();
         if (!player.interacted)
         {
-            if (player.inventory.newItem != null)
+            if (player.inventory.newItemName != null)
             {
                 //set RBG Renderer
-                Vector3 itemColor = player.inventory.newItem.RBG;
+                Vector3 itemColor = player.itemMaster.GetItem(player.inventory.newItemName).RBG;
                 if (itemColor != Vector3.zero)
                 {
                     player.getItem.GetComponent<SpriteRenderer>().color = new Color(itemColor.x, itemColor.y, itemColor.z);
@@ -35,13 +35,13 @@ public class PlayerInteractState : State
         }
         else
         {
-            if (player.inventory.newItem != null)
+            if (player.inventory.newItemName != null)
             {
                 //set animation
                 player.animator.SetBool("GetItem", false);
                 //get item pic
                 player.itemSprite.sprite = null;
-                player.inventory.newItem = null;
+                player.inventory.newItemName = null;
             }
 
             player.interacted = false;

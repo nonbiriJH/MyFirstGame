@@ -66,7 +66,7 @@ public class DealerInteractState : DealerState
         {
             if (!dealer.shopPanel.activeInHierarchy)//buy finish
             {
-                if (dealer.triggerItem.itemNumber > 0 && !dealer.checkPointR1.buyBlade)
+                if (dealer.itemQuantityLookup.GetItemNumber(dealer.triggerItem.itemName) > 0 && !dealer.checkPointR1.buyBlade)
                 {
                     dealer.checkPointR1.buyBlade = true;
                     dealer.regPositionOnCheckPoint.SendSignal();

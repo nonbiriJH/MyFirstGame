@@ -19,6 +19,7 @@ public class Dealer : Interactables
     public GameObject hitZone;
     public float attackRadius;
     public float chaseRadius;
+    public ItemQuantityLookup itemQuantityLookup;
 
     [Header("Route Variables")]
     public Transform targetWhenAttack;

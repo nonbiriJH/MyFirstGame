@@ -97,6 +97,7 @@ MonoBehaviour:
   itemImage: {fileID: 6500808036144276748}
   itemNumber: {fileID: 6500808035414082672}
   itemHeld: {fileID: 0}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
 --- !u!114 &6064092066179696446
 MonoBehaviour:
   m_ObjectHideFlags: 0

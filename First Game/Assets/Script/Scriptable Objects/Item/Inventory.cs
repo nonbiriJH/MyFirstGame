@@ -7,32 +7,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/Player Inventory")]
 public class Inventory : ScriptableObject
 {
-    public Item newItem;
-    public Item chosenItem;// Item Use and UI
-    public List<Item> itemList = new List<Item>();
+    public string newItemName;
+    public string chosenItemName;// Item Use and UI
+    public List<string> itemList = new List<string>();
     public int coinValue;//will be changed by power up
 
-    public void AddItem(Item newItem)
-    {
-        if(newItem.itemNumber == 0)
-        {
-            ReorderEmptyItem();
-        }
-        newItem.itemNumber++;
-    }
-
-    //New Item does not apear before existing item.
-    //Trigger only when get new item not in inventory (number = 0)
-    public void ReorderEmptyItem()
-    {
-        for (int i = 0; i < itemList.Count; i++)
-        {
-            if (itemList[i].itemNumber <= 0)
-            {
-                Item itemToReorder = itemList[i];
-                itemList.Remove(itemToReorder);
-                itemList.Add(itemToReorder);
-            }
-        }
-    }
 }

@@ -8,4 +8,17 @@ using UnityEngine;
 public class ItemList : ScriptableObject
 {
     public List<Item> itemList = new List<Item>();
+
+
+    public Item GetItem(string itemName)
+    {
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            if (itemList[i].itemName == itemName)
+            {
+                return itemList[i];
+            }
+        }
+        return null;
+    }
 }

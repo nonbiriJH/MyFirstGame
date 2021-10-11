@@ -642,6 +642,8 @@ MonoBehaviour:
   getItem: {fileID: 899447258}
   itemSprite: {fileID: 899447261}
   inventory: {fileID: 11400000, guid: 8bd16d402a9d4479eaeae766f853431c, type: 2}
+  itemMaster: {fileID: 11400000, guid: ed54e86f18bc040c38669999d9585178, type: 2}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
 --- !u!114 &3496046814415335620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,7 +1021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathPanel: {fileID: 4772787079298574984, guid: db8bb5d1cf33a44419b0c5b97ea0b106,
     type: 3}
-  edR1Panel: {fileID: 0}
+  edPanel: {fileID: 0}
   fadeSeconds: 3
   Ed1Desc: A gullible man finally realised he was deprived by the calculated dealer.
     Surely things started from good wills but when he lost his judgment, he lost

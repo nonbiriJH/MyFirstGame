@@ -29,7 +29,7 @@ public class ShopItemHolderManager : MonoBehaviour
     //Pass UI information to inventory
     public void OnClick()
     {
-        shopInventory.chosenItem = itemHeld;
+        shopInventory.chosenItemName = itemHeld.itemName;
         buySignal.SendSignal();
     }
 }

@@ -27,20 +27,6 @@ public class SaveLoadManager : MonoBehaviour
     [SerializeField]
     private CheckPointR1 checkPointR1;
 
-    [Header("Items")]
-    [SerializeField]
-    private Item evilBlade;
-    [SerializeField]
-    private Item elfBow;
-    [SerializeField]
-    private Item key;
-    [SerializeField]
-    private Item pill;
-    [SerializeField]
-    private Item healthPosion;
-    [SerializeField]
-    private Item magicPosion;
-
     private void ResetCheckPoint(ScriptableObject checkpoint)
     {
         var properties = checkpoint.GetType().GetFields();
@@ -57,12 +43,6 @@ public class SaveLoadManager : MonoBehaviour
         toBeSet.maxValue = max;
     }
 
-    private void ResetItem(Item item, int itemNumber, int shopQuantity)
-    {
-        item.itemNumber = itemNumber;
-        item.shopQuantity = shopQuantity;
-    }
-
     private void ResetVectorValue(vectorValue vectorValue, float x, float y)
     {
         vectorValue.runtimeValue = new Vector2(x, y);
@@ -76,11 +56,22 @@ public class SaveLoadManager : MonoBehaviour
     private void ResetInventory()
     {
         //create new item list
-        List<Item> newItemList = new List<Item> { evilBlade, elfBow, key, pill, healthPosion, magicPosion };
-        inventory.itemList = newItemList;
-        inventory.newItem = null;
-        inventory.chosenItem = null;
+        List<string> newItemNameList = new List<string> { "Evil Blade", "Elf Bow", "Dungeon Key", "Contaminated Pill", "Health Posion", "Magic Posion" };
+        inventory.itemList = newItemNameList;
+        inventory.newItemName = null;
+        inventory.chosenItemName = null;
         inventory.coinValue = 0;
+    }
+
+    private void ResetItemQuantityLookup()
+    {
+        List<ItemMapping> newItemQuantityLookup = new List<ItemMapping> { new ItemMapping("Evil Blade", 0, 1)
+            , new ItemMapping("Elf Bow", 0, 0)
+            , new ItemMapping("Dungeon Key", 0, 0)
+            , new ItemMapping("Contaminated Pill", 0, 0)
+            , new ItemMapping("Health Posion", 0, 10)
+            , new ItemMapping("Magic Posion", 0, 10) };
+        itemQuantityLookup.itemMappings = newItemQuantityLookup;
     }
 
     public void GameStart()
@@ -97,13 +88,8 @@ public class SaveLoadManager : MonoBehaviour
         ResetStringValue(globalVariables, "Room");
         //Inventory
         ResetInventory();
-        //Items
-        ResetItem(evilBlade, 0, 1);
-        ResetItem(elfBow, 0, 0);
-        ResetItem(key, 0, 0);
-        ResetItem(pill, 0, 0);
-        ResetItem(healthPosion, 0, 999);
-        ResetItem(magicPosion, 0, 999);
+        //Item Quantity
+        ResetItemQuantityLookup();
 
         SceneManager.LoadScene(globalVariables.currentScene);
     }
@@ -153,14 +139,7 @@ public class SaveLoadManager : MonoBehaviour
         SaveSingleData("playerPosition.dat", playerPosition);
         SaveSingleData("globalVariables.dat", globalVariables);
         SaveSingleData("itemQuantityLookup.dat", itemQuantityLookup);
-
         SaveSingleData("inventory.dat", inventory);
-        SaveSingleData("evilBlade.dat", evilBlade);
-        SaveSingleData("elfBow.dat", elfBow);
-        SaveSingleData("key.dat", key);
-        SaveSingleData("healthPosion.dat", healthPosion);
-        SaveSingleData("magicPosion.dat", magicPosion);
-        SaveSingleData("pill.dat", pill);
     }
 
     public void LoadData()
@@ -172,14 +151,8 @@ public class SaveLoadManager : MonoBehaviour
         LoadSingleData("playerMagic.dat", playerMagic);
         LoadSingleData("playerPosition.dat", playerPosition);
         LoadSingleData("globalVariables.dat", globalVariables);
-
+        SaveSingleData("itemQuantityLookup.dat", itemQuantityLookup);
         LoadSingleData("inventory.dat", inventory);
-        LoadSingleData("evilBlade.dat", evilBlade);
-        LoadSingleData("elfBow.dat", elfBow);
-        LoadSingleData("key.dat", key);
-        LoadSingleData("healthPosion.dat", healthPosion);
-        LoadSingleData("magicPosion.dat", magicPosion);
-        LoadSingleData("pill.dat", pill);
 
         SceneManager.LoadScene(globalVariables.currentScene);
     }
