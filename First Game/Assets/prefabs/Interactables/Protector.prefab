@@ -1,5 +1,107 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &41957305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41957306}
+  - component: {fileID: 41957308}
+  - component: {fileID: 41957310}
+  - component: {fileID: 41957309}
+  - component: {fileID: 41957307}
+  m_Layer: 0
+  m_Name: TriggerZone
+  m_TagString: NPC
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &41957306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41957305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9163393516458008120}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &41957308
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41957305}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &41957310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41957305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abb11beca2084d31b59d9df11e9f175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 11400000, guid: 1882bd228ef1045f78ac13376fa521d9, type: 2}
+  runTimeHealth: 0
+--- !u!114 &41957309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41957305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211f569a0d48342669b00ff6e9b2279d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &41957307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41957305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ef7cfdd4ecc418abdc33ce58863bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0.5
+  thrust: 3
+  knockBackTime: 0.5
+  protector: {fileID: 8160600656737301479}
 --- !u!1 &9163393516458008260
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,7 +134,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 41957306}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -149,11 +252,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9163393516458008260}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 9999
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -200,12 +303,16 @@ MonoBehaviour:
   dialogBox: {fileID: 0}
   interactStep: 0
   dialogBoxState: 0
+  checkPointRoute1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
+    type: 2}
   speed: 3
-  damage: 3
   staySecond: 2
+  hitZone: {fileID: 41957305}
   patrolPath:
-  - {x: 7, y: 2}
-  - {x: 7, y: 5}
+  - {x: 12, y: 2}
+  - {x: 12, y: 5}
+  targetWhenAttack: {fileID: 0}
   optionPanel: {fileID: 0}
   options: {fileID: 11400000, guid: 15a239d4a1b79467e87cd78f01415d9c, type: 2}
   warnZoneDialog:
@@ -232,11 +339,13 @@ MonoBehaviour:
   normalNoDialog:
   - Please come back if you change your mind.
   - I sense you are a kind man that a good companion of trees
+  deathDialog:
+  - I will not forgive you!
   patrolTarget: {x: 0, y: 0}
   animator: {fileID: 0}
   interactDirection: {x: 0, y: 0}
-  anyLogKilled: 0
   playerInWarningZone: 0
   playerInDangerZone: 0
   attacking: 0
+  isSignState: 0
   endDialog: []

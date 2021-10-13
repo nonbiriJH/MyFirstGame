@@ -1062,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 840613987, guid: 89d7dd26179344211b2f28975012d1b0, type: 3}
       propertyPath: m_Size.y
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 198365591965949761, guid: 89d7dd26179344211b2f28975012d1b0,
         type: 3}
@@ -1190,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 840613987, guid: 89d7dd26179344211b2f28975012d1b0, type: 3}
       propertyPath: m_Size.y
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 198365591965949761, guid: 89d7dd26179344211b2f28975012d1b0,
         type: 3}
@@ -1318,7 +1318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 840613987, guid: 89d7dd26179344211b2f28975012d1b0, type: 3}
       propertyPath: m_Size.y
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 198365591965949761, guid: 89d7dd26179344211b2f28975012d1b0,
         type: 3}
@@ -2198,7 +2198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 840613987, guid: 89d7dd26179344211b2f28975012d1b0, type: 3}
       propertyPath: m_Size.y
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 198365591965949761, guid: 89d7dd26179344211b2f28975012d1b0,
         type: 3}
@@ -2362,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 840613987, guid: 89d7dd26179344211b2f28975012d1b0, type: 3}
       propertyPath: m_Size.y
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 198365591965949761, guid: 89d7dd26179344211b2f28975012d1b0,
         type: 3}
@@ -26580,7 +26580,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 840613987, guid: 89d7dd26179344211b2f28975012d1b0, type: 3}
       propertyPath: m_Size.y
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 198365591965949761, guid: 89d7dd26179344211b2f28975012d1b0,
         type: 3}
@@ -26765,6 +26765,7 @@ MonoBehaviour:
   placeName: Decision Room
   text: {fileID: 861739089}
   placeText: {fileID: 861739090}
+  playerInRange: 0
 --- !u!1 &1250055953485427306
 GameObject:
   m_ObjectHideFlags: 0
@@ -26948,6 +26949,7 @@ MonoBehaviour:
   placeName: Devil's Corridor
   text: {fileID: 861739089}
   placeText: {fileID: 861739090}
+  playerInRange: 0
 --- !u!4 &2498882467541160083
 Transform:
   m_ObjectHideFlags: 0
@@ -45715,6 +45717,7 @@ MonoBehaviour:
   evilSignal: {fileID: 11400000, guid: 32cfdbe074969478a9eaa4a2d3588d6b, type: 2}
   gateLogDeathSignal: {fileID: 11400000, guid: c125a008323fa4b12ab8651300ab8b2e, type: 2}
   trigerEvilItem: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
 --- !u!4 &3697680831399761144
 Transform:
   m_ObjectHideFlags: 0
@@ -61116,6 +61119,7 @@ MonoBehaviour:
   placeName: Battle Room
   text: {fileID: 861739089}
   placeText: {fileID: 861739090}
+  playerInRange: 0
 --- !u!114 &4485439971942917994
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -61518,6 +61522,7 @@ MonoBehaviour:
   placeName: Path To The Past
   text: {fileID: 861739089}
   placeText: {fileID: 861739090}
+  playerInRange: 0
 --- !u!114 &5797124575772075937
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -61753,7 +61758,7 @@ MonoBehaviour:
   dialogBox: {fileID: 2021496409}
   interactStep: 0
   dialogBoxState: 0
-  speed: 0
+  speed: 5
   chaseRadius: 3
   idleSecondBeforeSleep: 3
   triggerZone: {fileID: 5198635052725761227}
@@ -94803,7 +94808,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &8667285709259592872
 MonoBehaviour:
@@ -94991,3 +94996,4 @@ MonoBehaviour:
   placeName: Death Zone
   text: {fileID: 861739089}
   placeText: {fileID: 861739090}
+  playerInRange: 0

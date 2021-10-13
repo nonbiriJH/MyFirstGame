@@ -3,10 +3,14 @@ using TMPro;
 
 public class EndCollection : MonoBehaviour
 {
-    [SerializeField]
-    private EndingList endingList;
+
+    public ChosenEnding chosenEnding;
 
     [Header("Private Variables")]
+    [SerializeField]
+    private Endings ed1;
+    [SerializeField]
+    private CheckPointR1 checkPointR1;
     [SerializeField] private GameObject endingHolderPrefab;
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI description;
@@ -20,27 +24,28 @@ public class EndCollection : MonoBehaviour
 
     public void AddEndingsToEndingCollector()
     {
-        for (int i = 0; i < endingList.endings.Count; i++)
-        {
-            Endings endings = endingList.endings[i];
-            if (endings.attained)
-            {
-                //instantiate ending holder and cache reference
-                GameObject endingHolder = Instantiate(endingHolderPrefab);
-                //Add new ending holder to child of content
-                endingHolder.transform.SetParent(panel.transform);
-                //Setup item holder UI
-                endingHolder.GetComponent<EndingHolder>().SetupEndingHolder(endings);
-                //Without clicking, No Description
-                description.text = "";
-            }
-        }
+        DisplayEnding(checkPointR1.endBad, ed1);
+        //Without clicking, No Description
+        description.text = "";
 
         if (panel.transform.childCount == 0)
         {
             description.text = "No endings to display.";
         }
         
+    }
+
+    private void DisplayEnding(bool canDisplay, Endings endings)
+    {
+        if (canDisplay)
+        {
+            //instantiate ending holder and cache reference
+            GameObject endingHolder = Instantiate(endingHolderPrefab);
+            //Add new ending holder to child of content
+            endingHolder.transform.SetParent(panel.transform);
+            //Setup item holder UI
+            endingHolder.GetComponent<EndingHolder>().SetupEndingHolder(endings);
+        }
     }
 
     public void DeleteExistingItem()
@@ -53,11 +58,10 @@ public class EndCollection : MonoBehaviour
 
     public void OnEndingChosenSignal()
     {
-        Endings endings = endingList.chosenEnding;
-        if (endings)
+        if (chosenEnding.chosenEnding)
         {
             //Description
-            description.text = endings.description;
+            description.text = chosenEnding.chosenEnding.description;
         }
     }
 }

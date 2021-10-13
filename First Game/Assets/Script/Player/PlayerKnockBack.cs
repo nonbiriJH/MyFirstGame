@@ -14,13 +14,8 @@ public class PlayerKnockBack : GenericKnockBack
     private GameObject edPanel;
     [SerializeField]
     private float fadeSeconds;
-
     [SerializeField]
-    private string Ed1Desc;
-    [SerializeField]
-    private string Ed1Title;
-    [SerializeField]
-    private string Ed1SubTitle;
+    private Endings ed1;
 
     [Header("check point")]
     [SerializeField]
@@ -78,16 +73,16 @@ public class PlayerKnockBack : GenericKnockBack
                 if (checkPointR1.preBattleDealer)
                 {
                     GameObject EDPanel = Instantiate(edPanel, transform.position, Quaternion.identity);
-                    EDPanel.GetComponent<EndingPanel>().EndDesc = Ed1Desc;
-                    EDPanel.GetComponent<EndingPanel>().EndTitle = Ed1Title;
-                    EDPanel.GetComponent<EndingPanel>().EndSubTitle = Ed1SubTitle;
+                    EDPanel.GetComponent<EndingPanel>().EndDesc = ed1.description;
+                    EDPanel.GetComponent<EndingPanel>().EndTitle = ed1.title;
+                    EDPanel.GetComponent<EndingPanel>().EndSubTitle = ed1.subTitle;
                     checkPointR1.endBad = true;
+                    GetComponentInParent<Player>().Death();
                 }
                 else
                 {
                     StartCoroutine(DeathCo(fadeSeconds));
                 }
-                GetComponentInParent<Player>().Death();
             }
         }
        
@@ -102,6 +97,7 @@ public class PlayerKnockBack : GenericKnockBack
         {
             yield return null;
         }
+        GetComponentInParent<Player>().Death();
     }
 
     //Invulnerable Frame

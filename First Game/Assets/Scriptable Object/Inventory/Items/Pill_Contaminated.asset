@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: -5770116025114581627, guid: 03f7678cb3ed74ea1a6f893d4effe0ed,
     type: 3}
-  itemName: Pill?
+  itemName: Contaminated Pill
   itemDescription: 'Dropped from the King''s dead body. It looks contaminated and
     ominous. '
   getDescription:
   - Picked up the Pill.
-  itemNumber: 0
   canUse: 0
   useItemEvent:
     m_PersistentCalls:
@@ -27,4 +26,3 @@ MonoBehaviour:
   weapon: 0
   RBG: {x: 1, y: 0, z: 0}
   price: 0
-  shopQuantity: 0

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0b0402d2e8442c28d3ddb075b33ac9, type: 3}
   m_Name: BossEnemy
   m_EditorClassIdentifier: 
-  initialValue: 3
-  runtimeValue: 3
-  maxValue: 3
+  initialValue: 10
+  runtimeValue: 10
+  maxValue: 10

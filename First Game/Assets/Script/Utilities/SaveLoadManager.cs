@@ -96,7 +96,7 @@ public class SaveLoadManager : MonoBehaviour
 
     private void SaveSingleData(string fileName, ScriptableObject scriptableObject)
     {
-        string filePath = Application.persistentDataPath + fileName;
+        string filePath = Application.persistentDataPath + "/" + fileName;
         //Delete File if exists
         if(File.Exists(filePath)) File.Delete(filePath);
         //Create File as i.dat
@@ -105,7 +105,11 @@ public class SaveLoadManager : MonoBehaviour
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         //Put Objects to JSON
         var json = JsonUtility.ToJson(scriptableObject);
-        if (fileName == "itemQuantityLookup.dat") Debug.Log(json);
+        if (fileName == "itemQuantityLookup.dat")
+        {
+            Debug.Log(json);
+            Debug.Log(filePath);
+        }
         //Use Binary Formatter to Serialise JSON and Save to Files
         binaryFormatter.Serialize(file, json);
         file.Close();
@@ -113,7 +117,7 @@ public class SaveLoadManager : MonoBehaviour
 
     private void LoadSingleData(string fileName, ScriptableObject scriptableObject)
     {
-        string filePath = Application.persistentDataPath + fileName;
+        string filePath = Application.persistentDataPath + "/" + fileName;
         if (File.Exists(filePath))
         {
             //Open File
@@ -122,7 +126,11 @@ public class SaveLoadManager : MonoBehaviour
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             //Deserialise File + Cast File to String + Overwrite to Object
             string data = (string)binaryFormatter.Deserialize(file);
-            if (fileName == "itemQuantityLookup.dat") Debug.Log(data);
+            if (fileName == "playerHealth.dat")
+            {
+                Debug.Log(data);
+                Debug.Log(filePath);
+            }
             JsonUtility.FromJsonOverwrite(data, scriptableObject);
             file.Close();
         }
@@ -151,7 +159,7 @@ public class SaveLoadManager : MonoBehaviour
         LoadSingleData("playerMagic.dat", playerMagic);
         LoadSingleData("playerPosition.dat", playerPosition);
         LoadSingleData("globalVariables.dat", globalVariables);
-        SaveSingleData("itemQuantityLookup.dat", itemQuantityLookup);
+        LoadSingleData("itemQuantityLookup.dat", itemQuantityLookup);
         LoadSingleData("inventory.dat", inventory);
 
         SceneManager.LoadScene(globalVariables.currentScene);

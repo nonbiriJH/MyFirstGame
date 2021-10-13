@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 2451002373052964623, guid: 03f7678cb3ed74ea1a6f893d4effe0ed,
     type: 3}
-  itemName: Death Blade
+  itemName: Evil Blade
   itemDescription: An ominous blade.
   getDescription: []
-  itemNumber: 1
   canUse: 0
   useItemEvent:
     m_PersistentCalls:
@@ -38,4 +37,3 @@ MonoBehaviour:
   weapon: 1
   RBG: {x: 1, y: 0, z: 0}
   price: 9999
-  shopQuantity: 1

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3df12b3e9b9643bdab49c5db183c7c5, type: 3}
   m_Name: Shop Inventory
   m_EditorClassIdentifier: 
-  newItem: {fileID: 0}
-  chosenItem: {fileID: 11400000, guid: 5c835da2fa156416b8abccee89ab08ac, type: 2}
+  newItemName: 
+  chosenItemName: 
   itemList:
-  - {fileID: 11400000, guid: 5c835da2fa156416b8abccee89ab08ac, type: 2}
-  - {fileID: 11400000, guid: 5602771719a7a494f86ab3d79915bf3f, type: 2}
-  - {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
+  - Health Posion
+  - Magic Posion
+  - Evil Blade
   coinValue: 0

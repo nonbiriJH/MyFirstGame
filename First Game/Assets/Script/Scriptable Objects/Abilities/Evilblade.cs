@@ -14,6 +14,17 @@ public class Evilblade : GenericAbility
         if (blade != null && evilBlade == null)
         {
 
+            //Check Magic
+            if (playerMagic.runtimeValue >= magicCost)
+            {
+                playerMagic.runtimeValue -= magicCost;
+                magicUISignal.SendSignal();
+            }
+            else
+            {
+                return; //Stop if the magic not enough
+            }
+
             GameObject newWeapon = Instantiate(blade, myPosition, Quaternion.identity);
             //Add new item holder to child of content
             newWeapon.transform.SetParent(player.transform);
@@ -39,6 +50,7 @@ public class Evilblade : GenericAbility
             evilBlade.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             evilBlade.GetComponent<Rigidbody2D>().gravityScale = 0;
             evilBlade.GetComponent<Movement>().MoveObject(myFacingDirection);
+            player.GetComponent<Player>().evilMode = false;
         }
     }
 

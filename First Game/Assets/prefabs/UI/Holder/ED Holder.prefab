@@ -360,6 +360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endingImage: {fileID: 1113093769127006501}
   subtitle: {fileID: 1572878741549457355}
-  endingList: {fileID: 11400000, guid: 9c10c7e5251424fbcb5b0c0339bbd254, type: 2}
+  chosenEnding: {fileID: 11400000, guid: bd34ba9c7759e4dd7877275a0e8c54cc, type: 2}
   thisEnding: {fileID: 0}
   endingChosenSignal: {fileID: 11400000, guid: f1342e99fe2584ecaad07bd48596fc27, type: 2}

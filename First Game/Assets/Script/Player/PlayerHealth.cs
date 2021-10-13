@@ -17,6 +17,8 @@ public class PlayerHealth : GenericHealth
 
     public override void TakeDamage(float damage)
     {
+        //sync runtimeHealth with float value scriptable obj.
+        runTimeHealth = Health.runtimeValue;
         base.TakeDamage(damage);
         Health.runtimeValue = runTimeHealth;
         healthSignal.SendSignal();//send signal to reduce heart UI.

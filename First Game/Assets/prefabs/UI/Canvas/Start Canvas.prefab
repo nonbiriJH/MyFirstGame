@@ -1249,12 +1249,6 @@ MonoBehaviour:
   itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
   checkPointR0: {fileID: 11400000, guid: 30bcb9c6bb81d48ff8e51a562c661447, type: 2}
   checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
-  evilBlade: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
-  elfBow: {fileID: 11400000, guid: 21729218fa6dc403ead044c1604fb4c9, type: 2}
-  key: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
-  pill: {fileID: 11400000, guid: 976880d1cfd6c43c1a2b70109b77f460, type: 2}
-  healthPosion: {fileID: 11400000, guid: 5c835da2fa156416b8abccee89ab08ac, type: 2}
-  magicPosion: {fileID: 11400000, guid: 5602771719a7a494f86ab3d79915bf3f, type: 2}
 --- !u!1 &5349800074383976051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,7 +1919,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef01f3c48ec24bceaf9c6ff618dc5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endingList: {fileID: 11400000, guid: 9c10c7e5251424fbcb5b0c0339bbd254, type: 2}
+  chosenEnding: {fileID: 11400000, guid: bd34ba9c7759e4dd7877275a0e8c54cc, type: 2}
+  ed1: {fileID: 11400000, guid: cf94b34b73a56469aa7a7dbdfe5c242d, type: 2}
+  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
   endingHolderPrefab: {fileID: 3740262955816437281, guid: 9522b9f7c115c4d1baa3cc5852f74991,
     type: 3}
   panel: {fileID: 9058673692014032447}

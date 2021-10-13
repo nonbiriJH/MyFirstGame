@@ -8,7 +8,7 @@ public class EndingHolder : MonoBehaviour
     //Internal but need to assign from the inspector
     [SerializeField] private Image endingImage;
     [SerializeField] private TextMeshProUGUI subtitle;
-    [SerializeField] private EndingList endingList;
+    [SerializeField] private ChosenEnding chosenEnding;
     [SerializeField] private Endings thisEnding;
     [SerializeField] private SignalSender endingChosenSignal;
 
@@ -23,7 +23,7 @@ public class EndingHolder : MonoBehaviour
     //Pass UI information to inventory
     public void OnClick()
     {
-        endingList.chosenEnding = thisEnding;
+        chosenEnding.chosenEnding = thisEnding;
         endingChosenSignal.SendSignal();
     }
 }

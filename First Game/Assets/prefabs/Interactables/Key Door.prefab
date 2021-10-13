@@ -87,6 +87,7 @@ MonoBehaviour:
   requiredKey: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
   options: {fileID: 11400000, guid: 48ff0cfcf6e0f4789968e9a7d3e6a268, type: 2}
   optionPanel: {fileID: 0}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
   startDialog:
   - The door is locked.
   - There is a key hole on it

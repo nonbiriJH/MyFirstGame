@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loots:
   - loot: {fileID: 4567094495769182153, guid: 4c1ab4bef7ac04010931f5690eda3b73, type: 3}
-    probability: 25
-  - loot: {fileID: 1935633774223404243, guid: 0f71d71f247e54f14adbc5cbd7bc9299, type: 3}
-    probability: 25
+    probability: 50
   - loot: {fileID: 3514020040196203571, guid: ac983804cd31e443ba27106b8cc9017e, type: 3}
     probability: 50

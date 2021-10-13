@@ -28,6 +28,9 @@ public class CutsceneManager : MonoBehaviour
             dialogBox.GetComponent<Dialog>().dialog = openDialog;
             interactSignal.SendSignal();
             playableDirector.Play();
+            //set facing direction when timeline ends.
+            player.animator.SetFloat("MoveX", 0);
+            player.animator.SetFloat("MoveY", 1);
         }
     }
 
@@ -43,8 +46,6 @@ public class CutsceneManager : MonoBehaviour
             && !checkPointNoneRoute.Open
             && !dialogBox.activeInHierarchy)
         {
-            player.animator.SetFloat("MoveX", 0);
-            player.animator.SetFloat("MoveY", 1);
             interactSignal.SendSignal();
             checkPointNoneRoute.Open = true;
             cameramFollowTransform.position = new Vector3(-7, -2);

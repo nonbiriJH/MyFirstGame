@@ -134,9 +134,14 @@ public class Player : StateMachine
 
     public void TurnRed()
     {
-        RuntimeAnimatorController ac = GetComponent<Animator>().runtimeAnimatorController;
+        //cache xy anim para
+        float x = animator.GetFloat("MoveX");
+        float y = animator.GetFloat("MoveY");
+        RuntimeAnimatorController ac = animator.runtimeAnimatorController;
         animator.runtimeAnimatorController = null;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
         animator.runtimeAnimatorController = ac;
+        animator.SetFloat("MoveX", x);
+        animator.SetFloat("MoveY", y);
     }
 }

@@ -50,13 +50,13 @@ public class GenericDamage : MonoBehaviour
         }
     }
 
-    public void ApplyForce(Collider2D other)
+    public void ApplyForce(Collider2D other, float thrustAmp)
     {
         Rigidbody2D otherRigidBody = other.GetComponentInParent<Rigidbody2D>();
         if (otherRigidBody != null)
         {
             Vector3 difference = other.transform.position - transform.position;
-            difference = difference.normalized * thrust;
+            difference = difference.normalized * thrust * thrustAmp;
             otherRigidBody.DOMove(otherRigidBody.transform.position + difference, knockBackTime);
             //otherRigidBody.AddForce(difference, ForceMode2D.Impulse);
         }     
@@ -64,24 +64,25 @@ public class GenericDamage : MonoBehaviour
 
     public virtual void KnockEnemy(Collider2D other)
     {
-        ApplyForce(other);
+        ApplyForce(other, 1f);
         other.GetComponent<EnemyKnockBack>().Knock(knockBackTime, damage);
     }
 
     public virtual void KnockEnemyBoss(Collider2D other)
     {
+        ApplyForce(other, 0.5f);
         other.GetComponent<EnemyKnockBack>().Knock(knockBackTime, damage);
     }
 
     public virtual void KnockPlayer(Collider2D other)
     {
-        ApplyForce(other);
+        ApplyForce(other, 1f);
         other.GetComponent<PlayerKnockBack>().Knock(knockBackTime, damage);
     }
 
     public virtual void KnockNPC(Collider2D other)
     {
-        ApplyForce(other);
+        ApplyForce(other, 1f);
         NPCKnockBack knockBack = other.GetComponent<NPCKnockBack>();
         if(knockBack != null)
         {
@@ -91,7 +92,7 @@ public class GenericDamage : MonoBehaviour
 
     public virtual void KnockDealer(Collider2D other)
     {
-        ApplyForce(other);
+        ApplyForce(other, 1f);
         DealerKnockBack knockBack = other.GetComponent<DealerKnockBack>();
         if (knockBack != null)
         {

@@ -13,7 +13,7 @@ public class GenericHealth : MonoBehaviour
 
     public virtual void Start()
     {
-        runTimeHealth = Health.initialValue;
+        runTimeHealth = Health.runtimeValue;
     }
 
     public virtual void TakeDamage(float damage)

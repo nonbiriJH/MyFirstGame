@@ -131,10 +131,6 @@ public class KeyDoor : Interactables
             success = true;
             disableContentHint.SendSignal();
         }
-        else
-        {
-            return;
-        }
         //Resume Door Update
         interactStep = 2;
     }

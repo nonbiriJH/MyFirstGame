@@ -1023,6 +1023,7 @@ MonoBehaviour:
     type: 3}
   edPanel: {fileID: 0}
   fadeSeconds: 3
+  ed1: {fileID: 11400000, guid: cf94b34b73a56469aa7a7dbdfe5c242d, type: 2}
   Ed1Desc: A gullible man finally realised he was deprived by the calculated dealer.
     Surely things started from good wills but when he lost his judgment, he lost
     his stands.

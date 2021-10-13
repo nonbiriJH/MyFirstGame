@@ -8,5 +8,4 @@ public class Endings : ScriptableObject
     public string title;
     public string subTitle;
     public string description;
-    public bool attained;
 }

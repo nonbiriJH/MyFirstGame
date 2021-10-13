@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aad5c72892114ec598083c58835ffb0, type: 3}
   m_Name: R1CP
   m_EditorClassIdentifier: 
-  yellowAttack: 0
-  yellowDie: 0
-  moneyTreeAppear: 0
-  ReachMoney: 0
-  getKey: 0
-  buyBlade: 0
-  openGate: 0
+  yellowAttack: 1
+  yellowDie: 1
+  moneyTreeAppear: 1
+  ReachMoney: 1
+  getKey: 1
+  buyBlade: 1
+  openGate: 1
   gateLogEvil: 1
   gateLogKill: 1
-  innerLogEvil: 0
-  innerLogKill: 0
-  redAppear: 0
-  bossDown: 0
-  getApple: 0
-  imoutoDie: 0
-  revenge: 0
-  preBattleDealer: 0
-  endBad: 0
+  innerLogEvil: 1
+  innerLogKill: 1
+  redAppear: 1
+  bossDown: 1
+  getApple: 1
+  imoutoDie: 1
+  revenge: 1
+  preBattleDealer: 1
+  endBad: 1

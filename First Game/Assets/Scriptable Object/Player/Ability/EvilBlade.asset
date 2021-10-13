@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96aa3f882f5bf44feb56379db788c95f, type: 3}
   m_Name: EvilBlade
   m_EditorClassIdentifier: 
-  magicCost: 0
+  magicCost: 5
   duartion: 1
-  magicUISignal: {fileID: 0}
-  playerMagic: {fileID: 0}
+  magicUISignal: {fileID: 11400000, guid: 8f77bc10c61894c168b90d727db4e744, type: 2}
+  playerMagic: {fileID: 11400000, guid: 25a0bcc698adc4a198ff3f047ed45788, type: 2}
   blade: {fileID: 501568767475497174, guid: fdf61b00aa1d6421199d67d8f1bca597, type: 3}

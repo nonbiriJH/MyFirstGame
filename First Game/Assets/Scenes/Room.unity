@@ -8268,8 +8268,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 10, y: 6}
-      - {x: 10, y: -5}
-      - {x: -10, y: -5}
+      - {x: 10, y: -6}
+      - {x: -10, y: -6}
       - {x: -10, y: 6}
 --- !u!1 &5995622442350634470
 GameObject:
