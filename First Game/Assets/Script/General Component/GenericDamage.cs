@@ -65,7 +65,14 @@ public class GenericDamage : MonoBehaviour
     public virtual void KnockEnemy(Collider2D other)
     {
         ApplyForce(other, 1f);
-        other.GetComponent<EnemyKnockBack>().Knock(knockBackTime, damage);
+        if (other.GetComponent<EnemyKnockBack>() != null)
+        {
+            other.GetComponent<EnemyKnockBack>().Knock(knockBackTime, damage);
+        }
+        else if (other.GetComponent<GateLogKnockBack>() != null)
+        {
+            other.GetComponent<GateLogKnockBack>().Knock(knockBackTime, damage);
+        }
     }
 
     public virtual void KnockEnemyBoss(Collider2D other)

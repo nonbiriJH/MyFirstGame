@@ -30,7 +30,7 @@ public class EnemyKnockBack : GenericKnockBack
         }
         else
         {
-            this.GetComponentInParent<Log>().Death();
+            logRef.Death();
         }
 
     }

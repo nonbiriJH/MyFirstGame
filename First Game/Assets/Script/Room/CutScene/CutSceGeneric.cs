@@ -3,9 +3,8 @@ using UnityEngine.Playables;
 using Cinemachine;
 using System.Collections.Generic;
 
-public class CutSceGeneric : MonoBehaviour
+public class CutSceGeneric : CutSceGenBasic
 {
-    public PlayableDirector playableDirector;
     public GameObject dialogBox;
     public DialogTrigger dialogTrigger;
     public TimelineStopper timelineStopper;
@@ -25,13 +24,6 @@ public class CutSceGeneric : MonoBehaviour
     private bool roomNeedText;//record if current room need text
     private bool objectHided = false;//Hide game object in the first frame of Update
     private Vector2 deadZoneReg; //record current deadZone Setup
-    private bool startHandle;//when condition met, run once before the rest of updates
-
-    //methods to override by childs
-    public virtual bool PlayCondition()
-    {
-        return false;
-    }
 
     public virtual void StartHandle()
     {
@@ -100,6 +92,48 @@ public class CutSceGeneric : MonoBehaviour
         }
     }
 
+    //updates
+
+    public override void StartWhenConditionMet()
+    {
+        TurnOffCMDeadZone(true);//avoid camera transition from actor to gameObj.
+        TurnOffRoomText(true);//avoid room text diaplay again when transition from actor to gameObj.
+
+        //Set up dialog
+        dialogTrigger.dialogBox = dialogBox;
+        timelineStopper.dialogBox = dialogBox;
+        timelineStopper.playableDirector = playableDirector;
+        dialogInx = 0;
+        dialogTriggerCount = dialogTrigger.triggerCount;
+        SetDialog();
+
+        //actor on stage
+        SetGameObjectsActive(actors, true);
+        cm.Follow = cmFollowDuringPlay;
+
+        StartHandle();//customise start
+    }
+
+    public override void UpdateDuringPlay()
+    {
+        if (playableDirector.state == PlayState.Playing)
+        {
+            if (!objectHided)
+            {
+                SetGameObjectsActive(replacedGameObjects, false);//hide after start to allow objects' start complete
+            }
+            if (dialogTriggerCount != dialogTrigger.triggerCount)
+            {
+                SetDialog();
+            }
+            DuringPlayHandle();
+        }
+        if (!dialogBox.activeInHierarchy)
+        {
+            EndPlay();
+        }
+    }
+
     public void EndPlay()
     {
         if (playableDirector.duration == playableDirector.time)
@@ -112,69 +146,11 @@ public class CutSceGeneric : MonoBehaviour
             EndPlayHandle();
         }
 
-        else if (playableDirector.state != PlayState.Playing
+        else if (playableDirector.state != PlayState.Playing //wait to the next frame for onTriggerEnter to complete
             && roomNeedText != room.needText
             && room.playerInRange)
         {
             TurnOffRoomText(false);
         }
     }
-
-    private void StartWhenConditionMet()
-    {
-        if (!startHandle)
-        {
-            TurnOffCMDeadZone(true);//avoid camera transition from actor to gameObj.
-            TurnOffRoomText(true);//avoid room text diaplay again when transition from actor to gameObj.
-
-            //Set up dialog
-            dialogTrigger.dialogBox = dialogBox;
-            timelineStopper.dialogBox = dialogBox;
-            timelineStopper.playableDirector = playableDirector;
-            dialogInx = 0;
-            dialogTriggerCount = dialogTrigger.triggerCount;
-            SetDialog();
-
-            //actor on stage
-            SetGameObjectsActive(actors, true);
-            cm.Follow = cmFollowDuringPlay;
-
-            StartHandle();//customise start
-
-            playableDirector.Play();
-            startHandle = true;
-        }
-
-    }
-
-    //Mono
-    public virtual void Start()
-    {
-        startHandle = false;
-    }
-
-    public virtual void Update()
-    {
-        if (PlayCondition())
-        {
-            StartWhenConditionMet();
-            if (playableDirector.state == PlayState.Playing)
-            {
-                if (!objectHided)
-                {
-                    SetGameObjectsActive(replacedGameObjects, false);//hide after start to allow objects' start complete
-                }
-                if (dialogTriggerCount != dialogTrigger.triggerCount)
-                {
-                    SetDialog();
-                }
-                DuringPlayHandle();
-            }
-            if (!dialogBox.activeInHierarchy)
-            {
-                EndPlay();
-            }
-        }
-    }
-
 }

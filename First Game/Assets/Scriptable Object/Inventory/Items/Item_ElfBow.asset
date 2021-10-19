@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: e07cd81478ebe4bb49170a59fa65515b, type: 3}
   itemName: Elf Bow
-  itemDescription: A bow with magical power
-  getDescription: []
-  itemNumber: 0
+  itemDescription: A wooden bow with serveral arrows.
+  getDescription:
+  - A very basic bow.
+  - Not sure if it causes any damages
   canUse: 0
   useItemEvent:
     m_PersistentCalls:
@@ -37,4 +38,3 @@ MonoBehaviour:
   weapon: 1
   RBG: {x: 0, y: 0, z: 0}
   price: 0
-  shopQuantity: 0

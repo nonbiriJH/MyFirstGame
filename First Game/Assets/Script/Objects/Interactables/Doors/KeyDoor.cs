@@ -7,6 +7,8 @@ public class KeyDoor : Interactables
     [SerializeField]
     private CheckPointR1 checkPointR1;
     [SerializeField]
+    private CheckPointR2 checkPointR2;
+    [SerializeField]
     private SignalSender regPositionOnCheckPoint;
 
     [Header("Key Door Variable")]
@@ -37,21 +39,22 @@ public class KeyDoor : Interactables
     private void Start()
     {
         spriteRenderer = gameObject.GetComponentInParent<SpriteRenderer>();
-        if (!checkPointR1.openGate)
-        {
-            spriteRenderer.sprite = closeSprite;
-        }
-        else
+
+        if (checkPointR1.openGate || checkPointR2.openGate)
         {
             spriteRenderer.sprite = openSprite;
             //diable collider
             physicCollide.enabled = false;
         }
+        else
+        {
+            spriteRenderer.sprite = closeSprite;
+        }
     }
 
     private void Update()
     {
-        if (playerInRange && !checkPointR1.openGate)
+        if (playerInRange && !(checkPointR1.openGate || checkPointR2.openGate))
         {
             if (isKeyInteraction) WithKeyInteraction();
             else NoKeyInteraction();
@@ -116,6 +119,7 @@ public class KeyDoor : Interactables
                 //disable collider
                 physicCollide.enabled = false;
                 checkPointR1.openGate = true;
+                checkPointR2.openGate = true;
                 regPositionOnCheckPoint.SendSignal();
             }
             InteractEnd();
@@ -137,7 +141,11 @@ public class KeyDoor : Interactables
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (!checkPointR1.openGate)
+        if(checkPointR1.openGate || checkPointR2.openGate)
+        {
+            playerInRange = false;
+        }
+        else
         {
             //if not interacted, trun on playerInRage and send contentHint signal.
             base.OnTriggerEnter2D(other);
@@ -148,23 +156,19 @@ public class KeyDoor : Interactables
                 isKeyInteraction = true;
             }
         }
-        else
-        {
-            playerInRange = false;
-        }
     }
 
     public override void OnTriggerExit2D(Collider2D other)
     {
-        if (!checkPointR1.openGate)
-        {
-            base.OnTriggerExit2D(other);
-        }
-        else
+
+        if (checkPointR1.openGate || checkPointR2.openGate)
         {
             playerInRange = false;
         }
-
+        else 
+        {
+            base.OnTriggerExit2D(other);
+        }
     }
 
 }

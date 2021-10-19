@@ -14,20 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemMappings:
   - itemName: Evil Blade
-    itemNumber: 1
-    shopQuantity: 0
-  - itemName: Elf Bow
     itemNumber: 0
+    shopQuantity: 1
+  - itemName: Elf Bow
+    itemNumber: 2
     shopQuantity: 0
   - itemName: Dungeon Key
-    itemNumber: 0
+    itemNumber: 1
     shopQuantity: 0
   - itemName: Contaminated Pill
     itemNumber: 0
     shopQuantity: 0
   - itemName: Health Posion
-    itemNumber: 2
-    shopQuantity: 8
+    itemNumber: 0
+    shopQuantity: 10
   - itemName: Magic Posion
     itemNumber: 0
     shopQuantity: 10
+  - itemName: Pure Drop
+    itemNumber: 2
+    shopQuantity: 0

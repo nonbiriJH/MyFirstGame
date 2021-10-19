@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8864351132475690158}
   - component: {fileID: 7280551286760155659}
   - component: {fileID: 7717653260704761129}
-  - component: {fileID: 6576267302595086987}
+  - component: {fileID: 3436552073812093787}
   m_Layer: 6
   m_Name: TriggerZone
   m_TagString: enemy
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: {fileID: 11400000, guid: 14d33d296022f4e8f8254f1375083a63, type: 2}
   runTimeHealth: 0
---- !u!114 &6576267302595086987
+--- !u!114 &3436552073812093787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6990177976317146434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361ec0d9a11974dfa88a0b1d103ed284, type: 3}
+  m_Script: {fileID: 11500000, guid: 82cbcd73f6ce74be69a71d8af167d54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8878775565211585756
@@ -318,7 +318,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 1.2}
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!50 &8878775565211585753
 Rigidbody2D:
@@ -390,14 +390,42 @@ MonoBehaviour:
   chaseRadius: 5
   idleSecondBeforeSleep: 1
   triggerZone: {fileID: 6990177976317146434}
+  guidePath:
+  - {x: 15, y: 30}
+  - {x: 7, y: 30}
+  - {x: 7, y: 46}
+  trigerEvilItem: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
+  evilSignal: {fileID: 11400000, guid: cf16b43310b5c483da4cc4191d71c40e, type: 2}
+  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  checkPointR2: {fileID: 11400000, guid: db6d6266b4628432c964321527d67540, type: 2}
+  regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
+    type: 2}
   canInteract: 1
   openDialog:
   - Hi traveller, it is the forbidden place ahead.
-  - You shall not pass  here.
+  - You shall not pass here.
+  evilDialog:
+  - Hi traveller, it is the forbidden place ahead.
+  - You shall not...
+  - Ahhh I sense a strong hatred from you.
+  - Brothers wake up and get this devil down.
+  giveWayDialog:
+  - Hi traveller, it is the forbidden place ahead.
+  - You shall not pass here.
+  - The yellow gate keeper asked you to get here?
+  - I see you come to help us.
+  - Please follow me. I will bring you to the garden of sacret tree.
+  - The tree will produce spring of pure drops. But it is witherd for years though.
+  - You may help to revive it?
+  openGateDialog:
+  - I will open the gate for you.
+  - Just a moment
   deadAnimation: {fileID: 3693403685717114414, guid: f571e8ceb6e3545a89bc8ecad397b2d8,
     type: 3}
   lootTable: {fileID: 11400000, guid: d81b5151c83b043b7b93d1fd68f198e1, type: 2}
   DeathSignal: {fileID: 11400000, guid: 7669374c5693042eab49d60310534dce, type: 2}
+  gateLogDeathSignal: {fileID: 11400000, guid: bdaad7cce505f4131b745fa3ad979864, type: 2}
   isDying: 0
   target: {fileID: 0}
   myRigidBody: {fileID: 0}
@@ -405,15 +433,3 @@ MonoBehaviour:
   attacking: 0
   nextDialog: []
   isEvil: 0
-  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
-  regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
-    type: 2}
-  evilDialog:
-  - Hi traveller, it is the forbidden place ahead.
-  - You shall not...
-  - Ahhh I sense a strong hatred from you.
-  - Brothers wake up and get this devil down.
-  evilSignal: {fileID: 11400000, guid: cf16b43310b5c483da4cc4191d71c40e, type: 2}
-  gateLogDeathSignal: {fileID: 11400000, guid: bdaad7cce505f4131b745fa3ad979864, type: 2}
-  trigerEvilItem: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
-  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}

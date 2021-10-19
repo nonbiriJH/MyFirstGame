@@ -304,11 +304,16 @@ MonoBehaviour:
   interactStep: 0
   dialogBoxState: 0
   checkPointRoute1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  checkPointR2: {fileID: 11400000, guid: db6d6266b4628432c964321527d67540, type: 2}
   regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
     type: 2}
   speed: 3
   staySecond: 2
   hitZone: {fileID: 41957305}
+  playerInventory: {fileID: 0}
+  arrow: {fileID: 0}
+  pureDrop: {fileID: 0}
+  itemQuantityLookup: {fileID: 0}
   patrolPath:
   - {x: 12, y: 2}
   - {x: 12, y: 5}
@@ -326,19 +331,25 @@ MonoBehaviour:
   normalStartDialog:
   - Hi village man, I am here protecting trees.
   - I hate those who axes on trees. They are innocent lifes.
-  - Do you have good will on them? I am looking for someone joining me to protect
-    those lifes.
+  - The tree king was so upset about this and thinking of revenge.
+  - The king's anger has contaminated many lives including my brother.
+  - They become aggressive and greedy. Everything is getting worse
+  - I am looking for someone joining me to prevent something even worse happening
+  - Your sister also become weaker recently? This might due to the same course.
+  - I saw you as a kind person. Maybe you could give me a help?
   normalYesDialog:
   - Thank you kind young man.
-  - So here is what you could help.
-  - You must have met my brother in your village.
-  - He has been killing trees for money and he is now instigate people to join him.
-  - He is now too dangerous and should be removed.
-  - Unfortunately I can not leave here as there are tree lifes I need to look after.
-  - You will have my bow and arrow and help me to get rid of that devil for me.
+  - Thank you kind young man.
+  - I have collected some pure drops which could purify things.
+  - But it is now enought to purify the king.
+  - You will head west to the cave to find more of it.
+  - As the gate keeper, I have the key and will open the gate for you.
+  - You will also have my bow and arrow in case dangers happen.
   normalNoDialog:
   - Please come back if you change your mind.
   - I sense you are a kind man that a good companion of trees
+  afterYesDialog:
+  - Good luck young man. I have faith on you.
   deathDialog:
   - I will not forgive you!
   patrolTarget: {x: 0, y: 0}
@@ -347,5 +358,4 @@ MonoBehaviour:
   playerInWarningZone: 0
   playerInDangerZone: 0
   attacking: 0
-  isSignState: 0
   endDialog: []

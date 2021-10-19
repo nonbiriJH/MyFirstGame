@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a35e72df01564719a0fd78aec8ce600, type: 3}
+  m_Name: PureDrop
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: -587189176020860410, guid: 03f7678cb3ed74ea1a6f893d4effe0ed,
+    type: 3}
+  itemName: Pure Drop
+  itemDescription: A tube of pure blue liquid. There is faint halo around it. Is
+    that just an illusion.
+  getDescription:
+  - Get a tube of pure drop.
+  canUse: 0
+  useItemEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  weapon: 0
+  RBG: {x: 0, y: 0, z: 0}
+  price: 0

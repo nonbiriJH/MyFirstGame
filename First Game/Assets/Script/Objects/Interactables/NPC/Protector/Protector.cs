@@ -4,12 +4,20 @@ public class Protector: Interactables
 {
     [Header("Checkpoints")]
     public CheckPointR1 checkPointRoute1;
+    public CheckPointR2 checkPointR2;
     public SignalSender regPositionOnCheckPoint;
 
     [Header("Protector Variables")]
     public float speed;
     public float staySecond;
     public GameObject hitZone;
+
+    [Header("ItemVariables")]
+    public Inventory playerInventory;
+    public Item arrow;
+    public Item pureDrop;
+    public Item key;
+    public ItemQuantityLookup itemQuantityLookup;
 
     [Header("Route Variables")]
     public Vector2[] patrolPath;
@@ -25,6 +33,7 @@ public class Protector: Interactables
     public string[] normalStartDialog;
     public string[] normalYesDialog;
     public string[] normalNoDialog;
+    public string[] afterYesDialog;
     public string[] deathDialog;
 
     [Header("Utility No need to assign")]
@@ -34,8 +43,12 @@ public class Protector: Interactables
     public bool playerInWarningZone;
     public bool playerInDangerZone;
     public bool attacking;
-    public bool isSignState;
     public string[] endDialog;
+    public bool answerYes;
+    public bool helpYellow;
+    public bool gotArrow;
+    public bool gotDrop;
+    public bool gotKey;
 
     public ProtectorState currentState;
     private Rigidbody2D myRigidBody;
@@ -52,6 +65,7 @@ public class Protector: Interactables
         currentState.ExitState();
         currentState = newState;
         newState.BeginState();
+        Debug.Log(currentState);
         StartCoroutine(newState.BeginStateCo());
     }
 
@@ -114,9 +128,7 @@ public class Protector: Interactables
     {
         if (index == 0)
         {
-            isSignState = true;
-            endDialog = normalYesDialog;
-            disableContentHint.SendSignal();
+            ChooseYes();
         }
         else
         {
@@ -124,6 +136,13 @@ public class Protector: Interactables
         }
         //Resume interaction step
         interactStep = 2;
+    }
+
+    private void ChooseYes()
+    {
+        endDialog = normalYesDialog;
+        disableContentHint.SendSignal();
+        answerYes = true;
     }
 
     //Starts
@@ -135,10 +154,10 @@ public class Protector: Interactables
     private void StartBegin()
     {
         patrolTarget = patrolPath[0];
-        isSignState = false;
         attacking = false;
         Initialize(new ProtectorIdelState(this));
     }
+
     private void StartR1YellowDie()
     {
         this.gameObject.SetActive(false);

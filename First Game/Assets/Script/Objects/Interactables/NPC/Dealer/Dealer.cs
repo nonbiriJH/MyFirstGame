@@ -67,7 +67,6 @@ public class Dealer : Interactables
     {
         currentState.ExitState();
         currentState = newState;
-        Debug.Log(currentState);
         newState.BeginState();
         StartCoroutine(newState.BeginStateCo());
     }

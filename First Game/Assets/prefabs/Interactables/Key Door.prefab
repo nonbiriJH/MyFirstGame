@@ -78,6 +78,7 @@ MonoBehaviour:
   interactStep: 0
   dialogBoxState: 0
   checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  checkPointR2: {fileID: 11400000, guid: db6d6266b4628432c964321527d67540, type: 2}
   regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
     type: 2}
   closeSprite: {fileID: -3867660293848198189, guid: 1d2ba1529974845909aebe12912a5d68,

@@ -14,7 +14,7 @@ public class DangerZone : Interactables
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("PlayerAttack") && !protector.isSignState)
+        if (other.gameObject.CompareTag("PlayerAttack") && !protector.checkPointR2.helpYellow)
         {
             if (protector.gameObject.activeInHierarchy && !protector.attacking)
             {

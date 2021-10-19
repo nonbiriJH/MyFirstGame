@@ -8,7 +8,7 @@ public class WarningZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && nextGapSecondCountDown <= 0 && !protector.isSignState)
+        if (other.gameObject.CompareTag("Player") && nextGapSecondCountDown <= 0 && !protector.checkPointR2.helpYellow)
         {
             protector.playerInWarningZone = true;
             nextGapSecondCountDown = nextGapSecond;

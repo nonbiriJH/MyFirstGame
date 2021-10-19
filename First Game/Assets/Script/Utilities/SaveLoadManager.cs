@@ -26,6 +26,8 @@ public class SaveLoadManager : MonoBehaviour
     private CheckPointNoneRoute checkPointR0;
     [SerializeField]
     private CheckPointR1 checkPointR1;
+    [SerializeField]
+    private CheckPointR2 checkPointR2;
 
     private void ResetCheckPoint(ScriptableObject checkpoint)
     {
@@ -56,7 +58,7 @@ public class SaveLoadManager : MonoBehaviour
     private void ResetInventory()
     {
         //create new item list
-        List<string> newItemNameList = new List<string> { "Evil Blade", "Elf Bow", "Dungeon Key", "Contaminated Pill", "Health Posion", "Magic Posion" };
+        List<string> newItemNameList = new List<string> { "Evil Blade", "Elf Bow", "Dungeon Key", "Contaminated Pill", "Health Posion", "Magic Posion", "Pure Drop" };
         inventory.itemList = newItemNameList;
         inventory.newItemName = null;
         inventory.chosenItemName = null;
@@ -70,7 +72,8 @@ public class SaveLoadManager : MonoBehaviour
             , new ItemMapping("Dungeon Key", 0, 0)
             , new ItemMapping("Contaminated Pill", 0, 0)
             , new ItemMapping("Health Posion", 0, 10)
-            , new ItemMapping("Magic Posion", 0, 10) };
+            , new ItemMapping("Magic Posion", 0, 10)
+            , new ItemMapping("Pure Drop", 0, 0) };
         itemQuantityLookup.itemMappings = newItemQuantityLookup;
     }
 
@@ -79,6 +82,7 @@ public class SaveLoadManager : MonoBehaviour
         //Check Point uncheck
         ResetCheckPoint(checkPointR0);
         ResetCheckPoint(checkPointR1);
+        ResetCheckPoint(checkPointR2);
         //Float values
         ResetFloatValue(playerHealth, 6, 6, 6);
         ResetFloatValue(playerMagic, 10, 10, 20);
@@ -141,6 +145,7 @@ public class SaveLoadManager : MonoBehaviour
     {
         SaveSingleData("checkPointR0.dat", checkPointR0);
         SaveSingleData("checkPointR1.dat", checkPointR1);
+        SaveSingleData("checkPointR1.dat", checkPointR2);
 
         SaveSingleData("playerHealth.dat", playerHealth);
         SaveSingleData("playerMagic.dat", playerMagic);
@@ -154,6 +159,7 @@ public class SaveLoadManager : MonoBehaviour
     {
         LoadSingleData("checkPointR0.dat", checkPointR0);
         LoadSingleData("checkPointR1.dat", checkPointR1);
+        LoadSingleData("checkPointR1.dat", checkPointR2);
 
         LoadSingleData("playerHealth.dat", playerHealth);
         LoadSingleData("playerMagic.dat", playerMagic);

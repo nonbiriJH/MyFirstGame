@@ -38,7 +38,11 @@ public class ProtectorWalkState : ProtectorState
 
         if (!protector.attacking)
         {
-            if (protector.playerInRange || protector.playerInWarningZone || protector.playerInDangerZone)
+            if (protector.playerInRange && protector.checkPointR2.helpYellow)
+            {
+                protector.ChangeState(new ProtectorSignState(protector));
+            }
+            else if (protector.playerInRange || protector.playerInWarningZone || protector.playerInDangerZone)
             {
                 protector.ChangeState(new ProtectorInteractState(protector));
             }

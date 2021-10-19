@@ -17,9 +17,8 @@ MonoBehaviour:
   itemName: Dungeon Key
   itemDescription: The key is rusty and ancient.
   getDescription:
-  - Found a key in the chest!
+  - Got a key!
   - I wonder where the door is.
-  itemNumber: 0
   canUse: 0
   useItemEvent:
     m_PersistentCalls:
@@ -27,4 +26,3 @@ MonoBehaviour:
   weapon: 0
   RBG: {x: 0, y: 0, z: 0}
   price: 0
-  shopQuantity: 0

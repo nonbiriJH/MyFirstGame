@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ProtectorInteractState : ProtectorState
 {
+    private bool hasGot;
 
     //Constructor, Link a StateMachine instance with a Player instance
     public ProtectorInteractState(Protector protector) : base(protector)
@@ -34,7 +35,39 @@ public class ProtectorInteractState : ProtectorState
         }
         else if (protector.playerInRange)
         {
-            NormalInteract();
+            if (!protector.helpYellow)
+            {
+                NormalInteract();
+            }
+            else if(!protector.gotArrow)
+            {
+                hasGot = GiveItem(protector.arrow);
+                if (hasGot)
+                {
+                    protector.gotArrow = true;
+                }
+            }
+            else if (!protector.gotDrop)
+            {
+                hasGot = GiveItem(protector.pureDrop);
+                if (hasGot)
+                {
+                    protector.gotDrop = true;
+                }
+            }
+            else if (!protector.gotKey)
+            {
+                hasGot = GiveItem(protector.key);
+                if (hasGot)
+                {
+                    protector.gotKey = true;
+                    protector.checkPointR2.helpYellow = true;
+                }
+            }
+            else
+            {
+                protector.ChangeState(new ProtectorWalkState(protector));
+            }
         }
         else
         {
@@ -70,8 +103,6 @@ public class ProtectorInteractState : ProtectorState
             protector.ChangeState(new ProtectorWalkState(protector));
         }
     }
-   
-
 
     private void NormalInteract()
     {
@@ -98,14 +129,40 @@ public class ProtectorInteractState : ProtectorState
         else if (protector.interactStep == 3)
         {
             protector.InteractEnd();
-            if (protector.isSignState)
-            {
-                protector.ChangeState(new ProtectorSignState(protector));
-            }
-            else
+            if (!protector.answerYes)
             {
                 protector.ChangeState(new ProtectorWalkState(protector));
             }
+            else
+            {
+                protector.helpYellow = true;
+            }
+        }
+    }
+
+    private bool GiveItem(Item item)
+    {
+        if (protector.interactStep == 0)
+        {
+            protector.playerInventory.newItemName = item.itemName;//add item to Inventory
+            protector.interactSignal.SendSignal();//in interact state again
+            protector.interactStep += 1;//add step
+            return false;
+        }
+        else if (protector.interactStep == 1)
+        {
+            protector.StartDialog(item.getDescription);
+            protector.AddStep();
+            return false;
+        }
+        else if (protector.interactStep == 2)
+        {
+            protector.InteractEnd();
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
