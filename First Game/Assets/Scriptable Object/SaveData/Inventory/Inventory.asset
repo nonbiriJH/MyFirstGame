@@ -15,11 +15,12 @@ MonoBehaviour:
   newItemName: 
   chosenItemName: 
   itemList:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Elf Bow
+  - Health Posion
+  - Pure Drop
+  - Contaminated Pill
+  - Magic Posion
+  - Dungeon Key
+  - Evil Blade
+  - Saint Arrow
   coinValue: 0

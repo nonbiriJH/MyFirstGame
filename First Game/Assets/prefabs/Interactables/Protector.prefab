@@ -310,10 +310,11 @@ MonoBehaviour:
   speed: 3
   staySecond: 2
   hitZone: {fileID: 41957305}
-  playerInventory: {fileID: 0}
-  arrow: {fileID: 0}
-  pureDrop: {fileID: 0}
-  itemQuantityLookup: {fileID: 0}
+  playerInventory: {fileID: 11400000, guid: 8bd16d402a9d4479eaeae766f853431c, type: 2}
+  arrow: {fileID: 11400000, guid: 21729218fa6dc403ead044c1604fb4c9, type: 2}
+  pureDrop: {fileID: 11400000, guid: 7fd516be407614a3296bd0eefa9bb717, type: 2}
+  key: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77, type: 2}
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
   patrolPath:
   - {x: 12, y: 2}
   - {x: 12, y: 5}
@@ -339,7 +340,6 @@ MonoBehaviour:
   - I saw you as a kind person. Maybe you could give me a help?
   normalYesDialog:
   - Thank you kind young man.
-  - Thank you kind young man.
   - I have collected some pure drops which could purify things.
   - But it is now enought to purify the king.
   - You will head west to the cave to find more of it.
@@ -359,3 +359,8 @@ MonoBehaviour:
   playerInDangerZone: 0
   attacking: 0
   endDialog: []
+  answerYes: 0
+  helpYellow: 0
+  gotArrow: 0
+  gotDrop: 0
+  gotKey: 0

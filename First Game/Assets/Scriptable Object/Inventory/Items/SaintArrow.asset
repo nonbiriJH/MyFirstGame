@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a35e72df01564719a0fd78aec8ce600, type: 3}
+  m_Name: SaintArrow
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300000, guid: 22d31e10a69f94a23a0a37351c2c3124, type: 3}
+  itemName: Saint Arrow
+  itemDescription: The elf arrow purified with the drop from the sait tree.
+  getDescription: []
+  canUse: 0
+  useItemEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  weapon: 1
+  RBG: {x: 0, y: 0, z: 1}
+  price: 0

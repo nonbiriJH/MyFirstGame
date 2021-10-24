@@ -17,7 +17,7 @@ MonoBehaviour:
     itemNumber: 0
     shopQuantity: 1
   - itemName: Elf Bow
-    itemNumber: 2
+    itemNumber: 1
     shopQuantity: 0
   - itemName: Dungeon Key
     itemNumber: 1
@@ -32,5 +32,8 @@ MonoBehaviour:
     itemNumber: 0
     shopQuantity: 10
   - itemName: Pure Drop
-    itemNumber: 2
+    itemNumber: 1
+    shopQuantity: 0
+  - itemName: Saint Arrow
+    itemNumber: 0
     shopQuantity: 0

@@ -36,6 +36,7 @@ public class LogGuideState : GateLogState
             gateLog.UpdateWalkAnimParameter(Vector2.down);//change walk ani
             enableTrigger(true);
             gateLog.checkPointR2.gateLogR1Move = true;
+            gateLog.regPositionOnCheckPoint.SendSignal();
             gateLog.ChangeState(new GateLogIdleState(gateLog));
         }
     }

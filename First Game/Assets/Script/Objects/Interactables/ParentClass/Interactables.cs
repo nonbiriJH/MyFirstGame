@@ -62,6 +62,22 @@ public class Interactables : MonoBehaviour
         }
     }
 
+    public void SimpleDialog (string[] dialog)
+    {
+        if(interactStep == 0)
+        {
+            if (playerInRange && Input.GetButtonDown("Attack"))
+            {
+                StartDialog(dialog);
+            }
+            AddStep();
+        }
+        if(interactStep == 1)
+        {
+            InteractEnd();
+        }
+    }
+
     public virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)

@@ -48,8 +48,7 @@ public class PlayerWalkState : State
         //Finally if no input, keep walking
         else
         {
-            player.animator.SetFloat("MoveX", inputDirection.x);
-            player.animator.SetFloat("MoveY", inputDirection.y);
+            player.SetFacingAnim(inputDirection);
         }
     }
 

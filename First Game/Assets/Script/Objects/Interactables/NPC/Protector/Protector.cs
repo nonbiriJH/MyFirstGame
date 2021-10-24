@@ -29,7 +29,6 @@ public class Protector: Interactables
     public Options options;
     public string[] warnZoneDialog;
     public string[] dangerZoneDialog;
-    public string[] logKilledDialog;
     public string[] normalStartDialog;
     public string[] normalYesDialog;
     public string[] normalNoDialog;

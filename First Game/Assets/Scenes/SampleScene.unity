@@ -1914,24 +1914,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8160600656737301479, guid: e9fc53d890a2f4bbebc18f04a3e5c1b5,
         type: 3}
-      propertyPath: key
-      value: 
-      objectReference: {fileID: 11400000, guid: d1bb7e4bd09684e02acf501d5a8c1b77,
-        type: 2}
-    - target: {fileID: 8160600656737301479, guid: e9fc53d890a2f4bbebc18f04a3e5c1b5,
-        type: 3}
-      propertyPath: arrow
-      value: 
-      objectReference: {fileID: 11400000, guid: 21729218fa6dc403ead044c1604fb4c9,
-        type: 2}
-    - target: {fileID: 8160600656737301479, guid: e9fc53d890a2f4bbebc18f04a3e5c1b5,
-        type: 3}
-      propertyPath: pureDrop
-      value: 
-      objectReference: {fileID: 11400000, guid: 7fd516be407614a3296bd0eefa9bb717,
-        type: 2}
-    - target: {fileID: 8160600656737301479, guid: e9fc53d890a2f4bbebc18f04a3e5c1b5,
-        type: 3}
       propertyPath: dialogBox
       value: 
       objectReference: {fileID: 1080432565}
@@ -1942,21 +1924,9 @@ PrefabInstance:
       objectReference: {fileID: 1104682423}
     - target: {fileID: 8160600656737301479, guid: e9fc53d890a2f4bbebc18f04a3e5c1b5,
         type: 3}
-      propertyPath: playerInventory
-      value: 
-      objectReference: {fileID: 11400000, guid: 8bd16d402a9d4479eaeae766f853431c,
-        type: 2}
-    - target: {fileID: 8160600656737301479, guid: e9fc53d890a2f4bbebc18f04a3e5c1b5,
-        type: 3}
       propertyPath: targetWhenAttack
       value: 
       objectReference: {fileID: 1808780536}
-    - target: {fileID: 8160600656737301479, guid: e9fc53d890a2f4bbebc18f04a3e5c1b5,
-        type: 3}
-      propertyPath: itemQuantityLookup
-      value: 
-      objectReference: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e,
-        type: 2}
     - target: {fileID: 9163393516458008120, guid: e9fc53d890a2f4bbebc18f04a3e5c1b5,
         type: 3}
       propertyPath: m_RootOrder

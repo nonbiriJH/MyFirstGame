@@ -86,6 +86,12 @@ public class Player : StateMachine
         myRigidBody.velocity = direction * speed;
     }
 
+    public void SetFacingAnim (Vector2 dirction)
+    {
+        animator.SetFloat("MoveX", dirction.x);
+        animator.SetFloat("MoveY", dirction.y);
+    }
+
     public void AddItemToInventory()
     {
         //get item pic

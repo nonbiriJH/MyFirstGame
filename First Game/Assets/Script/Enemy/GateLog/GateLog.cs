@@ -147,6 +147,7 @@ public class GateLog : Interactables
             if (checkPointR2.gateLogR1Move && !checkPointR2.gateLogR2Talked)
             {
                 checkPointR2.gateLogR2Talked = true;//trigger DR2_OpenGate
+                regPositionOnCheckPoint.SendSignal();
             }
             if (checkPointR2.helpYellow && !checkPointR2.gateLogR1Move)
             {

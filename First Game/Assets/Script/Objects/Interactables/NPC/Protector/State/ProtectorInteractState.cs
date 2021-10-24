@@ -136,6 +136,7 @@ public class ProtectorInteractState : ProtectorState
             else
             {
                 protector.helpYellow = true;
+                protector.regPositionOnCheckPoint.SendSignal();//reg player position for load
             }
         }
     }

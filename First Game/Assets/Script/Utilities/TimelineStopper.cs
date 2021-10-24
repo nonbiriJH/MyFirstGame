@@ -21,9 +21,10 @@ public class TimelineStopper : MonoBehaviour
     void Update()
     {
         //resume until dialog done
-        if (!dialogBox.activeInHierarchy)
+        if (!dialogBox.activeInHierarchy && playableDirector.playableGraph.GetRootPlayable(0).GetSpeed() == 0)
         {
             playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(1);
+            Debug.Log("in");
         }
     }
 
