@@ -49,15 +49,24 @@ public class SaintTree : Interactables
 
     private void Update()
     {
-        if (checkPointR2.gateLogR2LOpenGate && !checkPointR2.getPureArrow) Interact();
-        else SimpleDialog(normalDialog);
+        if (checkPointR2.gateLogR2LOpenGate && !checkPointR2.getPureArrow)
+        {
+            if (playerInRange)
+            {
+                Interact();
+            }
+        }
+        else
+        {
+            SimpleDialog(normalDialog);
+        }
     }
 
     private void Interact()
     {
         if (interactStep == 0)
         {
-            if (playerInRange && Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Attack"))
             {
                 StartDialog(startDialog);
             }

@@ -14,6 +14,8 @@ public class DR2_CloseLDoor : CutSceGeneric
     private SignalSender interactSignal;
     [SerializeField]
     private Player player;
+    [SerializeField]
+    private SignalSender positionReg;
     private bool inInteract = false;
 
     private void Start()
@@ -48,8 +50,10 @@ public class DR2_CloseLDoor : CutSceGeneric
 
     public override void EndPlayHandle()
     {
+        player.SetFacingAnim(Vector2.down);
         SyncObjectPosition(actors[0], replacedGameObjects[0]);
         checkPointR2.r2LGateClose= true;
+        positionReg.SendSignal();
         interactSignal.SendSignal();
     }
 

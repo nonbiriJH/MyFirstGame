@@ -1972,6 +1972,10 @@ PlayableDirector:
     value: {fileID: 875196581}
   - key: {fileID: 5031653365050802353, guid: 7d1190f68368f4a46b1ff2f3b210c417, type: 2}
     value: {fileID: 1080679199}
+  - key: {fileID: -3538394431567992870, guid: 7d1190f68368f4a46b1ff2f3b210c417, type: 2}
+    value: {fileID: 1481151384}
+  - key: {fileID: 7769607707538181299, guid: 7d1190f68368f4a46b1ff2f3b210c417, type: 2}
+    value: {fileID: 1233090699}
   m_ExposedReferences:
     m_References: []
 --- !u!61 &628751264
@@ -1987,7 +1991,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 7, y: 48.8}
+  m_Offset: {x: 7, y: 48.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2044,6 +2048,7 @@ MonoBehaviour:
   - Good luck.
   interactSignal: {fileID: 11400000, guid: b35786ed691a54ee788db112d06c77d8, type: 2}
   player: {fileID: 398517955}
+  positionReg: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f, type: 2}
 --- !u!1001 &629872938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3208,6 +3213,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 264064832722876024}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1233090699 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5914047928079543364, guid: 372b1d278ba7d411494ac83cb7ba4bbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2086277596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383549182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,7 +3391,7 @@ SpriteRenderer:
   m_SortingLayerID: 1579001835
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3867660293848198189, guid: 1d2ba1529974845909aebe12912a5d68,
+  m_Sprite: {fileID: -8819360367373086180, guid: 1d2ba1529974845909aebe12912a5d68,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3432,7 +3443,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481151381}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -18645,8 +18656,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8691273028082105000, guid: 377d3a8e56b7b48fb8106d30ca427729,
         type: 3}
+      propertyPath: closedGateDialog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691273028082105000, guid: 377d3a8e56b7b48fb8106d30ca427729,
+        type: 3}
       propertyPath: openedGateDialog.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691273028082105000, guid: 377d3a8e56b7b48fb8106d30ca427729,
+        type: 3}
+      propertyPath: closedGateDialog.Array.data[0]
+      value: Talk to my bro and he should let you see the king.
       objectReference: {fileID: 0}
     - target: {fileID: 8691273028082105000, guid: 377d3a8e56b7b48fb8106d30ca427729,
         type: 3}
@@ -60864,31 +60885,14 @@ MonoBehaviour:
   chaseRadius: 0
   idleSecondBeforeSleep: 0
   triggerZone: {fileID: 3046759180203125083}
-  guidePath: []
-  initPos: {x: 0, y: 0}
-  openGatePosition: {x: 0, y: 0}
-  trigerEvilItem: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
-  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
-  evilSignal: {fileID: 11400000, guid: 32cfdbe074969478a9eaa4a2d3588d6b, type: 2}
-  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
-  checkPointR2: {fileID: 0}
-  regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
-    type: 2}
+  isGateLog: 0
   canInteract: 1
   openDialog:
   - How did you get here human?
-  evilDialog:
-  - ...
-  - You are too dangerous to be here.
-  - You need to be removed
-  giveWayDialog: []
-  openGateDialog: []
-  openedGateDialog: []
   deadAnimation: {fileID: 3693403685717114414, guid: f571e8ceb6e3545a89bc8ecad397b2d8,
     type: 3}
   lootTable: {fileID: 11400000, guid: d81b5151c83b043b7b93d1fd68f198e1, type: 2}
   DeathSignal: {fileID: 11400000, guid: 48bacc54f2d53402e94fc61bf723c563, type: 2}
-  gateLogDeathSignal: {fileID: 11400000, guid: c125a008323fa4b12ab8651300ab8b2e, type: 2}
   isDying: 0
   target: {fileID: 0}
   myRigidBody: {fileID: 0}
@@ -60896,6 +60900,17 @@ MonoBehaviour:
   attacking: 0
   nextDialog: []
   isEvil: 0
+  checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  checkPointR2: {fileID: 0}
+  regPositionOnCheckPoint: {fileID: 11400000, guid: 32a75cfd2e9934502b81a9a35db6396f,
+    type: 2}
+  gateLogDeathSignal: {fileID: 11400000, guid: c125a008323fa4b12ab8651300ab8b2e, type: 2}
+  evilDialog:
+  - ...
+  - You need to die here.
+  itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
+  trigerEvilItem: {fileID: 11400000, guid: 07774eff83023458d96e9ce35b2b0b31, type: 2}
+  evilSignal: {fileID: 11400000, guid: 32cfdbe074969478a9eaa4a2d3588d6b, type: 2}
 --- !u!4 &3697680831399761144
 Transform:
   m_ObjectHideFlags: 0
@@ -100226,12 +100241,12 @@ PrefabInstance:
     - target: {fileID: 112609901464911697, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.47
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 112609901464911697, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.4
+      value: 49.5
       objectReference: {fileID: 0}
     - target: {fileID: 112609901464911697, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca,
         type: 3}
@@ -100246,17 +100261,17 @@ PrefabInstance:
     - target: {fileID: 112609901464911697, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 112609901464911697, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 112609901464911697, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 112609901464911697, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca,
         type: 3}
@@ -100277,11 +100292,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LogAct
-      objectReference: {fileID: 0}
-    - target: {fileID: 112609901464911698, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f7f70a5d82a94568bc3ddb2f1c89dca, type: 3}

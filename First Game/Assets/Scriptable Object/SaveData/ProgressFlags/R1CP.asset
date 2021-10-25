@@ -21,8 +21,8 @@ MonoBehaviour:
   openGate: 0
   gateLogEvil: 0
   gateLogKill: 0
-  innerLogEvil: 0
-  innerLogKill: 0
+  innerLogEvil: 1
+  innerLogKill: 1
   redAppear: 0
   bossDown: 0
   getApple: 0

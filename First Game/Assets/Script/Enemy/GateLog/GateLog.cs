@@ -35,6 +35,8 @@ public class GateLog : Interactables
     private string[] openGateDialog;
     [SerializeField]
     private string[] openedGateDialog;
+    [SerializeField]
+    private string[] closedGateDialog;
 
     [Header("Log Death")]
     public GameObject deadAnimation;
@@ -116,9 +118,13 @@ public class GateLog : Interactables
         {
             nextDialog = openGateDialog;
         }
-        else if (checkPointR2.gateLogR2LOpenGate)
+        else if (checkPointR2.gateLogR2LOpenGate && !checkPointR2.getPureArrow)
         {
             nextDialog = openedGateDialog;
+        }
+        else if (checkPointR2.r2LGateClose)
+        {
+            nextDialog = closedGateDialog;
         }
         else
         {
@@ -143,6 +149,7 @@ public class GateLog : Interactables
             if (itemQuantityLookup.GetItemNumber(trigerEvilItem.itemName) >= 1)
             {
                 EvilBehaviour();
+                ChangeState(new GateLogIdleState(this));
             }
             if (checkPointR2.gateLogR1Move && !checkPointR2.gateLogR2Talked)
             {
@@ -252,6 +259,10 @@ public class GateLog : Interactables
         {
             BecomeEvil();
             evilSignal.SendSignal();//signal to room to turn registered log to evil
+        }
+        else if (checkPointR2.r2LGateClose)
+        {
+            transform.position = initPos;
         }
         else if (checkPointR2.gateLogR2LOpenGate)
         {

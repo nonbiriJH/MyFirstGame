@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemMappings:
   - itemName: Evil Blade
-    itemNumber: 0
+    itemNumber: 1
     shopQuantity: 1
   - itemName: Elf Bow
     itemNumber: 1

@@ -17,8 +17,8 @@ MonoBehaviour:
   gateLogR1Move: 1
   gateLogR2Talked: 1
   gateLogR2LOpenGate: 1
-  getPureArrow: 0
-  r2LGateClose: 0
+  getPureArrow: 1
+  r2LGateClose: 1
   gateLogR2Move: 0
   bossPurified: 0
   getApple: 0

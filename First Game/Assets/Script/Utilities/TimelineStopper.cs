@@ -24,7 +24,6 @@ public class TimelineStopper : MonoBehaviour
         if (!dialogBox.activeInHierarchy && playableDirector.playableGraph.GetRootPlayable(0).GetSpeed() == 0)
         {
             playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(1);
-            Debug.Log("in");
         }
     }
 

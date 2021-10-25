@@ -26,7 +26,6 @@ public class DR2_OpenLGate : CutSceGenBasic
     {
         interactSignal.SendSignal();
         dialogBox.GetComponent<Dialog>().dialog = dialog;
-        Debug.Log(dialogBox.GetComponent<Dialog>().dialog);
     }
 
     public override void UpdateDuringPlay()

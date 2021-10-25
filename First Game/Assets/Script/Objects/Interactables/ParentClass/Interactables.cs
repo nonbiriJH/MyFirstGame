@@ -64,17 +64,17 @@ public class Interactables : MonoBehaviour
 
     public void SimpleDialog (string[] dialog)
     {
-        if(interactStep == 0)
+        if (playerInRange)
         {
-            if (playerInRange && Input.GetButtonDown("Attack"))
+            if (interactStep == 0)
             {
-                StartDialog(dialog);
+                if (Input.GetButtonDown("Attack")) StartDialog(dialog);
+                AddStep();
             }
-            AddStep();
-        }
-        if(interactStep == 1)
-        {
-            InteractEnd();
+            if (interactStep == 1)
+            {
+                InteractEnd();
+            }
         }
     }
 
