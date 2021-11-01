@@ -78,7 +78,15 @@ public class GenericDamage : MonoBehaviour
     public virtual void KnockEnemyBoss(Collider2D other)
     {
         ApplyForce(other, 0.5f);
-        other.GetComponent<EnemyKnockBack>().Knock(knockBackTime, damage);
+        EnemyBossKnockBack enemyBossKnockBack = other.GetComponent<EnemyBossKnockBack>();
+        if (this.gameObject.CompareTag("SaintArrow"))
+        {
+            enemyBossKnockBack.Purify(knockBackTime);
+        }
+        else
+        {
+            enemyBossKnockBack.Knock(knockBackTime, damage);
+        }
     }
 
     public virtual void KnockPlayer(Collider2D other)

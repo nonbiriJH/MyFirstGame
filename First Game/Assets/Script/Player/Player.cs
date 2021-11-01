@@ -80,10 +80,10 @@ public class Player : StateMachine
     }
 
 
-    public void MoveObject(Vector2 direction)
+    public void MoveObject(Vector2 direction, float speedRatio = 1f)
     {
         direction.Normalize();
-        myRigidBody.velocity = direction * speed;
+        myRigidBody.velocity = direction * speed * speedRatio;
     }
 
     public void SetFacingAnim (Vector2 dirction)

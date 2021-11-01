@@ -285,6 +285,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4940622881439144548, guid: b572b8f38389c477980438494fe984cb,
+        type: 3}
+      propertyPath: ed2
+      value: 
+      objectReference: {fileID: 11400000, guid: 31823ff57cee34b84ae19ebce6ac23c6,
+        type: 2}
+    - target: {fileID: 4940622881439144548, guid: b572b8f38389c477980438494fe984cb,
+        type: 3}
+      propertyPath: checkPointR2
+      value: 
+      objectReference: {fileID: 11400000, guid: db6d6266b4628432c964321527d67540,
+        type: 2}
     - target: {fileID: 5349800073601250777, guid: b572b8f38389c477980438494fe984cb,
         type: 3}
       propertyPath: m_Name

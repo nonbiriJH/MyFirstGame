@@ -3,7 +3,8 @@ using UnityEngine;
 public class EnemyKnockBack : GenericKnockBack
 {
     private Rigidbody2D myRigidBody;
-    private Log logRef;
+    [HideInInspector]
+    public Log logRef;
 
     private void Start()
     {
@@ -32,6 +33,5 @@ public class EnemyKnockBack : GenericKnockBack
         {
             logRef.Death();
         }
-
     }
 }

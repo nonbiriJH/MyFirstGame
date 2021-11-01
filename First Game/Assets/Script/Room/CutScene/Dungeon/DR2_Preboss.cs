@@ -31,7 +31,7 @@ public class DR2_Preboss : CutSceGenBasic
             gameObject.SetActive(false);
 
         }
-        else if(other.gameObject.CompareTag("Player") && !played)
+        else if(other.gameObject.CompareTag("Player") && !played && checkPointR1.innerLogKill)
         {
             startPlay = true;
         }

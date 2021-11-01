@@ -11,13 +11,10 @@ public class CheckPointR2 : ScriptableObject
     public bool gateLogR2LOpenGate;
     public bool getPureArrow;
     public bool r2LGateClose;
+    public bool gateLogR2RTalked;
     public bool gateLogR2Move;
+    public bool boosPrePurified;
+    public bool bossPurifyStart;
     public bool bossPurified;
-    public bool getApple;
-    public bool imoutoRecover;
-    public bool attackedByRed;
-    public bool findOnii;
-    public bool killRed;
-    public bool lastCustScene;
     public bool endGood;
 }

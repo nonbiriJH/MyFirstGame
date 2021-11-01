@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemMappings:
   - itemName: Evil Blade
-    itemNumber: 1
+    itemNumber: 0
     shopQuantity: 1
   - itemName: Elf Bow
-    itemNumber: 1
+    itemNumber: 0
     shopQuantity: 0
   - itemName: Dungeon Key
-    itemNumber: 1
+    itemNumber: 0
     shopQuantity: 0
   - itemName: Contaminated Pill
     itemNumber: 0
@@ -32,8 +32,11 @@ MonoBehaviour:
     itemNumber: 0
     shopQuantity: 10
   - itemName: Pure Drop
-    itemNumber: 1
+    itemNumber: 0
     shopQuantity: 0
   - itemName: Saint Arrow
+    itemNumber: 556
+    shopQuantity: 0
+  - itemName: The Heal
     itemNumber: 0
     shopQuantity: 0

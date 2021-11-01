@@ -3693,6 +3693,7 @@ MonoBehaviour:
   itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
   checkPointR0: {fileID: 11400000, guid: 30bcb9c6bb81d48ff8e51a562c661447, type: 2}
   checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  checkPointR2: {fileID: 11400000, guid: db6d6266b4628432c964321527d67540, type: 2}
 --- !u!1 &9041617121459831830
 GameObject:
   m_ObjectHideFlags: 0

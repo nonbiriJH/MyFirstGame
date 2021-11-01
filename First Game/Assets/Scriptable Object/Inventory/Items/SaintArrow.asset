@@ -19,7 +19,20 @@ MonoBehaviour:
   canUse: 0
   useItemEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -1854023916765079716, guid: 248465290776f46dba2ae28ae0601e9f,
+          type: 3}
+        m_TargetAssemblyTypeName: AbilityChange, Assembly-CSharp
+        m_MethodName: ChangeAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   weapon: 1
   RBG: {x: 0, y: 0, z: 1}
   price: 0

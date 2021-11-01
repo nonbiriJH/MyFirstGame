@@ -19,7 +19,10 @@ MonoBehaviour:
   gateLogR2LOpenGate: 1
   getPureArrow: 1
   r2LGateClose: 1
-  gateLogR2Move: 0
+  gateLogR2RTalked: 1
+  gateLogR2Move: 1
+  boosPrePurified: 1
+  bossPurifyStart: 1
   bossPurified: 0
   getApple: 0
   imoutoRecover: 0

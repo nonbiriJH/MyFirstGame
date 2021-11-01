@@ -10,7 +10,11 @@ public class EndCollection : MonoBehaviour
     [SerializeField]
     private Endings ed1;
     [SerializeField]
+    private Endings ed2;
+    [SerializeField]
     private CheckPointR1 checkPointR1;
+    [SerializeField]
+    private CheckPointR2 checkPointR2;
     [SerializeField] private GameObject endingHolderPrefab;
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI description;
@@ -25,6 +29,7 @@ public class EndCollection : MonoBehaviour
     public void AddEndingsToEndingCollector()
     {
         DisplayEnding(checkPointR1.endBad, ed1);
+        DisplayEnding(checkPointR2.endGood, ed2);
         //Without clicking, No Description
         description.text = "";
 
