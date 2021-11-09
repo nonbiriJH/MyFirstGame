@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2fc34909a1b646dbac53edc49c59536, type: 3}
   m_Name: R0CP
   m_EditorClassIdentifier: 
-  Open: 1
-  OutHome: 1
+  Open: 0
+  OutHome: 0

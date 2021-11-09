@@ -12,7 +12,7 @@ public class EnemyKnockBack : GenericKnockBack
         logRef = this.gameObject.GetComponentInParent<Log>();
     }
 
-    public void Knock(float knockBackTime, float damage)
+    public virtual void Knock(float knockBackTime, float damage)
     {
         EnemyHealth myHealth = this.gameObject.GetComponent<EnemyHealth>();
 

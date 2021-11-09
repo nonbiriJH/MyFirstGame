@@ -18,10 +18,12 @@ public class Dialog : MonoBehaviour
 
     private bool finishedType = true;
     private int sentenceIndex;
+    private SoundManager soundManager;
 
     //when the game object is activated
     void OnEnable()
     {
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
         finishedType = true;
         sentenceIndex = 0;
         dialogFinish = false;//when dialogbox enabled dialog starts
@@ -64,11 +66,18 @@ public class Dialog : MonoBehaviour
 
     private IEnumerator TypeCo(string sentence)
     {
+        int counter = 0;
         finishedType = false;
         textDisplay.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             textDisplay.text += letter;
+            counter -= 1;
+            if (counter < 0)
+            {
+                soundManager.PlaySound("Type");
+                counter = 3;
+            }
             yield return new WaitForSeconds(typeSpeed);
         }
         finishedType = true;

@@ -29,7 +29,7 @@ public class LogBossPureState : LogState
             Vector2 currentPosition = new Vector2(log.transform.position.x, log.transform.position.y);
             float distDiff = Vector2.Distance(currentPosition, targetPosition);
             
-            if (distDiff > 0.01f)
+            if (distDiff > 0.1f)
             {
                 Vector2 tempPosition = targetPosition - currentPosition;
                 log.MoveObject(tempPosition);

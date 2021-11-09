@@ -26,6 +26,7 @@ public class PlayerAttackState : State
         else
         {
             player.animator.SetBool("Attack", true);
+            player.soundManager.PlaySound("Attack");
             yield return new WaitForSeconds(.12f);//delay for finishing animation
             player.animator.SetBool("Attack", false); //do not enter attack again;
         }

@@ -35,8 +35,8 @@ MonoBehaviour:
     itemNumber: 0
     shopQuantity: 0
   - itemName: Saint Arrow
-    itemNumber: 556
+    itemNumber: 1
     shopQuantity: 0
   - itemName: The Heal
-    itemNumber: 0
+    itemNumber: 1
     shopQuantity: 0

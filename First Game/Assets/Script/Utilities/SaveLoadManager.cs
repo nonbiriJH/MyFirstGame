@@ -71,8 +71,8 @@ public class SaveLoadManager : MonoBehaviour
             , new ItemMapping("Elf Bow", 0, 0)
             , new ItemMapping("Dungeon Key", 0, 0)
             , new ItemMapping("Contaminated Pill", 0, 0)
-            , new ItemMapping("Health Posion", 0, 10)
-            , new ItemMapping("Magic Posion", 0, 10)
+            , new ItemMapping("Health Posion", 0, 99)
+            , new ItemMapping("Magic Posion", 0, 99)
             , new ItemMapping("Pure Drop", 0, 0)
             , new ItemMapping("Saint Arrow", 0, 0)
             , new ItemMapping("The Heal", 0, 0) };

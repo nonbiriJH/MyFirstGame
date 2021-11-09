@@ -36,6 +36,8 @@ public class Player : StateMachine
     public PlayerInteractState interactState;
     public PlayerAbilityState abilityState;
 
+    [HideInInspector]
+    public SoundManager soundManager;
 
     public void RegPosition()
     {
@@ -48,6 +50,7 @@ public class Player : StateMachine
         transform.position = initialPosition.runtimeValue;
         currentAbility.currentAbility = null;
         inventory.newItemName = null;
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
 
         if (checkPointR1.revenge)
         {
@@ -123,7 +126,6 @@ public class Player : StateMachine
             }
         }
     }
-
 
     // for interact signal to work
     public void ChangeToInteractState()

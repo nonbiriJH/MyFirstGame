@@ -64,7 +64,6 @@ public class Protector: Interactables
         currentState.ExitState();
         currentState = newState;
         newState.BeginState();
-        Debug.Log(currentState);
         StartCoroutine(newState.BeginStateCo());
     }
 

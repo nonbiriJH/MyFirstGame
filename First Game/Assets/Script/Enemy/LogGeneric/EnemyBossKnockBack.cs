@@ -28,6 +28,15 @@ public class EnemyBossKnockBack : EnemyKnockBack
         
     }
 
+    public override void Knock(float knockBackTime, float damage)
+    {
+        if (!checkPointR2.getPureArrow)
+        {
+            base.Knock(knockBackTime, damage);
+        }
+
+    }
+
     private void Update()
     {
         if(checkPointR2.boosPrePurified && !checkPointR2.bossPurifyStart)

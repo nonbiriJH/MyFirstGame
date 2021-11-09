@@ -94,7 +94,6 @@ public class DangerZone : Interactables
         {
             Vector2 birthCentroid = new Vector2(-10, 5);
             Vector2 birthRelativePostion = new Vector2(-3 * Mathf.Cos(36 * Mathf.Deg2Rad * i), 3 * Mathf.Sin(36 * Mathf.Deg2Rad * i));
-            Debug.Log(birthCentroid + birthRelativePostion);
             Instantiate(moneyLog, birthCentroid + birthRelativePostion, Quaternion.identity);
         }
     }

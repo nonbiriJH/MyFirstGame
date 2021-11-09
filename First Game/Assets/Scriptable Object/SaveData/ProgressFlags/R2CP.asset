@@ -12,22 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6d10837ee46467aa8efa7019e8ca5d, type: 3}
   m_Name: R2CP
   m_EditorClassIdentifier: 
-  helpYellow: 1
-  openGate: 1
-  gateLogR1Move: 1
-  gateLogR2Talked: 1
-  gateLogR2LOpenGate: 1
-  getPureArrow: 1
-  r2LGateClose: 1
-  gateLogR2RTalked: 1
-  gateLogR2Move: 1
-  boosPrePurified: 1
-  bossPurifyStart: 1
+  helpYellow: 0
+  openGate: 0
+  gateLogR1Move: 0
+  gateLogR2Talked: 0
+  gateLogR2LOpenGate: 0
+  getPureArrow: 0
+  r2LGateClose: 0
+  gateLogR2RTalked: 0
+  gateLogR2Move: 0
+  boosPrePurified: 0
+  bossPurifyStart: 0
   bossPurified: 0
-  getApple: 0
-  imoutoRecover: 0
-  attackedByRed: 0
-  findOnii: 0
-  killRed: 0
-  lastCustScene: 0
   endGood: 0

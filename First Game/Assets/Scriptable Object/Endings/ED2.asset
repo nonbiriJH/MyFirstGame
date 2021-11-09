@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa213bb28ee0144a685f4b342b4df3a2, type: 3}
   m_Name: ED2
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: d6791046c3de8496c92add070c20aad5, type: 3}
+  sprite: {fileID: 21300000, guid: 1b586574b6eb9457581a691f364da83e, type: 3}
   title: END - 2
   subTitle: Survived
   description: A young man only intended to save his sister, but he seemed achived

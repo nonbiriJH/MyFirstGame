@@ -274,8 +274,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 96
-  m_fontSizeBase: 96
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1249,6 +1249,7 @@ MonoBehaviour:
   itemQuantityLookup: {fileID: 11400000, guid: 862021ad416a64f9d9214d01db89823e, type: 2}
   checkPointR0: {fileID: 11400000, guid: 30bcb9c6bb81d48ff8e51a562c661447, type: 2}
   checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  checkPointR2: {fileID: 0}
 --- !u!1 &5349800074383976051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,7 +1922,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chosenEnding: {fileID: 11400000, guid: bd34ba9c7759e4dd7877275a0e8c54cc, type: 2}
   ed1: {fileID: 11400000, guid: cf94b34b73a56469aa7a7dbdfe5c242d, type: 2}
+  ed2: {fileID: 0}
   checkPointR1: {fileID: 11400000, guid: 85fc12e8b26da42e0854c98e62bf5b7e, type: 2}
+  checkPointR2: {fileID: 0}
   endingHolderPrefab: {fileID: 3740262955816437281, guid: 9522b9f7c115c4d1baa3cc5852f74991,
     type: 3}
   panel: {fileID: 9058673692014032447}
