@@ -14,7 +14,6 @@ public class StateMachine: MonoBehaviour
     {
         currentState.ExitState();
         currentState = newState;
-        Debug.Log(currentState);
         newState.BeginState();
         StartCoroutine(newState.BeginStateCo());
     }

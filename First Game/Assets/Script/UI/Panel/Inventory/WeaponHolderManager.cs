@@ -10,7 +10,12 @@ public class WeaponHolderManager : MonoBehaviour
     [SerializeField] private Image itemImage;
     [SerializeField] private Item itemHeld;
     [SerializeField] private ItemList itemMaster;
+    private SoundManager soundManager;
 
+    private void Start()
+    {
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
+    }
     //Pass Item information to Item Holder UI
     public void SetupItemHolder(Item newItem)
     {
@@ -28,6 +33,7 @@ public class WeaponHolderManager : MonoBehaviour
     //Pass UI information to inventory
     public void OnClick()
     {
+        soundManager.PlaySound("Click");
         inventory.chosenItemName = itemHeld.itemName;
         //Apply item effects
         itemMaster.GetItem(inventory.chosenItemName).useItem();

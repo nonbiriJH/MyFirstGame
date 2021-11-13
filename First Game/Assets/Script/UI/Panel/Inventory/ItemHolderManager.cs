@@ -13,7 +13,12 @@ public class ItemHolderManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemNumber;
     [SerializeField] private Item itemHeld;
     [SerializeField] private ItemQuantityLookup itemQuantityLookup;
+    private SoundManager soundManager;
 
+    private void Start()
+    {
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
+    }
     //Pass Item information to Item Holder UI
     public void SetupItemHolder(Item newItem)
     {
@@ -32,6 +37,7 @@ public class ItemHolderManager : MonoBehaviour
     //Pass UI information to inventory
     public void OnClick()
     {
+        soundManager.PlaySound("Click");
         inventory.chosenItemName = itemHeld.itemName;
         itemChosenSignal.SendSignal();
     }

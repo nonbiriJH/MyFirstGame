@@ -15,6 +15,12 @@ public class ShopManager : MonoBehaviour
     [SerializeField] GameObject buyButton;
     [SerializeField] private ItemQuantityLookup itemQuantityLookup;
     [SerializeField] private ItemList itemMaster;
+    private SoundManager soundManager;
+
+    private void Start()
+    {
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
+    }
 
     public void OnEnable()
     {
@@ -73,6 +79,7 @@ public class ShopManager : MonoBehaviour
 
     public void OnClickBuyItem()
     {
+        soundManager.PlaySound("Click");
         Item item = itemMaster.GetItem(shopInventory.chosenItemName);
         if (playerInventory.coinValue >= item.price
             && itemQuantityLookup.GetItemShopQuantity(shopInventory.chosenItemName) >= 1)
@@ -92,6 +99,7 @@ public class ShopManager : MonoBehaviour
 
     public void OnExitButton()
     {
+        soundManager.PlaySound("Click");
         this.gameObject.SetActive(false);
     }
 }

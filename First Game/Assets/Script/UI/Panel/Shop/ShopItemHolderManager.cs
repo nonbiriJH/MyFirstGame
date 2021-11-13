@@ -13,6 +13,12 @@ public class ShopItemHolderManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemPrice;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private Item itemHeld;
+    private SoundManager soundManager;
+
+    private void Start()
+    {
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
+    }
 
     //Pass Item information to Item Holder UI
     public void SetupItemHolder(Item newItem)
@@ -29,6 +35,7 @@ public class ShopItemHolderManager : MonoBehaviour
     //Pass UI information to inventory
     public void OnClick()
     {
+        soundManager.PlaySound("Click");
         shopInventory.chosenItemName = itemHeld.itemName;
         buySignal.SendSignal();
     }

@@ -16,11 +16,13 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] GameObject useButton;
     [SerializeField] private ItemQuantityLookup itemQuantityLookup;
     [SerializeField] private ItemList itemMaster;
+    private SoundManager soundManager;
 
     private bool WeaponLastEnabled;
 
     public void OnEnable()
     {
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
         DeleteExistingItem();
         AddItemToInventoryUI();
         if (WeaponLastEnabled) OnWeaponChange();
@@ -94,6 +96,7 @@ public class InventoryManager : MonoBehaviour
 
     public void OnClickUseItem()
     {
+        soundManager.PlaySound("Click");
         //Apply item effects
         itemMaster.GetItem(inventory.chosenItemName).useItem();
         //If the chosen item is quantity 0, deselect item.

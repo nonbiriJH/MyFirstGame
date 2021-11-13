@@ -28,6 +28,12 @@ public class SaveLoadManager : MonoBehaviour
     private CheckPointR1 checkPointR1;
     [SerializeField]
     private CheckPointR2 checkPointR2;
+    private SoundManager soundManager;
+
+    private void Start()
+    {
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
+    }
 
     private void ResetCheckPoint(ScriptableObject checkpoint)
     {
@@ -81,6 +87,7 @@ public class SaveLoadManager : MonoBehaviour
 
     public void GameStart()
     {
+        soundManager.PlaySound("Click");
         //Check Point uncheck
         ResetCheckPoint(checkPointR0);
         if (checkPointR1.endBad)
@@ -124,11 +131,6 @@ public class SaveLoadManager : MonoBehaviour
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         //Put Objects to JSON
         var json = JsonUtility.ToJson(scriptableObject);
-        if (fileName == "itemQuantityLookup.dat")
-        {
-            Debug.Log(json);
-            Debug.Log(filePath);
-        }
         //Use Binary Formatter to Serialise JSON and Save to Files
         binaryFormatter.Serialize(file, json);
         file.Close();
@@ -145,11 +147,6 @@ public class SaveLoadManager : MonoBehaviour
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             //Deserialise File + Cast File to String + Overwrite to Object
             string data = (string)binaryFormatter.Deserialize(file);
-            if (fileName == "playerHealth.dat")
-            {
-                Debug.Log(data);
-                Debug.Log(filePath);
-            }
             JsonUtility.FromJsonOverwrite(data, scriptableObject);
             file.Close();
         }
@@ -158,6 +155,8 @@ public class SaveLoadManager : MonoBehaviour
 
     public void SaveData()
     {
+        soundManager.PlaySound("Click");
+
         SaveSingleData("checkPointR0.dat", checkPointR0);
         SaveSingleData("checkPointR1.dat", checkPointR1);
         SaveSingleData("checkPointR2.dat", checkPointR2);
@@ -172,6 +171,8 @@ public class SaveLoadManager : MonoBehaviour
 
     public void LoadData()
     {
+        soundManager.PlaySound("Click");
+
         LoadSingleData("checkPointR0.dat", checkPointR0);
         LoadSingleData("checkPointR1.dat", checkPointR1);
         LoadSingleData("checkPointR2.dat", checkPointR2);
