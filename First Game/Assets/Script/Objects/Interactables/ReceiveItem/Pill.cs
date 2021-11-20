@@ -14,10 +14,12 @@ public class Pill : Interactables
     private CheckPointR1 checkPointR1;
     [SerializeField]
     private SignalSender regPositionOnCheckPoint;
+    private BGMManager bGMManager;
 
     private void Start()
     {
         dialogBox = Resources.FindObjectsOfTypeAll<Dialog>()[0].gameObject;
+        bGMManager = (BGMManager)FindObjectOfType(typeof(BGMManager));
     }
 
     void Update()
@@ -63,6 +65,7 @@ public class Pill : Interactables
             {
                 if (!dialogBox.activeInHierarchy)
                 {
+                    bGMManager.ChangeBGM("Dungeon");
                     interactSignal.SendSignal();//end interact state
                     Destroy(this.gameObject);//remove game object
                 }

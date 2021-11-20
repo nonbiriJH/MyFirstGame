@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BGMManager : MonoBehaviour
 {
@@ -19,9 +20,17 @@ public class BGMManager : MonoBehaviour
         isFadingIn = false;
         isFadingOut = false;
         fadeSpeed = 0.1f;
+        if(SceneManager.GetActiveScene().name == "Dungeon")
+        {
+            PlayBGM("Dungeon");
+        }
+        else if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            PlayBGM("OverWorld");
+        }
     }
 
-    public void PlayBGM(string BGMName)
+    private void PlayBGM(string BGMName)
     {
         foreach (Sound sound in sounds.soundList)
         {
@@ -37,48 +46,64 @@ public class BGMManager : MonoBehaviour
         StartCoroutine(FadeOut());
     }
 
+    public void ChangeBGM(string BGMName)
+    {
+        //stop previous BGM
+        if(audioSource.clip != null)
+        {
+            if(audioSource.clip.name != BGMName)
+            {
+                StopBGM();
+            }
+            else
+            {
+                return;
+            }
+        }
+        PlayBGM(BGMName);
+    }
+
     private IEnumerator FadeIn(AudioClip audioClip, float maxVolume)
     {
-        if (!isFadingOut)
-        {
-            audioSource.volume = 0;
-            audioSource.clip = audioClip;
-            audioSource.Play();
-            isFadingIn = true;
-            while (audioSource.volume < maxVolume)
-            {
-                audioSource.volume += fadeSpeed;
-                yield return new WaitForSeconds(.1f);
-            }
-            isFadingIn = false;
-        }
-        else
+        //wait fading out finish
+        while (isFadingOut)
         {
             yield return new WaitForSeconds(.5f);
         }
+        //start fading in
+        audioSource.volume = 0;
+        audioSource.clip = audioClip;
+        audioSource.Play();
+        isFadingIn = true;
+        while (audioSource.volume < maxVolume)
+        {
+            audioSource.volume += fadeSpeed;
+            yield return new WaitForSeconds(.1f);
+        }
+        isFadingIn = false;
+
     }
 
     private IEnumerator FadeOut()
     {
         if (audioSource != null)
         {
-            if (!isFadingIn)
-            {
-                isFadingOut = true;
-                while (audioSource.volume > 0)
-                {
-                    audioSource.volume -= fadeSpeed;
-                    yield return new WaitForSeconds(.1f);
-                }
-                audioSource.Stop();
-                audioSource.clip = null;
-                isFadingOut = false;
-            }
-            else
+            //wait fading in finish
+            while (isFadingIn)
             {
                 yield return new WaitForSeconds(.5f);
             }
+            //start fade out
+            isFadingOut = true;
+            while (audioSource.volume > 0)
+            {
+                audioSource.volume -= fadeSpeed;
+                yield return new WaitForSeconds(.1f);
+            }
+            audioSource.Stop();
+            audioSource.clip = null;
+            isFadingOut = false;
         }
-        
     }
+
 }

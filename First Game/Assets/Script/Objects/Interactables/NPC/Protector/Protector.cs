@@ -52,6 +52,8 @@ public class Protector: Interactables
     public ProtectorState currentState;
     private Rigidbody2D myRigidBody;
     private int patrolTargetIndex = 0;
+    [HideInInspector]
+    public BGMManager bGMManager;
 
     public void Initialize(ProtectorState startingState)
     {
@@ -148,6 +150,7 @@ public class Protector: Interactables
     {
         myRigidBody = this.gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
+        bGMManager = (BGMManager)FindObjectOfType(typeof(BGMManager));
     }
     private void StartBegin()
     {
@@ -163,6 +166,7 @@ public class Protector: Interactables
     private void StartR1YellowAttack()
     {
         attacking = true;
+        bGMManager.ChangeBGM("BossBattle");
         Initialize(new ProtectorAttackState(this));
     }
 

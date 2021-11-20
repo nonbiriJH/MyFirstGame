@@ -21,6 +21,8 @@ public class R2ED : CutSceGeneric
     private string[] eatAppleDialog;
     [SerializeField]
     private string[] finishDialog;
+    [SerializeField]
+    private SignalSender interactSignal;
 
     private void Start()
     {
@@ -37,6 +39,7 @@ public class R2ED : CutSceGeneric
 
     public override void StartWhenConditionMet()
     {
+        interactSignal.SendSignal();
         base.StartWhenConditionMet();
     }
 

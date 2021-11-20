@@ -56,6 +56,8 @@ public class Dealer : Interactables
     public DealerState currentState;
     private Rigidbody2D myRigidBody;
     private int patrolTargetIndex = 0;
+    [HideInInspector]
+    public BGMManager bGMManager;
 
     public void Initialize(DealerState startingState)
     {
@@ -179,6 +181,8 @@ public class Dealer : Interactables
     {
         //change to attack state
         //triggerred by cutscene script
+        bGMManager = (BGMManager)FindObjectOfType(typeof(BGMManager));
+        bGMManager.ChangeBGM("BossBattle");
         ChangeState(new DealerAttackState(this));
         transform.position = preR1EndBattlePosition;
     }

@@ -16,3 +16,9 @@ MonoBehaviour:
   - soundName: BossBattle
     audioClip: {fileID: 8300000, guid: 3619cff05ad714ed8a729a8702a81ace, type: 3}
     volume: 0.458
+  - soundName: OverWorld
+    audioClip: {fileID: 8300000, guid: e3580b0ac7c8e4d90a7358b711bb2274, type: 3}
+    volume: 0.458
+  - soundName: Dungeon
+    audioClip: {fileID: 8300000, guid: d5bfa3c82016a4b5e9221b540348a8cd, type: 3}
+    volume: 0.458

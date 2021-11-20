@@ -18,6 +18,7 @@ public class ProtectorDeathState : ProtectorState
         protector.interactSignal.SendSignal();
 
         protector.animator.SetBool("Death", true);
+        protector.bGMManager.StopBGM();
         yield return new WaitForSeconds(2);//wait for animation finishes
         animFinish = true;
 
@@ -47,6 +48,7 @@ public class ProtectorDeathState : ProtectorState
 
             protector.checkPointRoute1.yellowDie = true;//reg check point
             protector.regPositionOnCheckPoint.SendSignal();//reg player position for load
+            protector.bGMManager.ChangeBGM("OverWorld");
 
             protector.gameObject.SetActive(false);
         }

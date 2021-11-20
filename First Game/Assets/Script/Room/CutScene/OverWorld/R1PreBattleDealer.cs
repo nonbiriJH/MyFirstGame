@@ -18,7 +18,6 @@ public class R1PreBattleDealer : CutSceGeneric
         if(checkPointR1.revenge && !checkPointR1.preBattleDealer)
         {
             playerInRage = true;
-            Debug.Log(PlayCondition());
         }
     }
 
@@ -30,11 +29,7 @@ public class R1PreBattleDealer : CutSceGeneric
 
     public override void EndPlayHandle()
     {
-        Debug.Log(actors[0].transform.position);
-        Debug.Log(replacedGameObjects[0].transform.position);
         SyncObjectPosition(actors[0], replacedGameObjects[0]);
-        Debug.Log(actors[0].transform.position);
-        Debug.Log(replacedGameObjects[0].transform.position);
         dealer.R1EndStart();
         checkPointR1.preBattleDealer = true;
         interactSignal.SendSignal();

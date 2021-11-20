@@ -38,6 +38,8 @@ public class Player : StateMachine
 
     [HideInInspector]
     public SoundManager soundManager;
+    [HideInInspector]
+    public BGMManager bGMManager;
 
     public void RegPosition()
     {
@@ -51,6 +53,7 @@ public class Player : StateMachine
         currentAbility.currentAbility = null;
         inventory.newItemName = null;
         soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
+        bGMManager = (BGMManager)FindObjectOfType(typeof(BGMManager));
 
         if (checkPointR1.revenge)
         {

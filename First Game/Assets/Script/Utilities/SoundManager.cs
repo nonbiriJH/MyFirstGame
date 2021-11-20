@@ -6,7 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField]
     private Sounds sounds;
-    private AudioSource audioSource;
+    [HideInInspector]
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()

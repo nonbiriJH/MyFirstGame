@@ -42,6 +42,7 @@ public class ProtectorIdelState : ProtectorState
         }
         else
         {
+            protector.bGMManager.ChangeBGM("BossBattle");
             protector.ChangeState(new ProtectorAttackState(protector));
         }
     }

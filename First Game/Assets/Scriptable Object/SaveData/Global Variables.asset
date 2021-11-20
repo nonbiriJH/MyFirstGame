@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9b41337dbd24c4998f3e5cb7679816, type: 3}
   m_Name: Global Variables
   m_EditorClassIdentifier: 
-  currentScene: SampleScene
+  currentScene: Room

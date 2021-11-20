@@ -31,6 +31,7 @@ public class PlayerKnockBack : GenericKnockBack
 
     private Collider2D triggerColider;
     private Rigidbody2D myRigidBody;
+    private Player playerReference;
     private bool isDead = false;
 
     //Cinemachine Impulse Source
@@ -41,6 +42,7 @@ public class PlayerKnockBack : GenericKnockBack
         triggerColider = this.GetComponent<BoxCollider2D>();
         myRigidBody = this.GetComponentInParent<Rigidbody2D>();
         source = this.gameObject.GetComponent<CinemachineImpulseSource>();
+        playerReference = this.GetComponentInParent<Player>();
     }
 
     //Being Knocked Back
@@ -48,7 +50,6 @@ public class PlayerKnockBack : GenericKnockBack
     {
         if (!isDead)
         {
-            Player playerReference = this.GetComponentInParent<Player>();
             playerReference.staggerState.knockBackTime = knockBackTime;
             playerReference.ChangeState(playerReference.staggerState);
 
@@ -72,6 +73,8 @@ public class PlayerKnockBack : GenericKnockBack
                 isDead = true;
                 if (checkPointR1.preBattleDealer)
                 {
+
+                    playerReference.bGMManager.StopBGM();
                     GameObject EDPanel = Instantiate(edPanel, transform.position, Quaternion.identity);
                     EDPanel.GetComponent<EndingPanel>().EndDesc = ed1.description;
                     EDPanel.GetComponent<EndingPanel>().EndTitle = ed1.title;

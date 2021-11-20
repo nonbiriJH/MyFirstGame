@@ -53,6 +53,8 @@ public class GateLog : Interactables
     public bool attacking;//change between attack and idle when !canInteract.
     public string[] nextDialog;
     public bool isEvil;
+    [HideInInspector]
+    public BGMManager bGMManager;
 
     //StateMachine methods
     public void Initialize(GateLogState startingState)
@@ -207,6 +209,10 @@ public class GateLog : Interactables
         idleSecondBeforeSleep = 9999;//never sleep
         chaseRadius = 25;
 
+        //bgm
+        bGMManager = (BGMManager)FindObjectOfType(typeof(BGMManager));
+        bGMManager.ChangeBGM("BossBattle");
+
     }
 
     //Death Effects
@@ -225,6 +231,7 @@ public class GateLog : Interactables
         //check point
         checkPointR1.gateLogKill = true;
         regPositionOnCheckPoint.SendSignal();
+        bGMManager.ChangeBGM("Dungeon");
     }
 
     public virtual void DeathEffect()
@@ -254,6 +261,7 @@ public class GateLog : Interactables
         if (checkPointR1.gateLogKill)
         {
             gateLogDeathSignal.SendSignal();//signal to room to remove all enemies in room
+            this.gameObject.SetActive(false);
         }
         else if (checkPointR1.gateLogEvil)
         {

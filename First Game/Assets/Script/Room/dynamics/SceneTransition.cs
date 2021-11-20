@@ -19,9 +19,11 @@ public class SceneTransition : MonoBehaviour
     public vectorValue playerPosition;
     public GameObject nextRoomVirtualCamera;
     public GlobalVariables globalVariables;//register next scene name
+    private BGMManager bGMManager;
 
     private void Awake()
     {
+        bGMManager = (BGMManager)FindObjectOfType(typeof(BGMManager));
         if (fadeInPanel != null)
         {
             GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity);
@@ -33,6 +35,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
+            bGMManager.StopBGM();
             StartCoroutine(SceneChangeCo());
             playerPosition.runtimeValue = newScenePosition;
             if (nextRoomVirtualCamera != null)
