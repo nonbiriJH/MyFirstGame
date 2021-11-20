@@ -21,7 +21,7 @@ MonoBehaviour:
     volume: 1
   - soundName: Type
     audioClip: {fileID: 8300000, guid: c6ae2ec8078cf4b7bb5cbdf0b66c73bc, type: 3}
-    volume: 0.251
+    volume: 1
   - soundName: Click
     audioClip: {fileID: 8300000, guid: dfa10474337814a9184a5664267c467d, type: 3}
     volume: 1

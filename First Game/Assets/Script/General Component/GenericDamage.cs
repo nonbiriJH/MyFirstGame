@@ -82,6 +82,9 @@ public class GenericDamage : MonoBehaviour
         if (this.gameObject.CompareTag("SaintArrow"))
         {
             enemyBossKnockBack.Purify(knockBackTime);
+            //stop battle bgm
+            BGMManager bGMManager = (BGMManager)FindObjectOfType(typeof(BGMManager));
+            bGMManager.StopBGM();
         }
         else
         {

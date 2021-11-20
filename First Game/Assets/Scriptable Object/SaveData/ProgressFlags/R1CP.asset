@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aad5c72892114ec598083c58835ffb0, type: 3}
   m_Name: R1CP
   m_EditorClassIdentifier: 
-  yellowAttack: 0
-  yellowDie: 0
-  moneyTreeAppear: 0
-  ReachMoney: 0
-  getKey: 0
-  buyBlade: 0
-  openGate: 0
+  yellowAttack: 1
+  yellowDie: 1
+  moneyTreeAppear: 1
+  ReachMoney: 1
+  getKey: 1
+  buyBlade: 1
+  openGate: 1
   gateLogEvil: 0
   gateLogKill: 0
   innerLogEvil: 0

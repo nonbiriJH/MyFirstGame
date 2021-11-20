@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: R2CP
   m_EditorClassIdentifier: 
   helpYellow: 0
-  openGate: 0
+  openGate: 1
   gateLogR1Move: 0
   gateLogR2Talked: 0
   gateLogR2LOpenGate: 0
-  getPureArrow: 0
-  r2LGateClose: 0
-  gateLogR2RTalked: 0
-  gateLogR2Move: 0
+  getPureArrow: 1
+  r2LGateClose: 1
+  gateLogR2RTalked: 1
+  gateLogR2Move: 1
   boosPrePurified: 0
   bossPurifyStart: 0
   bossPurified: 0
