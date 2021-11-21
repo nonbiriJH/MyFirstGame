@@ -423,6 +423,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 938871245, guid: b572b8f38389c477980438494fe984cb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 938871245, guid: b572b8f38389c477980438494fe984cb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 938871245, guid: b572b8f38389c477980438494fe984cb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 938871246, guid: b572b8f38389c477980438494fe984cb, type: 3}
+      propertyPath: m_text
+      value: 'Move: Arrow Keys
+
+        Attack/Interact: Space
+
+        Weapon: Z
+
+        Inventory:
+        I
+
+        Save/Load: ESC'
+      objectReference: {fileID: 0}
     - target: {fileID: 5349800073601250777, guid: b572b8f38389c477980438494fe984cb,
         type: 3}
       propertyPath: m_Name
