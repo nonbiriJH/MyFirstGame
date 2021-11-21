@@ -22,3 +22,9 @@ MonoBehaviour:
   - soundName: Dungeon
     audioClip: {fileID: 8300000, guid: d5bfa3c82016a4b5e9221b540348a8cd, type: 3}
     volume: 0.458
+  - soundName: Title
+    audioClip: {fileID: 8300000, guid: 816e59eddcd6248ec94043e690b36d78, type: 3}
+    volume: 0.458
+  - soundName: Home
+    audioClip: {fileID: 8300000, guid: cb23891e68c3144a89e018b478a216da, type: 3}
+    volume: 0.458

@@ -18,6 +18,7 @@ public class EndingPanel : MonoBehaviour
     public TextMeshProUGUI DescDisplay;
     public TextMeshProUGUI TitleDisplay;
     public TextMeshProUGUI SubTitleDisplay;
+    private SoundManager soundManager;
 
 
     private bool finishedType = false;
@@ -33,6 +34,7 @@ public class EndingPanel : MonoBehaviour
         StartCoroutine(StartCo());
         finishedType = true;
         step = 0;
+        soundManager = (SoundManager)FindObjectOfType(typeof(SoundManager));
     }
 
     private IEnumerator StartCo()
@@ -71,10 +73,17 @@ public class EndingPanel : MonoBehaviour
 
     private IEnumerator TypeCo(string sentence, TextMeshProUGUI textDisplay)
     {
+        int counter = 0;
         finishedType = false;
         foreach (char letter in sentence.ToCharArray())
         {
             textDisplay.text += letter;
+            counter -= 1;
+            if (counter < 0)
+            {
+                soundManager.PlaySound("Type");
+                counter = 3;
+            }
             yield return new WaitForSeconds(typeSpeed);
         }
         finishedType = true;

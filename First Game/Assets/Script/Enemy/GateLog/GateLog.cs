@@ -118,6 +118,7 @@ public class GateLog : Interactables
         }
         else if (checkPointR2.gateLogR1Move && !checkPointR2.gateLogR2LOpenGate)
         {
+            Debug.Log("in1");
             nextDialog = openGateDialog;
         }
         else if (checkPointR2.gateLogR2LOpenGate && !checkPointR2.getPureArrow)
@@ -147,6 +148,7 @@ public class GateLog : Interactables
         {
             //player quite interact state
             InteractEnd();
+            Debug.Log("in3");
 
             if (itemQuantityLookup.GetItemNumber(trigerEvilItem.itemName) >= 1)
             {
@@ -155,6 +157,7 @@ public class GateLog : Interactables
             }
             if (checkPointR2.gateLogR1Move && !checkPointR2.gateLogR2Talked)
             {
+                Debug.Log("in2");
                 checkPointR2.gateLogR2Talked = true;//trigger DR2_OpenGate
                 regPositionOnCheckPoint.SendSignal();
             }

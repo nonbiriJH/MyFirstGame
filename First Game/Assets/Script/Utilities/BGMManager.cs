@@ -28,6 +28,14 @@ public class BGMManager : MonoBehaviour
         {
             PlayBGM("OverWorld");
         }
+        else if (SceneManager.GetActiveScene().name == "Room")
+        {
+            PlayBGM("Home");
+        }
+        else if (SceneManager.GetActiveScene().name == "StartMenu")
+        {
+            PlayBGM("Title");
+        }
     }
 
     private void PlayBGM(string BGMName)
